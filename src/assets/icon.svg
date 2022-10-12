@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 64 64" width="64px" height="64px">
+<defs>
+<linearGradient id="linear0" gradientUnits="userSpaceOnUse" x1="86" y1="24.410561" x2="86" y2="146.941757" gradientTransform="matrix(0.372093,0,0,0.372093,0,0)">
+<stop offset="0" style="stop-color:rgb(10.196079%,42.745098%,100%);stop-opacity:1;"/>
+<stop offset="1" style="stop-color:rgb(78.431374%,13.333334%,100%);stop-opacity:1;"/>
+</linearGradient>
+<linearGradient id="linear1" gradientUnits="userSpaceOnUse" x1="86" y1="51.0625" x2="86" y2="120.9375" gradientTransform="matrix(0.372093,0,0,0.372093,0,0)">
+<stop offset="0" style="stop-color:rgb(54.11765%,70.588237%,100%);stop-opacity:1;"/>
+<stop offset="1" style="stop-color:rgb(89.411765%,57.254905%,100%);stop-opacity:1;"/>
+</linearGradient>
+</defs>
+<g id="surface29593559">
+<path style=" stroke:none;fill-rule:nonzero;fill:url(#linear0);" d="M 50 55 L 14 55 C 11.242188 55 9 52.757812 9 50 L 9 14 C 9 11.242188 11.242188 9 14 9 L 50 9 C 52.757812 9 55 11.242188 55 14 L 55 50 C 55 52.757812 52.757812 55 50 55 Z M 14 11 C 12.347656 11 11 12.347656 11 14 L 11 50 C 11 51.652344 12.347656 53 14 53 L 50 53 C 51.652344 53 53 51.652344 53 50 L 53 14 C 53 12.347656 51.652344 11 50 11 Z M 14 11 "/>
+<path style=" stroke:none;fill-rule:nonzero;fill:url(#linear1);" d="M 43 29 L 42 29 C 40.890625 29 40 28.101562 40 27 C 40 22.601562 36.398438 19 32 19 L 27 19 C 22.601562 19 19 22.601562 19 27 L 19 37 C 19 41.398438 22.601562 45 27 45 L 37 45 C 41.398438 45 45 41.398438 45 37 L 45 31 C 45 29.898438 44.101562 29 43 29 Z M 27 25 L 32 25 C 33.101562 25 34 25.898438 34 27 C 34 28.101562 33.101562 29 32 29 L 27 29 C 25.898438 29 25 28.101562 25 27 C 25 25.898438 25.898438 25 27 25 Z M 37 39 L 27 39 C 25.898438 39 25 38.101562 25 37 C 25 35.898438 25.898438 35 27 35 L 37 35 C 38.101562 35 39 35.898438 39 37 C 39 38.101562 38.101562 39 37 39 Z M 37 39 "/>
+<path style=" stroke:none;fill-rule:nonzero;fill:rgb(80.000001%,80.000001%,80.000001%);fill-opacity:1;" d="M 36.910156 25.652344 L 36.910156 27.027344 L 32.828125 27.027344 L 32.828125 38.347656 L 31.160156 38.347656 L 31.160156 27.027344 L 27.089844 27.027344 L 27.089844 25.652344 Z M 36.910156 25.652344 "/>
+</g>
+</svg>

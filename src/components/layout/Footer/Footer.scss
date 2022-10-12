@@ -1,0 +1,24 @@
+@import '../Header/Header.scss';
+
+.footer {
+    &__logo {
+        @extend .header__logo;
+    }
+
+    &__container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__content {
+        display: flex;
+        gap: 8rem;
+        padding: 2rem 4rem;
+        margin: 0 auto;
+    }
+
+    &__copyright {
+        margin-top: 4rem;
+        font-style: italic;
+    }
+}

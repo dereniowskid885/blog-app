@@ -1,5 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import './scss/main.scss';
 import Header from './components/layout/Header/Header';
+import Footer from './components/layout/Footer/Footer';
 import Home from './views/Home/Home';
 import About from './views/About/About';
 import Offer from './views/Offer/Offer';
@@ -22,6 +24,7 @@ function App() {
         <Route path='/cart' element={<Cart />} />
         <Route path='*' element={<Error />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   )
 }

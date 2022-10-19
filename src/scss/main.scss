@@ -1,8 +1,20 @@
+@use './utilities/mixins' as *;
+@use './utilities/variables' as *;
+
 body {
     box-sizing: border-box;
     margin: 0 auto;
-    padding: 1rem 2rem;
     font-size: 18px;
+    font-family: 'Work Sans', sans-serif;
+    @include max-width($bp-desktop) {
+        font-size: 17px;
+    }
+    @include max-width($bp-laptop) {
+        font-size: 16px;
+    }
+    @include max-width($bp-tablet) {
+        font-size: 15px;
+    }
 }
 
 ul {
@@ -21,10 +33,43 @@ a {
     }
 }
 
-// TO BE REMOVED
-main {
-    height: 800px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+h1, h2, h3 {
+    margin-top: 0;
+}
+
+img {
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
+.btn {
+    background-color: #5453ff;
+    color: white;
+    cursor: pointer;
+    padding: 1em 2em;
+    border-color: #5453ff;
+    border-radius: 5px;
+    font-size: 0.9em;
+    width: fit-content;
+    transition: .5s;
+    @include max-width($bp-tablet) {
+        padding: 0.6em 1.6em;
+    }
+
+    &:hover {
+        background-color: #6868ff;
+        border-color: #6868ff;
+    }
+
+    &--transparent {
+        background-color: transparent;
+        color: #5453ff;
+        transition: .5s;
+
+        &:hover {
+            background-color: #5453ff;
+            color: white;
+        }
+    }
 }

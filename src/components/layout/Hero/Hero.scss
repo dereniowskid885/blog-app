@@ -1,0 +1,40 @@
+@use '/src/scss/utilities/mixins' as *;
+@use '/src/scss/utilities/variables' as *;
+
+.hero {
+    display: flex;
+    width: 100%;
+    height: 80vh;
+    justify-content: space-between;
+    background-color: #e7e7e7;
+    @include max-width($bp-laptop) {
+        height: auto;
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 70%;
+        padding: 5em 2em;
+        @include max-width($bp-tablet) {
+            padding: 3em 2em;
+        }
+    }
+
+    &__logo {
+        width: 250px;
+        height: 250px;
+        border: 6px solid #a885ff;
+        border-radius: 20px;
+        margin-bottom: 2em;
+        @include max-width($bp-laptop) {
+            width: 150px;
+            height: 150px;
+        }
+    }
+
+    &__image {
+        // height: 400px;
+    }
+}

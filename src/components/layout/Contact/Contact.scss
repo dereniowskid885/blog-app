@@ -1,0 +1,60 @@
+@use '/src/scss/utilities/mixins' as *;
+@use '/src/scss/utilities/variables' as *;
+
+.contact {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background-color: #e7e7e7;
+    font-size: 1.1em;
+
+    &__content {
+        padding: 5em 2em;
+        width: 100%;
+        @include max-width($bp-tablet) {
+            padding: 3em 2em;
+        }
+    }
+
+    &__image {
+        // height: 400px;
+        // width: 550px;
+    }
+
+    &__info {
+        margin-top: 2em;
+
+        li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1em;
+
+            &.active:after {
+                content: 'Skopiowano';
+                color: #5453ff;
+                font-size: 0.9em;
+                margin-left: 10px;
+            }
+        }
+
+        svg {
+            margin-left: 10px;
+            cursor: pointer;
+
+            path {
+                pointer-events: none;
+            }
+
+            &:hover {
+                color: #5453ff;
+            }
+        }
+    }
+
+    &__icon {
+        height: 40px;
+        width: 40px;
+        margin-right: 10px;
+    }
+}

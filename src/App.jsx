@@ -1,5 +1,4 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import './scss/main.scss';
 import Header from './components/layout/Header/Header';
 import Footer from './components/layout/Footer/Footer';
 import Home from './views/Home/Home';
@@ -11,22 +10,22 @@ import Cart from './views/Cart/Cart';
 import Error from './views/Error/Error';
 
 function App() {
-  return (
-    <BrowserRouter>
-      <Header />
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/about' element={<About />} />
-        <Route path='/offer' element={<Offer />} />
-        <Route path='/blog' element={<Blog />} />
-        {/* <Route path='/blog/:slug' element={<BlogPost />} /> */}
-        <Route path='/panel' element={<Panel />} />
-        <Route path='/cart' element={<Cart />} />
-        <Route path='*' element={<Error />} />
-      </Routes>
-      <Footer />
-    </BrowserRouter>
-  )
+    return (
+        <BrowserRouter>
+            <Header />
+            <Routes>
+                <Route path='/' element={<Home />} />
+                <Route path='/about' element={<About />} />
+                <Route path='/offer' element={<Offer />} />
+                <Route path='/blog' element={<Blog />} />
+                {/* <Route path='/blog/:slug' element={<BlogPost />} /> */}
+                <Route path='/panel' element={<Panel />} />
+                <Route path='/cart' element={<Cart />} />
+                <Route path='*' element={<Error />} />
+            </Routes>
+            <Footer />
+        </BrowserRouter>
+    )
 }
 
 export default App;

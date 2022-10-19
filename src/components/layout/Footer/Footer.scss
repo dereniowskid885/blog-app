@@ -1,6 +1,10 @@
-@import '../Header/Header.scss';
+@use '../Header/Header.scss';
+@use '/src/scss/utilities/mixins' as *;
+@use '/src/scss/utilities/variables' as *;
 
 .footer {
+    padding: 1em 2em;
+
     &__logo {
         @extend .header__logo;
     }
@@ -12,13 +16,38 @@
 
     &__content {
         display: flex;
-        gap: 8rem;
-        padding: 2rem 4rem;
+        gap: 10em;
+        padding: 2em 4em;
         margin: 0 auto;
+        @include max-width($bp-laptop) {
+            gap: 5em;
+        }
     }
 
     &__copyright {
-        margin-top: 4rem;
+        margin-top: 4em;
         font-style: italic;
+    }
+
+    &__column {
+        li {
+            margin-bottom: 1em;
+        }
+
+        div {
+            margin-bottom: 1em;
+        }
+    }
+
+    &__socials {
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+
+        svg {
+            width: 35px;
+            height: 35px;
+            cursor: pointer;
+        }
     }
 }

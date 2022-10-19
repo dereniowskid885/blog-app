@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Footer.scss';
-import Logo from '../../../assets/icon.svg';
+import Logo from '/src/assets/icon.svg';
+import { FaFacebookSquare, FaInstagramSquare } from 'react-icons/fa'
 
 function Footer() {
   return (
@@ -26,11 +27,14 @@ function Footer() {
                     </ul>
                 </div>
                 <div className='footer__column'>
-                    {'Znajdziesz nas na:'}<br />
-                    <ul>
-                        <li>FB</li>
-                        <li>INSTA</li>
-                        <li>YT</li>
+                    <div>{'Znajdziesz nas na:'}</div>
+                    <ul className='footer__socials'>
+                        <li>
+                            <a href='https://facebook.com' target='_blank'><FaFacebookSquare /></a>
+                        </li>
+                        <li>
+                            <a href='https://instagram.com' target='_blank'><FaInstagramSquare /></a>
+                        </li>
                     </ul>
                 </div>
             </div>

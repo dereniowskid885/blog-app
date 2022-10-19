@@ -1,0 +1,24 @@
+.opinion {
+    padding: 2em;
+    border: 2px solid lightgray;
+
+    &__header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1em;
+
+        h3 {
+            margin: 0;
+        }
+
+        svg {
+            width: 35px;
+            height: 35px;
+            margin-right: 10px;
+        }
+    }
+
+    &__content {
+        font-size: 0.9em;
+    }
+}

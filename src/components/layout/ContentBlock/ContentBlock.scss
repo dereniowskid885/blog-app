@@ -1,0 +1,43 @@
+@use '/src/scss/utilities/mixins' as *;
+@use '/src/scss/utilities/variables' as *;
+
+.content {
+    padding: 0 5em;
+    @include max-width($bp-tablet) {
+        padding: 0 3em;
+    }
+
+    &__image {
+        width: 40%;
+        margin-right: 5em;
+        @include max-width($bp-laptop) {
+            margin-right: 3em;
+            width: 70%;
+        }
+
+        &--reverse {
+            margin-right: 0;
+            margin-left: 5em;
+        }
+    }
+
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 2em 0;
+    }
+
+    &__block {
+        display: flex;
+        margin-top: 5em;
+
+        &--reverse {
+            flex-direction: row-reverse;
+        }
+    }
+
+    &__text {
+        margin-bottom: 1em;
+    }
+}

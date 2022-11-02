@@ -1,22 +1,32 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import './Header.scss';
-import Logo from '/src/assets/icon.svg';
+import Logo from '/src/assets/logo.jpg';
+import Links from '../../Links/Links';
+import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
+import { useState } from 'react';
+import MobileOverlay from '../MobileOverlay/MobileOverlay';
 
 function Header() {
+    const [ isMobileNav, setMobileNav ] = useState(false);
+
+    const hideMobileNav = () => {
+        setMobileNav(false);
+    };
+
     return (
         <header className='header'>
             <img className='header__logo' src={Logo} alt='Logo' />
             <nav className='header__nav'>
-                <ul className='header__links'>
-                <li><Link to='/'>Home</Link></li>
-                <li><Link to='/about'>O mnie</Link></li>
-                <li><Link to='/offer'>Oferta</Link></li>
-                <li><Link to='/blog'>Blog</Link></li>
-                <li><Link to='/panel'>Panel Klienta</Link></li>
-                <li><Link to='/cart'>Koszyk</Link></li>
-                </ul>
+                <Links />
             </nav>
+            <nav className='header__mobile-nav'>
+                <AiOutlineMenu className={`${isMobileNav ? 'hidden' : ''}`} onClick={() => { setMobileNav(true) }} />
+                <div className={`header__mobile-links ${isMobileNav ? '' : 'hidden'}`}>
+                    <AiOutlineClose className={`${isMobileNav ? '' : 'hidden'}`} onClick={() => { setMobileNav(false) }} />
+                    <Links hideMobileNav={hideMobileNav} />
+                </div>
+            </nav>
+            { isMobileNav && <MobileOverlay hideMobileNav={hideMobileNav} /> }
         </header>
     )
 }

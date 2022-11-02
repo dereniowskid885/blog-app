@@ -17,13 +17,13 @@ function Contact() {
         setTimeout(() => {
             parentElement.className = '';
         }, 700);
-    }
+    };
 
     return (
         <div className='contact'>
             <div className='contact__content'>
                 <h2>{'Masz pytania ?'}</h2>
-                {'Chętnie na nie odpowiem. Skontaktuj się ze mną!'}
+                <h3>{'Chętnie na nie odpowiem. Skontaktuj się ze mną!'}</h3>
                 <div className='contact__info'>
                     <ul>
                         <li>

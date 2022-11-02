@@ -11,8 +11,8 @@ function ContentBlock(props) {
                             <img src={item.img} alt='content image' />
                         </div>
                         <div className='content__wrapper'>
-                            <div className='content__text'>{item.content}</div>
-                            <button className='btn btn--transparent'>{item.buttonText}</button>
+                            { item.content && <div className='content__text'>{item.content}</div> }
+                            { item.buttonText && <button className='content__button btn btn--transparent'>{item.buttonText}</button> }
                         </div>
                     </div>
                 );

@@ -2,35 +2,25 @@ const data = [
     {
         id: 1,
         name: 'Ewa',
-        text: 'Wspaniała dieta, najlepsza jaka w zyciu jadlam. Polecam - Ewa Wachowicz.'
+        text: 'Super, rzuciłem okiem na dietę i wygląda rewelacyjnie, łącznie z podziałem produktów na kategorie w sklepie.'
     },
     {
         id: 2,
         name: 'Kuba',
-        text: 'Super, rzuciłem okiem na dięte i wygląda super.'
+        text: 'Wizualnie powiem tak.. majstersztyk! Przyjemne dla oka, czytelnne. Widać wielką pracę włożoną w to.'
     },
     {
         id: 3,
         name: 'Marta',
-        text: 'Naprawde wspaniały sklep, oraz diety. Nigdy nie miałam lepszej.'
+        text: 'Przepis od kolarstwo od kuchni bardzo w moim guście!'
     },
     {
         id: 4,
         name: 'Kacper',
-        text: 'Troche średnie ale może być.'
+        text: '“Paliwo rakietowe” od kolarstwo od kuchni - bardzo dobry koktajl, zachwyca smakiem, a jego wykonanie zajmuje kilka minut.'
     },
     {
         id: 5,
-        name: 'Izydor',
-        text: 'Moim zdaniem ten środek jest rewelacyjny.'
-    },
-    {
-        id: 6,
-        name: 'Izydor',
-        text: 'Moim zdaniem ten środek jest rewelacyjny.'
-    },
-    {
-        id: 7,
         name: 'Izydor',
         text: 'Moim zdaniem ten środek jest rewelacyjny.'
     }

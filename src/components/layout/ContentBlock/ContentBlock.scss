@@ -1,23 +1,28 @@
-@use '/src/scss/utilities/mixins' as *;
-@use '/src/scss/utilities/variables' as *;
+@use '/src/scss/index' as *;
 
 .content {
-    padding: 0 5em;
-    @include max-width($bp-tablet) {
-        padding: 0 3em;
+    padding: 0 6em;
+    @include max-width($bp-laptop) {
+        padding: 0 2em;
     }
 
     &__image {
+        margin-right: 2em;
         width: 40%;
-        margin-right: 5em;
         @include max-width($bp-laptop) {
-            margin-right: 3em;
             width: 70%;
+        }
+        @include max-width($bp-tablet) {
+            margin: 0;
+            width: 100%;
         }
 
         &--reverse {
             margin-right: 0;
-            margin-left: 5em;
+            margin-left: 2em;
+            @include max-width($bp-tablet) {
+                margin: 0;
+            }
         }
     }
 
@@ -26,18 +31,44 @@
         flex-direction: column;
         justify-content: center;
         padding: 2em 0;
+        max-width: 50%;
+        @include max-width($bp-tablet) {
+            padding: 2em 0 0;
+            max-width: 100%;
+        }
     }
 
     &__block {
         display: flex;
         margin-top: 5em;
+        @include max-width($bp-tablet) {
+            flex-direction: column;
+        }
 
         &--reverse {
             flex-direction: row-reverse;
+            justify-content: space-between;
+            @include max-width($bp-tablet) { 
+                flex-direction: column;
+            }
+        }
+
+        &:last-child {
+            margin-bottom: 5em;
         }
     }
 
-    &__text {
+    &__text:not(:last-child) {
         margin-bottom: 1em;
+    }
+
+    &__title {
+        font-weight: 500;
+    }
+
+    &__button {
+        @include max-width($bp-tablet) {
+            margin: 0 auto;
+        }
     }
 }

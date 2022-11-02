@@ -1,5 +1,4 @@
-@use '/src/scss/utilities/mixins' as *;
-@use '/src/scss/utilities/variables' as *;
+@use '/src/scss/index' as *;
 
 .hero {
     display: flex;
@@ -10,31 +9,55 @@
     @include max-width($bp-laptop) {
         height: auto;
     }
+    @include max-width($bp-mobile) {
+        flex-direction: column-reverse;
+    }
 
     &__content {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        width: 70%;
+        width: 60%;
         padding: 5em 2em;
-        @include max-width($bp-tablet) {
+        @include max-width($bp-mobile) {
             padding: 3em 2em;
+            width: auto;
+            align-items: center;
         }
     }
 
     &__logo {
-        width: 250px;
-        height: 250px;
-        border: 6px solid #a885ff;
-        border-radius: 20px;
+        width: 410px;
+        height: 98px;
         margin-bottom: 2em;
         @include max-width($bp-laptop) {
-            width: 150px;
-            height: 150px;
+            width: 205px;
+            height: 49px;
+            margin-bottom: 1em;
         }
     }
 
     &__image {
-        // height: 400px;
+        max-width: 790px;
     }
+
+    /* About */
+
+    .about &__content {
+        @include max-width($bp-laptop) {
+            font-size: 0.8rem;
+        }
+    }
+
+    &__title {
+        font-size: 4.5rem;
+        font-weight: 500;
+        margin-bottom: 0.2em;
+    }
+
+    &__sub-title {
+        font-weight: 400;
+    }
+
+    /**/
 }

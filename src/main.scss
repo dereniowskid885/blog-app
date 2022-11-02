@@ -1,18 +1,17 @@
-@use './utilities/mixins' as *;
-@use './utilities/variables' as *;
+@use '/src/scss/index' as *;
 
 body {
     box-sizing: border-box;
     margin: 0 auto;
     font-size: 18px;
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     @include max-width($bp-desktop) {
         font-size: 17px;
     }
     @include max-width($bp-laptop) {
         font-size: 16px;
     }
-    @include max-width($bp-tablet) {
+    @include max-width($bp-mobile) {
         font-size: 15px;
     }
 }
@@ -44,17 +43,20 @@ img {
 }
 
 .btn {
-    background-color: #5453ff;
+    background-color: #5A4FF3;
     color: white;
     cursor: pointer;
-    padding: 1em 2em;
-    border-color: #5453ff;
+    padding: 0.8em 1.5em;
+    border-color: #5A4FF3;
     border-radius: 5px;
     font-size: 0.9em;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
     width: fit-content;
+    white-space: nowrap;
     transition: .5s;
     @include max-width($bp-tablet) {
-        padding: 0.6em 1.6em;
+        padding: 0.7em 1.4em;
     }
 
     &:hover {
@@ -64,11 +66,11 @@ img {
 
     &--transparent {
         background-color: transparent;
-        color: #5453ff;
+        color: #5A4FF3;
         transition: .5s;
 
         &:hover {
-            background-color: #5453ff;
+            background-color: #5A4FF3;
             color: white;
         }
     }

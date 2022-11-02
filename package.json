@@ -9,7 +9,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/styled": "^11.10.4",
     "@itseasy21/react-elastic-carousel": "^0.12.3",
+    "@mui/material": "^5.10.11",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.4.0",

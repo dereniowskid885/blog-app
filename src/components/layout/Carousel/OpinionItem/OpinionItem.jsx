@@ -4,12 +4,12 @@ import { FaUserCircle } from 'react-icons/fa';
 
 function OpinionItem(props) {
     return (
-        <div className='opinion'>
-            <div className='opinion__header'>
+        <div className='opinion-item'>
+            <div className='opinion-item__header'>
                 <FaUserCircle />
                 <h3>{props.name}</h3>
             </div>
-            <div className='opinion__content'>
+            <div className='opinion-item__content'>
                 {props.text}
             </div>
         </div>

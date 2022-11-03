@@ -1,8 +1,6 @@
 import React from 'react';
 import './Carousel.scss';
 import ElasticCarousel from '@itseasy21/react-elastic-carousel';
-import OpinionItem from './OpinionItem/OpinionItem';
-import data from '../../../data/Opinions';
 
 const breakPoints = [
     { width: 1, itemsToShow: 1, itemsToScroll: 1 },
@@ -11,18 +9,22 @@ const breakPoints = [
     { width: 1200, itemsToShow: 4, itemsToScroll: 1 }
 ];
 
-function Carousel() {
+function Carousel(props) {
     return (
         <div className='carousel'>
-            <h2>{'Opinie moich podopiecznych'}</h2>
+            <h2>{props.title}</h2>
             <div className='carousel__content'>
                 <ElasticCarousel itemPadding={[0, 10]} breakPoints={breakPoints}>
-                    {data.map((item) => {
+                    {props.data.map((item) => {
                         return (
-                            <OpinionItem
+                            <props.block
                                 key={item.id}
+                                id={item.id}
                                 name={item.name}
                                 text={item.text}
+                                title={item.title}
+                                date={item.date}
+                                img={item.img}
                             />
                         );
                     })}

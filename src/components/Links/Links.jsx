@@ -10,12 +10,12 @@ function Links(props) {
                 </Link>
             </li>
             <li>
-                <Link to='/about' onClick={props.hideMobileNav}>
+                <Link to='/o-mnie' onClick={props.hideMobileNav}>
                     {'O mnie'}
                 </Link>
             </li>
             <li>
-                <Link to='/offer' onClick={props.hideMobileNav}>
+                <Link to='/oferta' onClick={props.hideMobileNav}>
                     {'Oferta'}
                 </Link>
             </li>
@@ -25,12 +25,12 @@ function Links(props) {
                 </Link>
             </li>
             <li>
-                <Link to='/panel' onClick={props.hideMobileNav}>
+                <Link to='/panel-klienta' onClick={props.hideMobileNav}>
                     {'Panel Klienta'}
                 </Link>
             </li>
             <li>
-                <Link to='/cart' onClick={props.hideMobileNav}>
+                <Link to='/koszyk' onClick={props.hideMobileNav}>
                     {'Koszyk'}
                 </Link>
             </li>

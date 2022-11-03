@@ -1,0 +1,29 @@
+.blog-item {
+    .fAVBsF & {
+        user-select: all;
+    }
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        border: 2px solid #E7EDF2;
+    }
+
+    &__content {
+        padding: 0.5em;
+        font-size: 0.9rem;
+    }
+
+    &__title {
+        font-weight: 500;
+        margin-bottom: 0.5em;
+    }
+
+    img {
+        transition: .5s;
+    }
+
+    &:hover img {
+        opacity: 0.8;
+    }
+}

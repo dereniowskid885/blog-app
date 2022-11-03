@@ -1,12 +1,11 @@
 import React from 'react';
 import './ExperienceBlock.scss';
-import data from '/src/data/ExperienceBlock.js';
 
-function ExperienceBlock() {
+function ExperienceBlock(props) {
     return (
         <div className='experience'>
             <ul>
-                {data.map((item) => {
+                {props.data.map((item) => {
                     return (
                         <li key={item.id}>
                             { item.title && <h1 className='experience__title'>{item.title}</h1> }

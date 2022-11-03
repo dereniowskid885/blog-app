@@ -36,10 +36,10 @@ function Footer() {
                             <RiArrowDropDownLine className={`${isDropdownClicked.first ? 'animate' : ''}`} />
                         </div>
                         <ul id='dropdown-1' className={`${isDropdownClicked.first ? '' : 'hidden'}`}>
-                            <li><Link to='/about'>O mnie</Link></li>
-                            <li><Link to='/offer'>Oferta</Link></li>
+                            <li><Link to='/o-mnie'>O mnie</Link></li>
+                            <li><Link to='/oferta'>Oferta</Link></li>
                             <li><Link to='/blog'>Blog</Link></li>
-                            <li><Link to='/contact'>Kontakt</Link></li>
+                            <li><Link to='/kontakt'>Kontakt</Link></li>
                         </ul>
                     </div>
                     <div className='footer__column'>
@@ -48,10 +48,10 @@ function Footer() {
                             <RiArrowDropDownLine className={`${isDropdownClicked.second ? 'animate' : ''}`} />
                         </div>
                         <ul id='dropdown-2' className={`${isDropdownClicked.second ? '' : 'hidden'}`}>
-                            <li><Link to='/terms-and-conditions'>Regulamin</Link></li>
-                            <li><Link to='/payment-methods'>Sposoby płatności</Link></li>
-                            <li><Link to='/privacy-policy'>Polityka prywatności</Link></li>
-                            <li><Link to='/cookies-policy'>Polityka cookies</Link></li>
+                            <li><Link to='/regulamin'>Regulamin</Link></li>
+                            <li><Link to='/sposoby-platnosci'>Sposoby płatności</Link></li>
+                            <li><Link to='/polityka-prywatnosci'>Polityka prywatności</Link></li>
+                            <li><Link to='/polityka-cookies'>Polityka cookies</Link></li>
                         </ul>
                     </div>
                     <div className='footer__column'>

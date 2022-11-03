@@ -5,7 +5,8 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 2em 6em;
+        padding: 2em 6em 6em;
+        margin-bottom: 2em;
         @include max-width($bp-tablet) {
             padding: 2em;
         }
@@ -24,6 +25,9 @@
     &__img {
         max-width: 680px;
         margin-bottom: 5em;
+        @include max-width($bp-tablet) {
+            margin-bottom: 3em;
+        }
     }
 
     &__wrapper {
@@ -37,5 +41,8 @@
 
     &__content-img {
         margin: 4em 0;
+        @include max-width($bp-tablet) {
+            margin: 2em 0;
+        }
     }
 }

@@ -11,7 +11,7 @@ function Breadcrumbs(props) {
 
     return (
         <MUIBreadcrumbs className='breadcrumbs' aria-label='breadcrumb'>
-            <Link href='/'>Home</Link>
+            <Link href='/'>{'Home'}</Link>
             {pathnames.map((element, index) => {
                 const lastElement = index === pathnames.length - 1;
                 const link = `/${pathnames.slice(0, index + 1).join('/')}`;

@@ -25,9 +25,9 @@ function Blog() {
             }
             { data.posts &&
                 <div className='blog__posts'>
-                    <div className='blog__sub-title'>{'Najnowsze posty'}</div>
+                    <div className='blog__sub-title'>{data.posts.title}</div>
                     <ul className={`${isShowMoreClicked ? '' : 'blog__hide-more'}`}>
-                        {data.posts.map((item) => {
+                        {data.posts.items.map((item) => {
                             return (
                                 <li key={item.id}>
                                     <Link to={`/blog/${item.id}`}>

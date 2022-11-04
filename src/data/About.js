@@ -4,13 +4,37 @@ const data = {
         title: 'Cześć!',
         subtitle: 'Fajnie, że wpadłeś. Poznajmy się lepiej!'
     },
-    firstSection: {
-        id: 1,
-        img: '/src/assets/contact_image.jpg',
-        title: 'Z pasji kolarz z zawodu dietetyk',
-        content_1: 'Mam na imię Marcin, jestem dietetykiem, skończyłem kierunek Żywienie Człowieka i Dietetyka na Uniwersytecie Przyrodniczym we Wrocławiu. Od dziecka trenuję kolarstwo szosowe, startuję też w lokalnych wyścigach. Można powiedzieć, że żyję tym sportem. Spędzam na rowerze każdą wolną chwilę i z całego serca to kocham!',
-        content_2: '„Kolarstwo od kuchni” powstało w 2020 roku z połączenia pracy dietetyka i pasji kolarza. Od tego czasu nieustannie dzielę się wiedzą z zakresu prawidłowego żywienia oraz smacznymi kolarskimi przepisami. Z moich usług skorzystało już wielu sportowców na różnym poziomie wytrenowania.'
-    },
+    experienceBlock: [
+        {
+            id: 1,
+            title: '20',
+            content: 'lat pracy w zawodzie'
+        },
+        {
+            id: 2,
+            title: '1380',
+            content: 'pacjentów, z którymi współpracowałem'
+        },
+        {
+            id: 3,
+            title: '9',
+            content: 'lat doświadczenia w kolarstwie'
+        },
+        {
+            id: 4,
+            title: '99%',
+            content: 'zadowolonych klientów'
+        }
+    ],
+    firstSection: [
+        {
+            id: 1,
+            img: '/src/assets/contact_image.jpg',
+            title: 'Z pasji kolarz z zawodu dietetyk',
+            content_1: 'Mam na imię Marcin, jestem dietetykiem, skończyłem kierunek Żywienie Człowieka i Dietetyka na Uniwersytecie Przyrodniczym we Wrocławiu. Od dziecka trenuję kolarstwo szosowe, startuję też w lokalnych wyścigach. Można powiedzieć, że żyję tym sportem. Spędzam na rowerze każdą wolną chwilę i z całego serca to kocham!',
+            content_2: '„Kolarstwo od kuchni” powstało w 2020 roku z połączenia pracy dietetyka i pasji kolarza. Od tego czasu nieustannie dzielę się wiedzą z zakresu prawidłowego żywienia oraz smacznymi kolarskimi przepisami. Z moich usług skorzystało już wielu sportowców na różnym poziomie wytrenowania.'
+        }
+    ],
     secondSection: [
         {
             id: 1,

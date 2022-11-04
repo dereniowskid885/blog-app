@@ -4,46 +4,23 @@ import '/src/components/layout/ContentBlock/ContentBlock.scss';
 import Contact from '../../components/layout/Contact/Contact';
 import ContentBlock from '../../components/layout/ContentBlock/ContentBlock';
 import ExperienceBlock from '../../components/layout/ExperienceBlock/ExperienceBlock';
-import aboutData from '/src/data/About';
-import experienceData from '/src/data/ExperienceBlock.js';
+import data from '/src/data/About';
+import Hero from '../../components/layout/Hero/Hero';
 
 function About() {
     return (
         <main className='about'>
-            { aboutData.hero &&
-                <div className='hero'>
-                    <div className='hero__content'>
-                        <h1 className='hero__title'>
-                            { aboutData.hero.title && aboutData.hero.title }
-                        </h1>
-                        <h2 className='hero__sub-title'>
-                            { aboutData.hero.subtitle && aboutData.hero.subtitle }
-                        </h2>
-                    </div>
-                    <div className='hero__image'>
-                        <img src={aboutData.hero.img} alt='about section image' />
-                    </div>
-                </div>
+            { data.hero &&
+                <Hero img={data.hero.img} title={data.hero.title} subtitle={data.hero.subtitle} />
             }
-            { aboutData.firstSection &&
-                <div className='content'>
-                    <div className='content__block'>
-                        <div className='content__image'>
-                            <img src={aboutData.firstSection.img} alt='first section image' />
-                        </div>
-                        <div className='content__wrapper'>
-                            { aboutData.firstSection.title && <h2 className='content__title'>{aboutData.firstSection.title}</h2> }
-                            { aboutData.firstSection.content_1 && <div className='content__text'>{aboutData.firstSection.content_1}</div> }
-                            { aboutData.firstSection.content_2 && <div className='content__text'>{aboutData.firstSection.content_2}</div> }
-                        </div>
-                    </div>
-                </div>
+            { data.firstSection &&
+                <ContentBlock data={data.firstSection} />
             }
-            { experienceData &&
-                <ExperienceBlock data={experienceData} />
+            { data.experienceBlock &&
+                <ExperienceBlock data={data.experienceBlock} />
             }
-            { aboutData.secondSection &&
-                <ContentBlock data={aboutData.secondSection} />
+            { data.secondSection &&
+                <ContentBlock data={data.secondSection} />
             }
             <Contact />
         </main>

@@ -7,11 +7,9 @@ function OpinionItem(props) {
         <div className='opinion-item'>
             <div className='opinion-item__header'>
                 <FaUserCircle />
-                <h3>{props.name}</h3>
+                { props.name && <h3>{props.name}</h3> }
             </div>
-            <div className='opinion-item__content'>
-                {props.text}
-            </div>
+            { props.text && <div className='opinion-item__content'>{props.text}</div> }
         </div>
     )
 }

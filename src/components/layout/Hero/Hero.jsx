@@ -1,17 +1,20 @@
 import React from 'react';
 import './Hero.scss';
-import Logo from '/src/assets/logo.jpg';
 
-function Hero() {
+function Hero(props) {
     return (
         <div className='hero'>
             <div className='hero__content'>
-                <img className='hero__logo' src={Logo} alt='Logo' />
-                <button className='btn'>{'Skorzystaj z oferty'}</button>
+                { props.title && <h1 className='hero__title'>{props.title}</h1> }
+                { props.subtitle && <h2 className='hero__sub-title'>{props.subtitle}</h2> }
+                { props.logo && <img className='hero__logo' src={props.logo} alt='Logo' /> }
+                { props.buttonText && <button className='btn'>{props.buttonText}</button> }
             </div>
-            <div className='hero__image'>
-                <img src='/src/assets/contact_image.jpg' alt='thoughtful man' />
-            </div>
+            { props.img && 
+                <div className='hero__image'>
+                    <img src={props.img} alt='hero' />
+                </div>
+            }
         </div>
     )
 }

@@ -12,35 +12,31 @@ function Blog() {
             <Breadcrumbs />
             { data.text &&
                 <div className='blog__content'>
-                    <h1 className='blog__title'>
-                        { data.text.title && data.text.title }
-                    </h1>
-                    <h2 className='blog__description'>
-                        { data.text.subtitle && data.text.subtitle }
-                    </h2>
-                    <div className='blog__logo'>
-                        <img src={data.text.img} alt='Logo' />
-                    </div>
+                    { data.text.title && <h1 className='blog__title'>{data.text.title}</h1> }
+                    { data.text.subtitle && <h2 className='blog__sub-title'>{data.text.subtitle}</h2> }
+                    { data.text.img &&
+                        <div className='blog__image'>
+                            <img src={data.text.img} alt='blog' />
+                        </div>
+                    }
                 </div>
             }
             { data.posts &&
                 <div className='blog__posts'>
-                    <div className='blog__sub-title'>{data.posts.title}</div>
+                    { data.posts.title && <div className='blog__section-title'>{data.posts.title}</div> }
                     <ul className={`${isShowMoreClicked ? '' : 'blog__hide-more'}`}>
                         {data.posts.items.map((item) => {
                             return (
                                 <li key={item.id}>
                                     <Link to={`/blog/${item.id}`}>
-                                        <div className='blog__image'>
-                                            <img src={item.img} alt='post image' />
-                                        </div>
+                                        { item.img &&
+                                            <div className='blog__post-image'>
+                                                <img src={item.img} alt='post' />
+                                            </div>
+                                        }
                                         <div className='blog__post-content'>
-                                            <div className='blog__post-title'>
-                                                { item.title && item.title }
-                                            </div>
-                                            <div className='blog__post-date'>
-                                                { item.date && item.date }
-                                            </div>
+                                            { item.title && <div className='blog__post-title'>{item.title}</div> }
+                                            { item.date && <div className='blog__post-date'>{item.date}</div> }
                                         </div>
                                     </Link>
                                 </li>

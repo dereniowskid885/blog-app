@@ -3,6 +3,7 @@ import './Contact.scss';
 import Phone from '/src/assets/phone.svg';
 import Email from '/src/assets/email.svg';
 import { FaRegCopy } from 'react-icons/fa';
+import data from '/src/data/Contact.js';
 
 function Contact() {
     const copyToClipboard = e => {
@@ -22,26 +23,32 @@ function Contact() {
     return (
         <div className='contact'>
             <div className='contact__content'>
-                <h2>{'Masz pytania ?'}</h2>
-                <h3>{'Chętnie na nie odpowiem. Skontaktuj się ze mną!'}</h3>
+                { data.title && <h2>{data.title}</h2> } 
+                { data.subtitle && <h3>{data.subtitle}</h3> }
                 <div className='contact__info'>
                     <ul>
-                        <li>
-                            <img className='contact__icon' src={Email} alt='Email' />
-                            {'kolarstwoodkuchni@gmail.com'}
-                            <FaRegCopy onClick={copyToClipboard} />
-                        </li>
-                        <li>
-                            <img className='contact__icon' src={Phone} alt='Phone' />
-                            {'+48 515035890'}
-                            <FaRegCopy onClick={copyToClipboard} />
-                        </li>
+                        { data.email &&
+                            <li>
+                                <img className='contact__icon' src={Email} alt='Email' />
+                                {data.email}
+                                <FaRegCopy onClick={copyToClipboard} />
+                            </li>
+                        }
+                        { data.phone &&
+                            <li>
+                                <img className='contact__icon' src={Phone} alt='Phone' />
+                                {data.phone}
+                                <FaRegCopy onClick={copyToClipboard} />
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>
-            <div className='contact__image'>
-                <img src='/src/assets/contact_image.jpg' alt='thoughtful man' />
-            </div>
+            { data.img &&
+                <div className='contact__image'>
+                    <img src={data.img} alt='contact' />
+                </div>
+            }
         </div>
     )
 }

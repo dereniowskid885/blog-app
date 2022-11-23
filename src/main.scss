@@ -36,6 +36,14 @@ h1, h2, h3, h4 {
     margin-top: 0;
 }
 
+p {
+    margin: 0;
+    line-height: 30px;
+    @include max-width($bp-tablet) {
+        line-height: 28px;
+    }
+}
+
 img {
     display: block;
     height: 100%;
@@ -74,4 +82,8 @@ img {
             color: white;
         }
     }
+}
+
+.loader {
+    height: 100vh;
 }

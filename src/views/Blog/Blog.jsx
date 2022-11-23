@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Blog.scss';
 import data from '/src/data/Blog.js';
-import Breadcrumbs from '../../components/layout/Breadcrumbs/Breadcrumbs';
+import Breadcrumbs from '/src/components/layout/Breadcrumbs/Breadcrumbs';
 
 function Blog() {
     const [ isShowMoreClicked, setShowMoreBtnState ] = useState(false);
@@ -12,8 +12,12 @@ function Blog() {
             <Breadcrumbs />
             { data.text &&
                 <div className='blog__content'>
-                    { data.text.title && <h1 className='blog__title'>{data.text.title}</h1> }
-                    { data.text.subtitle && <h2 className='blog__sub-title'>{data.text.subtitle}</h2> }
+                    { data.text.title && 
+                        <h1 className='blog__title'>{data.text.title}</h1> 
+                    }
+                    { data.text.subtitle && 
+                        <p className='blog__sub-title'>{data.text.subtitle}</p> 
+                    }
                     { data.text.img &&
                         <div className='blog__image'>
                             <img src={data.text.img} alt='blog' />
@@ -23,7 +27,9 @@ function Blog() {
             }
             { data.posts &&
                 <div className='blog__posts'>
-                    { data.posts.title && <div className='blog__section-title'>{data.posts.title}</div> }
+                    { data.posts.title && 
+                        <div className='blog__section-title'>{data.posts.title}</div> 
+                    }
                     <ul className={`${isShowMoreClicked ? '' : 'blog__hide-more'}`}>
                         {data.posts.items.map((item) => {
                             return (
@@ -35,8 +41,12 @@ function Blog() {
                                             </div>
                                         }
                                         <div className='blog__post-content'>
-                                            { item.title && <div className='blog__post-title'>{item.title}</div> }
-                                            { item.date && <div className='blog__post-date'>{item.date}</div> }
+                                            { item.title && 
+                                                <div className='blog__post-title'>{item.title}</div> 
+                                            }
+                                            { item.date && 
+                                                <div className='blog__post-date'>{item.date}</div> 
+                                            }
                                         </div>
                                     </Link>
                                 </li>

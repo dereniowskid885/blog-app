@@ -1,4 +1,14 @@
-.home {
-    display: flex;
-    flex-direction: column;
+@use '/src/scss/index' as *;
+
+.home .hero {
+    &__logo {
+        width: 410px;
+        height: 98px;
+        margin-bottom: 2em;
+        @include max-width($bp-laptop) {
+            width: 205px;
+            height: 49px;
+            margin-bottom: 1em;
+        }
+    }
 }

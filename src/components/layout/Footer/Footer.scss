@@ -10,8 +10,9 @@
     &__logo {
         height: 49px;
         width: 205px;
+        margin-left: -19px;
         @include max-width($bp-tablet) {
-            margin: 0 auto;
+            margin: 0 auto 1em;
         }
     }
 

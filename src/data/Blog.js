@@ -7,6 +7,7 @@ const data = {
     posts: {
         title: 'Najnowsze posty',
         carouselTitle: 'Kolarstwo od kuchni - blog',
+        page: 'blog',
         items: [
             {
                 id: 1,

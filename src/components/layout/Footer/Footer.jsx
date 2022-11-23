@@ -15,7 +15,7 @@ function Footer() {
         third: clickedDropdownId === 'dropdown-3'
     };
 
-    const expandDropdown = (e) => {
+    const expandDropdown = e => {
         const dropdownId = e.target.nextSibling.id;
 
         if (clickedDropdownId === dropdownId) {

@@ -26,7 +26,9 @@ function Header() {
                     <Links hideMobileNav={hideMobileNav} />
                 </div>
             </nav>
-            { isMobileNav && <MobileOverlay hideMobileNav={hideMobileNav} /> }
+            { isMobileNav &&
+                <MobileOverlay hideMobileNav={hideMobileNav} /> 
+            }
         </header>
     )
 }

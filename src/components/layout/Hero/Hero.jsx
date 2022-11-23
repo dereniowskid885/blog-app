@@ -1,18 +1,29 @@
 import React from 'react';
 import './Hero.scss';
+import { Link } from 'react-router-dom';
 
-function Hero(props) {
+function Hero({ data }) {
     return (
         <div className='hero'>
             <div className='hero__content'>
-                { props.title && <h1 className='hero__title'>{props.title}</h1> }
-                { props.subtitle && <h2 className='hero__sub-title'>{props.subtitle}</h2> }
-                { props.logo && <img className='hero__logo' src={props.logo} alt='Logo' /> }
-                { props.buttonText && <button className='btn'>{props.buttonText}</button> }
+                { data.title &&
+                    <h1 className='hero__title'>{data.title}</h1>
+                }
+                { data.subtitle && 
+                    <h2 className='hero__sub-title'>{data.subtitle}</h2>
+                }
+                { data.logo && 
+                    <img className='hero__logo' src={data.logo} alt='Logo' />
+                }
+                { data.buttonText && data.buttonLink && 
+                    <Link to={data.buttonLink}>
+                        <button className='btn'>{data.buttonText}</button>
+                    </Link>
+                }
             </div>
-            { props.img && 
+            { data.img && 
                 <div className='hero__image'>
-                    <img src={props.img} alt='hero' />
+                    <img src={data.img} alt='hero' />
                 </div>
             }
         </div>

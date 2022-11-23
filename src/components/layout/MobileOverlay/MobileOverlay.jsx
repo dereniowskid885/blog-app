@@ -1,8 +1,8 @@
 import React from 'react';
 import './MobileOverlay.scss';
 
-function MobileOverlay(props) {
-    return <div className='mobile-overlay' onClick={props.hideMobileNav} />
+function MobileOverlay({ hideMobileNav }) {
+    return <div className='mobile-overlay' onClick={hideMobileNav} />
 }
 
 export default MobileOverlay;

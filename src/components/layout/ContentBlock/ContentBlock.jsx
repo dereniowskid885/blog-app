@@ -1,10 +1,10 @@
 import React from 'react';
 import './ContentBlock.scss';
 
-function ContentBlock(props) {
+function ContentBlock({ data }) {
     return (
         <div className='content'>
-            {props.data.map((item) => {
+            {data.map((item) => {
                 return (
                     <div key={item.id} className={`content__block ${item.id % 2 == 0 ? 'content__block--reverse' : ''}`}>
                         { item.img &&
@@ -13,11 +13,21 @@ function ContentBlock(props) {
                             </div>
                         }
                         <div className='content__wrapper'>
-                            { item.title && <h2 className='content__title'>{item.title}</h2> }
-                            { item.content_1 && <div className='content__text'>{item.content_1}</div> }
-                            { item.content_2 && <div className='content__text'>{item.content_2}</div> }
-                            { item.content && <div className='content__text'>{item.content}</div> }
-                            { item.buttonText && <button className='content__button btn btn--transparent'>{item.buttonText}</button> }
+                            { item.title && 
+                                <h2 className='content__title'>{item.title}</h2> 
+                            }
+                            { item.content_1 && 
+                                <p className='content__text'>{item.content_1}</p> 
+                            }
+                            { item.content_2 && 
+                                <p className='content__text'>{item.content_2}</p> 
+                            }
+                            { item.content && 
+                                <p className='content__text'>{item.content}</p> 
+                            }
+                            { item.buttonText && 
+                                <button className='content__button btn btn--transparent'>{item.buttonText}</button> 
+                            }
                         </div>
                     </div>
                 );

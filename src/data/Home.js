@@ -2,6 +2,7 @@ const data = {
     hero: {
         logo: '/src/assets/logo.jpg',
         buttonText: 'Skorzystaj z oferty',
+        buttonLink: '/oferta',
         img: '/src/assets/contact_image.jpg'
     },
     contentBlocks: [
@@ -25,7 +26,7 @@ const data = {
         }
     ],
     opinions: {
-        title: 'Opinie moich podopiecznych', 
+        carouselTitle: 'Opinie moich podopiecznych', 
         items: [
             {
                 id: 1,

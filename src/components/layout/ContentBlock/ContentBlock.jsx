@@ -4,7 +4,7 @@ import './ContentBlock.scss';
 function ContentBlock({ data }) {
     return (
         <div className='content'>
-            {data.map((item) => {
+            {data.map(item => {
                 return (
                     <div key={item.id} className={`content__block ${item.id % 2 == 0 ? 'content__block--reverse' : ''}`}>
                         { item.img &&

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Offer.scss';
-import Breadcrumbs from '../../components/layout/Breadcrumbs/Breadcrumbs';
-import Carousel from '../../components/layout/Carousel/Carousel';
+import Breadcrumbs from '/src/components/layout/Breadcrumbs/Breadcrumbs';
+import Carousel from '/src/components/layout/Carousel/Carousel';
 import Item from '/src/components/layout/Carousel/Item/Item';
 import Cart from '/src/assets/cart.svg';
 import blogData from '/src/data/Blog.js';
@@ -17,7 +17,7 @@ function Offer() {
             <Breadcrumbs />
             <div className='offer__container'>
                 <ul>
-                    {productsData.items.map((item) => {
+                    {productsData.items.map(item => {
                         return (
                             <li key={item.id}>
                                 { item.img &&

@@ -5,7 +5,7 @@ function ExperienceBlock({ data }) {
     return (
         <div className='experience'>
             <ul>
-                {data.map((item) => {
+                {data.map(item => {
                     return (
                         <li key={item.id}>
                             { item.title && 

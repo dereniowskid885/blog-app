@@ -31,7 +31,7 @@ function Blog() {
                         <div className='blog__section-title'>{data.posts.title}</div> 
                     }
                     <ul className={`${isShowMoreClicked ? '' : 'blog__hide-more'}`}>
-                        {data.posts.items.map((item) => {
+                        {data.posts.items.map(item => {
                             return (
                                 <li key={item.id}>
                                     <Link to={`/blog/${item.id}`}>

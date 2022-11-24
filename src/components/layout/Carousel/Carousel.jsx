@@ -17,7 +17,7 @@ function Carousel({ randomProducts, data, Block }) {
             <h2>{data.carouselTitle}</h2>
             <div className='carousel__content'>
                 <ElasticCarousel itemPadding={[0, 10]} breakPoints={breakPoints}>
-                    {items.map((item) => {
+                    {items.map(item => {
                         return (
                             <Block
                                 page={data.page}

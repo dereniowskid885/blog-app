@@ -15,35 +15,37 @@ function Offer() {
     return (
         <main className='offer'>
             <Breadcrumbs />
-            <div className='offer__container'>
-                <ul>
-                    {productsData.items.map(item => {
-                        return (
-                            <li key={item.id}>
-                                { item.img &&
-                                    <div className='offer__image'>
-                                        <img className='offer__icon' src={Cart} alt='cart' />
-                                        <img src={item.img} alt='item' />
+            { productsData &&
+                <div className='offer__container'>
+                    <ul>
+                        {productsData.items.map(item => {
+                            return (
+                                <li key={item.id}>
+                                    { item.img &&
+                                        <div className='offer__image'>
+                                            <img className='offer__icon' src={Cart} alt='cart' />
+                                            <img src={item.img} alt='item' />
+                                        </div>
+                                    }
+                                    <div className='offer__content'>
+                                        { item.title && 
+                                            <h3>{item.title}</h3> 
+                                        }
+                                        { item.price && 
+                                            <h4>{item.price}</h4>
+                                        }
+                                        { item.buttonText &&
+                                            <Link to={`/oferta/${item.id}`}>
+                                                <button className='btn'>{item.buttonText}</button> 
+                                            </Link>
+                                        }
                                     </div>
-                                }
-                                <div className='offer__content'>
-                                    { item.title && 
-                                        <h3>{item.title}</h3> 
-                                    }
-                                    { item.price && 
-                                        <h4>{item.price}</h4>
-                                    }
-                                    { item.buttonText &&
-                                        <Link to={`/oferta/${item.id}`}>
-                                            <button className='btn'>{item.buttonText}</button> 
-                                        </Link>
-                                    }
-                                </div>
-                            </li>
-                        );
-                    })}
-                </ul>
-            </div>
+                                </li>
+                            );
+                        })}
+                    </ul>
+                </div>
+            }
             { blogPosts &&
                 <Carousel data={blogPosts} Block={Item} />
             }

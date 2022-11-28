@@ -1,0 +1,9 @@
+@use '/src/scss/index' as *;
+
+.error {
+    @extend .gray-container;
+
+    &__content {
+        @extend .gray-container__content;
+    }
+}

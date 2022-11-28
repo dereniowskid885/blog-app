@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Footer.scss';
 import Logo from '/src/assets/logo.jpg';
 import { FaFacebookSquare, FaInstagramSquare } from 'react-icons/fa';
 import { RiArrowDropDownLine } from 'react-icons/ri';
-import { useState } from 'react';
 
 function Footer() {
     const [ clickedDropdownId, saveClickedDropdownId ] = useState('');
@@ -28,7 +27,9 @@ function Footer() {
     return (
         <footer className='footer'>
             <div className='footer__container'>
-                <img className='footer__logo' src={Logo} alt='Logo' />
+                <Link to={'/'}>
+                    <img className='footer__logo' src={Logo} alt='Logo' />
+                </Link>
                 <div className='footer__content'>
                     <div className='footer__column'>
                         <div className='footer__dropdown' onClick={expandDropdown}>

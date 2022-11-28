@@ -24,8 +24,8 @@ function Product() {
             { product.title &&
                 <Breadcrumbs title={product.title} />
             }
-            <div className='product__container'>
-                { product && 
+            { product &&
+                <div className='product__container'>
                     <div className='product__info'>
                         { product.img &&
                             <div className='product__image'>
@@ -44,20 +44,22 @@ function Product() {
                                     <p>{product.info}</p> 
                                 }
                             </div>
-                            <button className='btn btn--transparent'>{data.buttonText}</button>
+                            { data.buttonText &&
+                                <button className='btn btn--transparent'>{data.buttonText}</button>
+                            }
                         </div>
                     </div>
-                }
-                { product.description &&
-                    <div className='product__description'>
-                        <h2>{'Opis'}</h2>
-                        <p>{product.description}</p>
-                    </div>
-                }
-                { productsData &&
-                    <Carousel randomProducts={randomProducts} data={productsData} Block={Item} />
-                }
-            </div>
+                    { product.description &&
+                        <div className='product__description'>
+                            <h2>{'Opis'}</h2>
+                            <p>{product.description}</p>
+                        </div>
+                    }
+                    { productsData &&
+                        <Carousel randomProducts={randomProducts} data={productsData} Block={Item} />
+                    }
+                </div>
+            }
         </main>
     )
 }

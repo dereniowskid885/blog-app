@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Header.scss';
+import { Link } from 'react-router-dom';
 import Logo from '/src/assets/logo.jpg';
 import Links from '../../Links/Links';
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
-import { useState } from 'react';
 import MobileOverlay from '../MobileOverlay/MobileOverlay';
 
 function Header() {
@@ -15,7 +15,9 @@ function Header() {
 
     return (
         <header className='header'>
-            <img className='header__logo' src={Logo} alt='Logo' />
+            <Link to={'/'}>
+                <img className='header__logo' src={Logo} alt='Logo' />
+            </Link>
             <nav className='header__nav'>
                 <Links />
             </nav>

@@ -1,12 +1,12 @@
 import React from 'react';
 import './BlogPost.scss';
 import { useParams } from 'react-router-dom';
-import Breadcrumbs from '../../components/layout/Breadcrumbs/Breadcrumbs';
+import Breadcrumbs from '/src/components/layout/Breadcrumbs/Breadcrumbs';
 import blogData from '/src/data/Blog.js';
 import contactData from '/src/data/ContactBlock.js';
-import Carousel from '../../components/layout/Carousel/Carousel';
+import Carousel from '/src/components/layout/Carousel/Carousel';
 import Item from '/src/components/layout/Carousel/Item/Item';
-import ContactBlock from '../../components/layout/ContactBlock/ContactBlock';
+import ContactBlock from '/src/components/layout/ContactBlock/ContactBlock';
 
 function BlogPost() {
     const { id } = useParams();

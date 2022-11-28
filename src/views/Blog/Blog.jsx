@@ -53,10 +53,12 @@ function Blog() {
                             );
                         })}
                     </ul>
-                    <button className={`blog__button btn btn--transparent ${isShowMoreClicked ? 'blog__button--hidden' : ''}`}
-                            onClick={() => setShowMoreBtnState(true)}>
-                        {'Więcej'}
-                    </button>
+                    { data.posts.buttonText &&
+                        <button className={`blog__button btn btn--transparent ${isShowMoreClicked ? 'blog__button--hidden' : ''}`}
+                                onClick={() => setShowMoreBtnState(true)}>
+                            {data.posts.buttonText}
+                        </button>
+                    }
                 </div>
             }
         </main>

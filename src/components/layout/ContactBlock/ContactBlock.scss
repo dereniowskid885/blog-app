@@ -6,9 +6,9 @@
     justify-content: space-between;
     width: 100%;
     background-color: #e7e7e7;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     @include max-width($bp-desktop) {
-        font-size: 0.9rem;
+        font-size: 1rem;
     }
     @include max-width($bp-tablet) {
         flex-direction: column-reverse;

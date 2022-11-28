@@ -1,6 +1,23 @@
 @use '/src/scss/index' as *;
 
-body {
+// body, 
+// html,
+// #root {
+//     display: flex;
+//     flex-direction: column;
+//     width: 100%;
+//     min-height: 100%;
+//     flex-grow: 1;
+// }
+
+body, 
+html,
+#root {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100%;
+    flex-grow: 1;
     box-sizing: border-box;
     margin: 0 auto;
     font-size: 18px;
@@ -18,6 +35,14 @@ body {
 
 ul {
     list-style-type: none;
+}
+
+ol {
+    list-style-position: inside;
+}
+
+ul,
+ol {
     padding: 0;
     margin: 0;
 }

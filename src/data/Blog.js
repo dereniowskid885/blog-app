@@ -8,6 +8,7 @@ const data = {
         title: 'Najnowsze posty',
         carouselTitle: 'Kolarstwo od kuchni - blog',
         page: 'blog',
+        buttonText: 'Więcej',
         items: [
             {
                 id: 1,

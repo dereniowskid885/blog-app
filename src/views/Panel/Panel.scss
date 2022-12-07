@@ -15,8 +15,10 @@
         }
     }
 
-    &__login,
-    &__register {
+    &__block {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
         padding: 3em 1.5em;
         border: 2px solid #DAE3EA;
         background: #FDFEFF;
@@ -29,12 +31,6 @@
             margin-bottom: 1em;
             text-align: center;
         }
-    }
-
-    &__register {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
     }
 
     &__subtitle {

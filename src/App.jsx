@@ -32,10 +32,10 @@ function App() {
                     <Route path='/panel-klienta' element={<Panel />} />
                     <Route path='/koszyk' element={<Cart />} />
                     <Route path='/kontakt' element={<Contact />} />
-                    <Route path='/regulamin' element={<Regulations page='regulations' />} />
-                    <Route path='/sposoby-platnosci' element={<Regulations page='payment-methods' />} />
-                    <Route path='/polityka-prywatnosci' element={<Regulations page='privacy-policy' />} />
-                    <Route path='/polityka-cookies' element={<Regulations page='cookies-policy' />} />
+                    <Route path='/regulamin' element={<Regulations page={'regulations'} />} />
+                    <Route path='/sposoby-platnosci' element={<Regulations page={'payment-methods'} />} />
+                    <Route path='/polityka-prywatnosci' element={<Regulations page={'privacy-policy'} />} />
+                    <Route path='/polityka-cookies' element={<Regulations page={'cookies-policy'} />} />
                     <Route path='*' element={<Error />} />
                 </Routes>
             </Suspense>

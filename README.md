@@ -1,6 +1,6 @@
 # Blog-app
 
-Dietary Blog application including shopping functionality that is in progress.
+Dietary Blog application including shopping functionality
 
 Technology stack: React.js/Vite/SASS
 

@@ -9,12 +9,13 @@ const breakPoints = [
     { width: 1200, itemsToShow: 4, itemsToScroll: 1 }
 ];
 
-function Carousel({ randomProducts, data, Block }) {
+function Carousel({ randomProducts, data, Block, title }) {
     const items = randomProducts ? randomProducts : data.items;
+    const carouselTitle = title ? title : data.carouselTitle;
 
     return (
         <div className='carousel'>
-            <h2>{data.carouselTitle}</h2>
+            <h2>{carouselTitle}</h2>
             <div className='carousel__content'>
                 <ElasticCarousel itemPadding={[0, 10]} breakPoints={breakPoints}>
                     {items.map(item => {

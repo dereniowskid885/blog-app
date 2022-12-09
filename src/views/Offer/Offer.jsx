@@ -4,13 +4,22 @@ import './Offer.scss';
 import Breadcrumbs from '/src/components/layout/Breadcrumbs/Breadcrumbs';
 import Carousel from '/src/components/layout/Carousel/Carousel';
 import Item from '/src/components/layout/Carousel/Item/Item';
-import Cart from '/src/assets/cart.svg';
+import Dialog from '/src/components/layout/Dialog/Dialog';
+import CartIcon from '/src/assets/cart.svg';
 import blogData from '/src/data/Blog.js';
-import data from '/src/data/Offer.js';
+import { CartState } from '/src/contexts/CartContext';
 
 function Offer() {
-    const productsData = data.products;
     const blogPosts = blogData.posts;
+    const { 
+        state: {
+            productsData,
+            showDialog,
+            cart
+        },
+        setCart,
+        ACTIONS 
+    } = CartState();
 
     return (
         <main className='offer'>
@@ -18,25 +27,37 @@ function Offer() {
             { productsData &&
                 <div className='offer__container'>
                     <ul>
-                        {productsData.items.map(item => {
+                        {productsData.items.map(product => {
                             return (
-                                <li key={item.id}>
-                                    { item.img &&
+                                <li key={product.id}>
+                                    { product.img &&
                                         <div className='offer__image'>
-                                            <img className='offer__icon' src={Cart} alt='cart' />
-                                            <img src={item.img} alt='item' />
+                                            <img className='offer__icon' src={CartIcon} alt='cart'
+                                                onClick={() => {
+                                                    setCart({
+                                                        type: ACTIONS.ADD_TO_CART,
+                                                        payload: {
+                                                            id: product.id,
+                                                            img: product.img,
+                                                            title: product.title,
+                                                            price: product.price
+                                                        }
+                                                    });
+                                                }} 
+                                            />
+                                            <img src={product.img} alt='product' />
                                         </div>
                                     }
                                     <div className='offer__content'>
-                                        { item.title && 
-                                            <h3>{item.title}</h3> 
+                                        { product.title && 
+                                            <h3>{product.title}</h3> 
                                         }
-                                        { item.price && 
-                                            <h4>{item.price}</h4>
+                                        { product.price && 
+                                            <h4>{product.price}{' zł'}</h4>
                                         }
-                                        { item.buttonText &&
-                                            <Link to={`/oferta/${item.id}`}>
-                                                <button className='btn'>{item.buttonText}</button> 
+                                        { product.buttonText &&
+                                            <Link to={`/oferta/${product.id}`}>
+                                                <button className='btn'>{product.buttonText}</button> 
                                             </Link>
                                         }
                                     </div>
@@ -48,6 +69,9 @@ function Offer() {
             }
             { blogPosts &&
                 <Carousel data={blogPosts} Block={Item} />
+            }
+            { showDialog &&
+                <Dialog product={cart[cart.length - 1]} />
             }
         </main>
     )

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Logo from '/src/assets/logo.jpg';
 import Links from '../../Links/Links';
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
-import MobileOverlay from '../MobileOverlay/MobileOverlay';
+import Overlay from '../Overlay/Overlay';
 
 function Header() {
     const [ isMobileNav, setMobileNav ] = useState(false);
@@ -29,7 +29,7 @@ function Header() {
                 </div>
             </nav>
             { isMobileNav &&
-                <MobileOverlay hideMobileNav={hideMobileNav} /> 
+                <Overlay hideOverlay={hideMobileNav} /> 
             }
         </header>
     )

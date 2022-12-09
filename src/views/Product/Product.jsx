@@ -4,20 +4,24 @@ import { useParams } from 'react-router-dom';
 import Breadcrumbs from '/src/components/layout/Breadcrumbs/Breadcrumbs';
 import Carousel from '/src/components/layout/Carousel/Carousel';
 import Item from '/src/components/layout/Carousel/Item/Item';
-import data from '/src/data/Offer.js';
-
-const getRandomProducts = (products, amount) => {
-    const shuffled = [...products].sort(() => 0.5 - Math.random());
-    const randomProducts = shuffled.slice(0, amount);
-
-    return randomProducts;
-}
+import { CartState } from '/src/contexts/CartContext';
+import Dialog from '/src/components/layout/Dialog/Dialog';
+import getRandomProducts from '/src/components/ProductRandomizer/ProductRandomizer';
 
 function Product() {
+    const {
+        state: {
+            productsData,
+            showDialog,
+            cart
+        },
+        setCart,
+        ACTIONS 
+    } = CartState();
+
     const { id } = useParams();
-    const productsData = data.products;
-    const product = productsData.items.find(item => item.id == id);
-    const randomProducts = getRandomProducts(productsData.items, 6);
+    const product = productsData.items.find(product => product.id == id);
+    const randomProducts = getRandomProducts(6, product.id);
 
     return (
         <main className='product'>
@@ -38,15 +42,26 @@ function Product() {
                                     <h1>{product.title}</h1> 
                                 }
                                 { product.price && 
-                                    <h2>{product.price}</h2> 
+                                    <h2>{product.price}{' zł'}</h2> 
                                 }
                                 { product.info && 
                                     <p>{product.info}</p> 
                                 }
                             </div>
-                            { data.buttonText &&
-                                <button className='btn btn--transparent'>{data.buttonText}</button>
-                            }
+                            <button className='btn btn--transparent'
+                                    onClick={() => {
+                                        setCart({
+                                            type: ACTIONS.ADD_TO_CART,
+                                            payload: {
+                                                id: product.id,
+                                                img: product.img,
+                                                title: product.title,
+                                                price: product.price
+                                            }
+                                        });
+                                    }}>
+                                {'Dodaj do koszyka'}
+                            </button>
                         </div>
                     </div>
                     { product.description &&
@@ -59,6 +74,9 @@ function Product() {
                         <Carousel randomProducts={randomProducts} data={productsData} Block={Item} />
                     }
                 </div>
+            }
+            { showDialog &&
+                <Dialog product={cart[cart.length - 1]} />
             }
         </main>
     )

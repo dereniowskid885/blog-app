@@ -6,4 +6,8 @@
     &__content {
         @extend .gray-container__content;
     }
+
+    &__container {
+        @extend .gray-container__container;
+    }
 }

@@ -1,0 +1,50 @@
+@use '/src/scss/index' as *;
+
+.product-table {
+    margin-bottom: 2em;
+
+    thead th {
+        font-weight: 700;
+        padding-bottom: 5px;
+
+        &:first-of-type {
+            width: 60%;
+        }
+    }
+
+    // td:not(:last-of-type, :first-of-type) {
+    //     padding: 0 5em;
+    // }
+
+    th, td {
+        border-bottom-width: 3px;
+        font-size: inherit;
+    }
+    
+    svg {
+        cursor: pointer;
+        height: 23px;
+        width: 23px;
+        margin-top: 2px;
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+
+        img {
+            width: 200px;
+            height: 150px;
+            margin-right: 1em;
+        }
+    }
+
+    &__title {
+        width: 100%;
+    }
+
+    &__summary {
+        padding-top: 1em;
+        text-align: right;
+    }
+}

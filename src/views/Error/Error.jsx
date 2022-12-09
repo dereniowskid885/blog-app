@@ -11,14 +11,16 @@ function Error() {
                 <Breadcrumbs title={data.breadcrumbsTitle} />
             }
             <div className='error__content'>
-                { data.title &&
-                    <h2>{data.title}</h2>
-                }
-                { data.buttonText &&
-                    <Link to={'/'}>
-                        <button className='btn'>{data.buttonText}</button>
-                    </Link>
-                }
+                <div className='error__container'>
+                    { data.title &&
+                        <h2>{data.title}</h2>
+                    }
+                    { data.buttonText &&
+                        <Link to={'/'}>
+                            <button className='btn'>{data.buttonText}</button>
+                        </Link>
+                    }
+                </div>
             </div>
         </main>
     )

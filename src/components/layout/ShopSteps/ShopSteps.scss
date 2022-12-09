@@ -1,0 +1,33 @@
+@use '/src/scss/index' as *;
+
+.steps {
+    margin-bottom: 2em;
+
+    ul {
+        display: flex;
+        justify-content: center;
+
+        li {
+            position: relative;
+            display: flex;
+            align-items: center;
+            font-weight: 500;
+
+            img {
+                width: 70px;
+                height: 70px;
+                margin-right: 10px;
+            }
+
+            b {
+                position: absolute;
+                left: 31px;
+            }
+
+            span {
+                margin: 0 1.5em 0 1em;
+                font-weight: 600;
+            }
+        }
+    }
+}

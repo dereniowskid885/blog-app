@@ -8,12 +8,10 @@ function Contact() {
     return (
         <main className='contact'>
             <Breadcrumbs />
-            { data.title &&
-                <h1 className='contact__title'>{data.title}</h1>
-            }
-            { data.contactBlock &&
-                <ContactBlock data={data.contactBlock} />
-            }
+            <h1 className='contact__title'>
+                {data.title}
+            </h1>
+            <ContactBlock data={data.contactBlock} />
         </main>
     )
 }

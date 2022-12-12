@@ -27,58 +27,45 @@ function Regulations({ page }) {
 
     return (
         <main className='regulations'>
-            { pageData &&
-                <>
-                    { pageData.title &&
-                        <div className='regulations__header'>
-                            <Breadcrumbs title={pageData.title} />
-                            <h1>{pageData.title}</h1>
-                        </div>
-                    }
-                    <div className='regulations__content'>
-                        { pageData.numberedList &&
-                            <ol>
-                                {pageData.numberedList.map((item, index) => {
-                                    return (
-                                        <li key={index}>
-                                            <h3>{item.title}</h3>
-                                            <div>{item.description}</div>
-                                        </li>
-                                    );
-                                })}
-                            </ol>
-                        }
-                        { pageData.list &&
-                            <ul className='regulations__list'>
-                                {pageData.list.map((item, index) => {
-                                    return (
-                                        <li key={index}>
-                                            { item.title &&
-                                                <h3>{item.title}</h3>
-                                            }
-                                            { item.sublist &&
-                                                <ul>
-                                                    {item.sublist.map(((item, index) => {
-                                                        return (
-                                                            <li key={index}>
-                                                                { item.title && item.description &&
-                                                                    <>
-                                                                        <span>{item.title}</span>{item.description}
-                                                                    </>
-                                                                }
-                                                            </li>
-                                                        );
-                                                    }))}
-                                                </ul>
-                                            }
-                                        </li>
-                                    );
-                                })}
-                            </ul>
-                        }
-                    </div>
-                </>
-            }
+            <div className='regulations__header'>
+                <Breadcrumbs title={pageData.title} />
+                <h1>{pageData.title}</h1>
+            </div>
+            <div className='regulations__content'>
+                { pageData.numberedList &&
+                    <ol>
+                        {pageData.numberedList.map((item, index) => {
+                            return (
+                                <li key={index}>
+                                    <h3>{item.title}</h3>
+                                    <div>{item.description}</div>
+                                </li>
+                            );
+                        })}
+                    </ol>
+                }
+                { pageData.list &&
+                    <ul className='regulations__list'>
+                        {pageData.list.map((item, index) => {
+                            return (
+                                <li key={index}>
+                                    <h3>{item.title}</h3>
+                                    <ul>
+                                        {item.sublist.map(((item, index) => {
+                                            return (
+                                                <li key={index}>
+                                                    <span>{item.title}</span>
+                                                    {item.description}
+                                                </li>
+                                            );
+                                        }))}
+                                    </ul>
+                                </li>
+                            );
+                        })}
+                    </ul>
+                }
+            </div>
         </main>
     )
 }

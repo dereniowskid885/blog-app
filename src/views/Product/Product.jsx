@@ -22,6 +22,7 @@ function Product() {
     const { id } = useParams();
     const product = productsData.items.find(product => product.id == id);
     const randomProducts = getRandomProducts(6, product.id);
+    const addedProduct = cart[cart.length - 1];
 
     return (
         <main className='product'>
@@ -76,7 +77,7 @@ function Product() {
                 </div>
             }
             { showDialog &&
-                <Dialog product={cart[cart.length - 1]} />
+                <Dialog product={addedProduct} />
             }
         </main>
     )

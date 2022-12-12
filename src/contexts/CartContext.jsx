@@ -1,5 +1,4 @@
-import { useContext } from 'react';
-import { createContext, useReducer } from 'react';
+import { useContext, createContext, useReducer } from 'react';
 import data from '/src/data/Offer';
 
 const Cart = createContext();
@@ -7,7 +6,6 @@ const Cart = createContext();
 const ACTIONS = {
     ADD_TO_CART: 'add-to-cart',
     REMOVE_FROM_CART: 'remove-from-cart',
-    HIDE_DIALOG: 'hide-dialog',
     CHANGE_ITEM_QTY: 'change-item-qty'
 }
 
@@ -43,11 +41,6 @@ function CartContext({ children }) {
                             item.quantity
                     )
                 };
-            case ACTIONS.HIDE_DIALOG:
-                return {
-                    ...state,
-                    showDialog: false
-                };
             default:
                 return state;
         }
@@ -55,13 +48,16 @@ function CartContext({ children }) {
 
     const initState = {
         productsData: data,
-        cart: [],
-        showDialog: false
+        cart: []
     }
 
     const [ state, setCart ] = useReducer(reducer, initState);
 
-    return <Cart.Provider value={{ state, setCart, ACTIONS }}>{children}</Cart.Provider>
+    return (
+        <Cart.Provider value={{ state, setCart, ACTIONS }}>
+            {children}
+        </Cart.Provider>
+    );
 }
 
 export default CartContext;

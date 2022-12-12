@@ -10,7 +10,9 @@ const data = {
             id: 1,
             img: '/src/assets/contact_image.jpg',
             content: 'Mam na imię Marcin, jestem dietetykiem, skończyłem kierunek Żywienie Człowieka i Dietetyka na Uniwersytecie Przyrodniczym we Wrocławiu. Od dziecka trenuję kolarstwo szosowe, startuję też w lokalnych wyścigach (czytaj więcej)..',
-            buttonText: 'Dowiedz się więcej'
+            buttonText: 'Dowiedz się więcej',
+            buttonLink: '/blog/5',
+            buttonLink: '/oferta'
         },
         {
             id: 2,

@@ -8,18 +8,26 @@ import Dialog from '/src/components/layout/Dialog/Dialog';
 import CartIcon from '/src/assets/cart.svg';
 import blogData from '/src/data/Blog.js';
 import { CartState } from '/src/contexts/CartContext';
+import { DialogState } from '/src/contexts/DialogContext';
+import ProductAdd from '/src/components/layout/Dialog/ProductAdd/ProductAdd';
 
 function Offer() {
-    const blogPosts = blogData.posts;
     const { 
         state: {
-            productsData,
-            showDialog,
-            cart
+            cart,
+            productsData
         },
         setCart,
         ACTIONS 
     } = CartState();
+
+    const {
+        dialog,
+        toggleDialog
+    } = DialogState();
+
+    const blogPosts = blogData.posts;
+    const addedProduct = cart[cart.length - 1];
 
     return (
         <main className='offer'>
@@ -43,6 +51,8 @@ function Offer() {
                                                             price: product.price
                                                         }
                                                     });
+                                            
+                                                    toggleDialog();
                                                 }} 
                                             />
                                             <img src={product.img} alt='product' />
@@ -55,11 +65,9 @@ function Offer() {
                                         { product.price && 
                                             <h4>{product.price}{' zł'}</h4>
                                         }
-                                        { product.buttonText &&
-                                            <Link to={`/oferta/${product.id}`}>
-                                                <button className='btn'>{product.buttonText}</button> 
-                                            </Link>
-                                        }
+                                        <Link to={`/oferta/${product.id}`}>
+                                            <button className='btn'>{'Dowiedz się więcej'}</button> 
+                                        </Link>
                                     </div>
                                 </li>
                             );
@@ -70,8 +78,10 @@ function Offer() {
             { blogPosts &&
                 <Carousel data={blogPosts} Block={Item} />
             }
-            { showDialog &&
-                <Dialog product={cart[cart.length - 1]} />
+            { dialog &&
+                <Dialog>
+                    <ProductAdd product={addedProduct} />
+                </Dialog>   
             }
         </main>
     )

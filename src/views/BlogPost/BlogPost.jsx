@@ -11,7 +11,7 @@ import ContactBlock from '/src/components/layout/ContactBlock/ContactBlock';
 function BlogPost() {
     const { id } = useParams();
     const blogPosts = blogData.posts;
-    const post = blogPosts.items.find(post => post.id == id);
+    const post = blogPosts && blogPosts.items.find(post => post.id == id);
 
     return (
         <main className='blog-post'>
@@ -45,9 +45,7 @@ function BlogPost() {
             { blogPosts &&
                 <Carousel data={blogPosts} Block={Item} />
             }
-            { contactData &&
-                <ContactBlock data={contactData} />
-            }
+            <ContactBlock data={contactData} />
         </main>
     )
 }

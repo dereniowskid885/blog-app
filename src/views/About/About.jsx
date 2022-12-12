@@ -11,21 +11,11 @@ import Hero from '../../components/layout/Hero/Hero';
 function About() {
     return (
         <main className='about'>
-            { data.hero &&
-                <Hero data={data.hero} />
-            }
-            { data.firstSection &&
-                <ContentBlock data={data.firstSection} />
-            }
-            { data.experienceBlock &&
-                <ExperienceBlock data={data.experienceBlock} />
-            }
-            { data.secondSection &&
-                <ContentBlock data={data.secondSection} />
-            }
-            { contactData &&
-                <ContactBlock data={contactData} />
-            }
+            <Hero data={data.hero} />
+            <ContentBlock data={data.firstSection} />
+            <ExperienceBlock data={data.experienceBlock} />
+            <ContentBlock data={data.secondSection} />
+            <ContactBlock data={contactData} />
         </main>
     )
 }

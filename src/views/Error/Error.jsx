@@ -7,19 +7,15 @@ import Breadcrumbs from '/src/components/layout/Breadcrumbs/Breadcrumbs';
 function Error() {
     return (
         <main className='error'>
-            { data.breadcrumbsTitle &&
-                <Breadcrumbs title={data.breadcrumbsTitle} />
-            }
+            <Breadcrumbs title={data.breadcrumbsTitle} />
             <div className='error__content'>
                 <div className='error__container'>
-                    { data.title &&
-                        <h2>{data.title}</h2>
-                    }
-                    { data.buttonText &&
-                        <Link to={'/'}>
-                            <button className='btn'>{data.buttonText}</button>
-                        </Link>
-                    }
+                    <h2>{data.title}</h2>
+                    <Link to={'/'}>
+                        <button className='btn'>
+                            {data.buttonText}
+                        </button>
+                    </Link>
                 </div>
             </div>
         </main>

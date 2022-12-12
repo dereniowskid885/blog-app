@@ -1,14 +1,14 @@
 @use '/src/scss/index' as *;
 
 .cart {
-    @extend .gray-container;
+    @extend .gray-block;
 
     &__content {
-        @extend .gray-container__content;
+        @extend .gray-block__content;
     }
 
     &__empty {
-        @extend .gray-container__container;
+        @extend .gray-block__container;
     }
 
     &__container {

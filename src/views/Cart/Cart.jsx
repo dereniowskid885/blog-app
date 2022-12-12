@@ -9,32 +9,35 @@ import ProductTable from '/src/components/layout/ProductTable/ProductTable';
 
 function Cart() {
     const { state: { cart } } = CartState();
+    const isCartFilled = cart.length > 0;
 
     return (
         <main className='cart'>
             <Breadcrumbs />
             <div className='cart__content'>
-                { cart.length > 0 ?
+                { isCartFilled ?
                     <div className='cart__container'>
                         <ShopSteps />
                         <ProductTable products={cart} />
                         <div className='cart__buttons'>
                             <Link to={'/oferta'}>
-                                <button className='btn'>{'< Kontynuuj zakupy'}</button>
+                                <button className='btn'>
+                                    {data.cart.buttonTextBack}
+                                </button>
                             </Link>
-                            <button className='btn'>{'Moje dane >'}</button>
+                            <button className='btn'>
+                                {data.cart.buttonTextNext}
+                            </button>
                         </div>
                     </div>
                 :
                     <div className='cart__empty'>
-                        { data.empty.title &&
-                            <h2>{data.empty.title}</h2>
-                        }
-                        { data.empty.buttonText &&
-                            <Link to={'/oferta'}>
-                                <button className='btn'>{data.empty.buttonText}</button>
-                            </Link>
-                        }
+                        <h2>{data.empty.title}</h2>
+                        <Link to={'/oferta'}>
+                            <button className='btn'>
+                                {data.empty.buttonText}
+                            </button>
+                        </Link>
                     </div>
                 }
             </div>

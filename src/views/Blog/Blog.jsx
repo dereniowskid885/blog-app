@@ -10,21 +10,17 @@ function Blog() {
     return (
         <main className='blog'>
             <Breadcrumbs />
-            { data.text &&
-                <div className='blog__content'>
-                    { data.text.title && 
-                        <h1 className='blog__title'>{data.text.title}</h1> 
-                    }
-                    { data.text.subtitle && 
-                        <p className='blog__sub-title'>{data.text.subtitle}</p> 
-                    }
-                    { data.text.img &&
-                        <div className='blog__image'>
-                            <img src={data.text.img} alt='blog' />
-                        </div>
-                    }
+            <div className='blog__content'>
+                <h1 className='blog__title'>
+                    {data.text.title}
+                </h1> 
+                <p className='blog__sub-title'>
+                    {data.text.subtitle}
+                </p> 
+                <div className='blog__image'>
+                    <img src={data.text.img} alt='blog' />
                 </div>
-            }
+            </div>
             { data.posts &&
                 <div className='blog__posts'>
                     { data.posts.title && 

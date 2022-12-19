@@ -7,15 +7,15 @@ function OpinionItem({ data }) {
         <div className='opinion-item'>
             <div className='opinion-item__header'>
                 <FaUserCircle />
-                { data.name && 
-                    <h3>{data.name}</h3> 
+                { data.user_name && 
+                    <h3>{data.user_name}</h3> 
                 }
             </div>
-            { data.text && 
-                <div className='opinion-item__content'>{data.text}</div> 
+            { data.opinion_text && 
+                <div className='opinion-item__content'>{data.opinion_text}</div> 
             }
         </div>
-    )
+    );
 }
 
 export default OpinionItem;

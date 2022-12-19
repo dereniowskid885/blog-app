@@ -80,7 +80,7 @@ function Product() {
                 <Dialog product={addedProduct} />
             }
         </main>
-    )
+    );
 }
 
 export default Product;

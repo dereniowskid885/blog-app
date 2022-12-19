@@ -1,14 +1,18 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './ContentBlock.scss';
 
 function ContentBlock({ data }) {
     return (
         <div className='content'>
-            {data.map(item => {
+            {data.map((item, index) => {
+                const buttonLink = item.button_link ? item.button_link : '#';
+                const isBlockEven = ++index % 2 == 0;
+
                 return (
-                    <div key={item.id} className={`content__block ${item.id % 2 == 0 ? 'content__block--reverse' : ''}`}>
+                    <div key={item.id} className={`content__block ${isBlockEven ? 'content__block--reverse' : ''}`}>
                         { item.img &&
-                            <div className={`content__image ${item.id % 2 == 0 ? 'content__image--reverse' : ''}`}>
+                            <div className={`content__image ${isBlockEven ? 'content__image--reverse' : ''}`}>
                                 <img src={item.img} alt='content image' />
                             </div>
                         }
@@ -25,15 +29,19 @@ function ContentBlock({ data }) {
                             { item.content && 
                                 <p className='content__text'>{item.content}</p> 
                             }
-                            { item.buttonText && 
-                                <button className='content__button btn btn--transparent'>{item.buttonText}</button> 
+                            { item.button_text && 
+                                <Link to={buttonLink}>
+                                    <button className='content__button btn btn--transparent'>
+                                        {item.button_text}
+                                    </button>
+                                </Link>
                             }
                         </div>
                     </div>
                 );
             })}
         </div>
-    )
+    );
 }
 
 export default ContentBlock;

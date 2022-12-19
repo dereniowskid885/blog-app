@@ -56,7 +56,7 @@ function ContactBlock({ data }) {
                 <ContactForm />
             }
         </div>
-    )
+    );
 }
 
 export default ContactBlock;

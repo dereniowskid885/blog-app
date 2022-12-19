@@ -8,7 +8,7 @@ import Dialog from '/src/components/layout/Dialog/Dialog';
 import CartIcon from '/src/assets/cart.svg';
 import blogData from '/src/data/Blog.js';
 import { CartState } from '/src/contexts/CartContext';
-import { DialogState } from '/src/contexts/DialogContext';
+import { useDialog } from '/src/contexts/DialogContext';
 import ProductAdd from '/src/components/layout/Dialog/ProductAdd/ProductAdd';
 
 function Offer() {
@@ -22,9 +22,9 @@ function Offer() {
     } = CartState();
 
     const {
-        dialog,
+        isDialog,
         toggleDialog
-    } = DialogState();
+    } = useDialog();
 
     const blogPosts = blogData.posts;
     const addedProduct = cart[cart.length - 1];
@@ -78,13 +78,13 @@ function Offer() {
             { blogPosts &&
                 <Carousel data={blogPosts} Block={Item} />
             }
-            { dialog &&
+            { isDialog &&
                 <Dialog>
                     <ProductAdd product={addedProduct} />
                 </Dialog>   
             }
         </main>
-    )
+    );
 }
 
 export default Offer;

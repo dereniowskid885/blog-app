@@ -19,7 +19,7 @@ function Error() {
                 </div>
             </div>
         </main>
-    )
+    );
 }
 
 export default Error;

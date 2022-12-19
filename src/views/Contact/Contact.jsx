@@ -13,7 +13,7 @@ function Contact() {
             </h1>
             <ContactBlock data={data.contactBlock} />
         </main>
-    )
+    );
 }
 
 export default Contact;

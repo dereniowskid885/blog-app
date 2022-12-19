@@ -5,11 +5,11 @@ import Carousel from '/src/components/layout/Carousel/Carousel';
 import Item from '/src/components/layout/Carousel/Item/Item';
 import getRandomProducts from '/src/components/ProductRandomizer/ProductRandomizer';
 import { CartState } from '/src/contexts/CartContext';
-import { DialogState } from '/src/contexts/DialogContext';
+import { useDialog } from '/src/contexts/DialogContext';
 
 function ProductAdd({ product }) {
     const { state: { productsData } } = CartState();
-    const { toggleDialog } = DialogState();
+    const { toggleDialog } = useDialog();
     const randomProducts = getRandomProducts(4, product.id);
 
     return (
@@ -36,7 +36,7 @@ function ProductAdd({ product }) {
                 </Link>
             </div>
         </div>
-    )
+    );
 }
 
 export default ProductAdd;

@@ -23,7 +23,7 @@ function Links({ hideMobileNav }) {
                 <Link to='/koszyk' onClick={hideMobileNav}>Koszyk</Link>
             </li>
         </ul>
-    )
+    );
 }
 
 export default Links;

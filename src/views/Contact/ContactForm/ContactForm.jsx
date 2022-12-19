@@ -29,7 +29,7 @@ function ContactForm() {
             <textarea {...register('message')} name='message' maxLength={300} placeholder={'Treść wiadomości...'} required />
             <button className='btn' type='submit'>{'Wyślij'}</button>
         </form>
-    )
+    );
 }
 
 export default ContactForm;

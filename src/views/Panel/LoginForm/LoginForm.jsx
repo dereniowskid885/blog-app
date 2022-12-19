@@ -2,21 +2,24 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './LoginForm.scss';
 import { useForm } from 'react-hook-form';
+import { useDialog } from '/src/contexts/DialogContext';
 
-function LoginForm({ showDialog, title, setErrorState }) {
+function LoginForm({ title }) {
+    const { 
+        setError,
+        toggleDialog
+    } = useDialog();
     const { register, handleSubmit } = useForm();
 
     const authenticateUser = data => {
-        fetch('http://localhost:8000/auth/obtain-auth-token', {
+        fetch('http://localhost:8000/auth/obtain-token', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
         })
         .then(response => {
-            if (!(response.ok && response.status === 200)) {
-                setErrorState('Logowanie nieudane, spróbuj ponownie');
-                showDialog();
-                return;
+            if(!response.ok) {
+                setError('Logowanie nieudane, spróbuj ponownie');
             } else {
                 return response.json();
             }
@@ -24,10 +27,13 @@ function LoginForm({ showDialog, title, setErrorState }) {
         .then(data => {
             if (data) {
                 localStorage.setItem('authToken', data.token);
-                showDialog();
+                toggleDialog();
             }
         })
-        .catch(error => console.log('Error: ', error));
+        .catch(error => {
+            console.log('Error: ', error);
+            setError('Nieudane połączenie z serwerem');
+        });
     }
 
     return (
@@ -52,7 +58,7 @@ function LoginForm({ showDialog, title, setErrorState }) {
                 </button>
             </div>
         </form>
-    )
+    );
 }
 
 export default LoginForm;

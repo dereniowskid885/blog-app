@@ -96,7 +96,7 @@ function ProductTable({ products }) {
                 </TableBody>
             </Table>
         </TableContainer>
-    )
+    );
 }
 
 export default ProductTable;

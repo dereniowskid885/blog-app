@@ -4,7 +4,8 @@ import Header from '/src/components/layout/Header/Header';
 import Footer from '/src/components/layout/Footer/Footer';
 import Loading from '/src/components/Loading/Loading';
 import ScrollToTop from '/src/components/ScrollToTop/ScrollToTop';
-import Dialog from '/src/contexts/DialogContext';
+import DialogContext from '/src/contexts/DialogContext';
+import BlogContext from '/src/contexts/BlogContext';
 
 const Home = lazy(() => import('/src/views/Home/Home'));
 const About = lazy(() => import('/src/views/About/About'));
@@ -27,11 +28,35 @@ function App() {
                 <Routes>
                     <Route path='/' element={<Home />} />
                     <Route path='/o-mnie' element={<About />} />
-                    <Route path='/oferta' element={<Dialog><Offer /></Dialog>} />
+                    <Route path='/oferta'
+                        element={
+                            <DialogContext>
+                                <Offer />
+                            </DialogContext>
+                        } 
+                    />
                     <Route path='/oferta/:id' element={<Product />} />
-                    <Route path='/blog' element={<Blog />} />
-                    <Route path='/blog/:id' element={<BlogPost />} />
-                    <Route path='/panel-klienta' element={<Dialog><Panel /></Dialog>} />
+                    <Route path='/blog' 
+                        element={
+                            <BlogContext>
+                                <Blog />
+                            </BlogContext>
+                        }
+                    />
+                    <Route path='/blog/:id'
+                        element={
+                            <BlogContext>
+                                <BlogPost />
+                            </BlogContext>
+                        }
+                    />
+                    <Route path='/panel-klienta' 
+                        element={
+                            <DialogContext>
+                                <Panel />
+                            </DialogContext>
+                        }
+                    />
                     <Route path='/koszyk' element={<Cart />} />
                     <Route path='/kontakt' element={<Contact />} />
                     <Route path='/regulamin' element={<Regulations page={'regulations'} />} />
@@ -45,7 +70,7 @@ function App() {
             <Footer />
             <ScrollToTop />
         </BrowserRouter>
-    )
+    );
 }
 
 export default App;

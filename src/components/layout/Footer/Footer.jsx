@@ -75,7 +75,7 @@ function Footer() {
                 {'All rights reserved kolarstwo od kuchni '} &copy; {' 2022'}
             </div>
         </footer>
-    )
+    );
 }
 
 export default Footer;

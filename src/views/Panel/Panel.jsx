@@ -6,27 +6,16 @@ import RegisterForm from './RegisterForm/RegisterForm';
 import CheckIcon from '/src/assets/check-circle.svg';
 import data from '/src/data/Panel.js';
 import Dialog from '/src/components/layout/Dialog/Dialog';
-import { DialogState } from '/src/contexts/DialogContext';
+import { useDialog } from '/src/contexts/DialogContext';
 import PanelMessage from '/src/components/layout/Dialog/PanelMessage/PanelMessage';
 
 function Panel() {
     const [ isRegister, setRegister ] = useState(false);
-    const [ isError, setError ] = useState(false);
-    const [ errorMessage, setErrorMessage ] = useState('');
+    const { showDialog } = useDialog();
 
     const toggleRegister = () => {
         setRegister(!isRegister);
     };
-
-    const setErrorState = message => {
-        setError(!isError);
-        setErrorMessage(message);
-    }
-
-    const {
-        dialog,
-        toggleDialog
-    } = DialogState();
 
     return (
         <main className='panel'>
@@ -34,20 +23,12 @@ function Panel() {
             <div className='panel__container'>
                 { isRegister ?
                     <div className='panel__block panel__block--register'>
-                        <RegisterForm 
-                            hideRegister={toggleRegister}
-                            showDialog={toggleDialog}
-                            setErrorState={setErrorState}
-                        />
+                        <RegisterForm hideRegister={toggleRegister} />
                     </div>
                 :
                     <>
                         <div className='panel__block'>
-                            <LoginForm 
-                                title={data.loginTitle}
-                                showDialog={toggleDialog}
-                                setErrorState={setErrorState}
-                            />
+                            <LoginForm title={data.loginTitle} />
                         </div>
                         <div className='panel__block'>
                             <div className='panel__wrapper'>
@@ -75,19 +56,16 @@ function Panel() {
                     </>
                 }
             </div>
-            { dialog &&
+            { showDialog &&
                 <Dialog>
                     <PanelMessage 
                         isRegister={isRegister}
-                        isError={isError} 
-                        errorMessage={errorMessage}
-                        setErrorState={setErrorState}
                         hideRegister={toggleRegister}
                     />
                 </Dialog>
             }
         </main>
-    )
+    );
 }
 
 export default Panel;

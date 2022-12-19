@@ -71,6 +71,12 @@
         margin-bottom: 2em;
     }
 
+    &__post-container {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+
     &__post-content {
         padding: 0.5em
     }
@@ -78,6 +84,10 @@
     &__post-title {
         font-weight: 500;
         margin-bottom: 0.5em;
+    }
+
+    &__post-image {
+        flex-grow: 1;
     }
 
     &__button {

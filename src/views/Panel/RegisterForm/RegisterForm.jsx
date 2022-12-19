@@ -2,7 +2,11 @@ import React from 'react';
 import './RegisterForm.scss';
 import { useForm } from 'react-hook-form';
 
-function RegisterForm({ hideRegister, showDialog, setErrorState }) {
+function RegisterForm({ hideRegister }) {
+    const { 
+        setError,
+        toggleDialog
+    } = useDialog();
     const { register, handleSubmit } = useForm();
 
     const registerUser = data => {
@@ -12,13 +16,16 @@ function RegisterForm({ hideRegister, showDialog, setErrorState }) {
             body: JSON.stringify(data)
         })
         .then(response => {
-            if (!(response.ok && response.status === 204)) {
-                setErrorState('Rejestracja nie powiodła się');
+            if (!response.ok) {
+                setError('Rejestracja nie powiodła się');
+            } else {
+                toggleDialog();
             }
-                
-            showDialog();
         })
-        .catch(error => console.log('Error: ', error));
+        .catch(error => {
+            console.log('Error: ', error);
+            setError('Nieudane połączenie z serwerem');
+        });
     }
 
     return (
@@ -65,7 +72,7 @@ function RegisterForm({ hideRegister, showDialog, setErrorState }) {
                 </button>
             </div>
         </form>
-    )
+    );
 }
 
 export default RegisterForm;

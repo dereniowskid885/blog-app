@@ -32,7 +32,7 @@ function Header() {
                 <Overlay hideOverlay={hideMobileNav} /> 
             }
         </header>
-    )
+    );
 }
 
 export default Header;

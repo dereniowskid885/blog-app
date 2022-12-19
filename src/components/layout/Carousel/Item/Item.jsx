@@ -29,7 +29,7 @@ function Item({ data, page }) {
                 </div>
             </div>
         </Link>
-    )
+    );
 }
 
 export default Item;

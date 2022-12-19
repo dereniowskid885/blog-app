@@ -21,7 +21,7 @@ function Loading() {
                 visible={true}
             />
         </div>
-    )
+    );
 }
 
 export default Loading;

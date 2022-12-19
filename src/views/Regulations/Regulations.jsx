@@ -67,7 +67,7 @@ function Regulations({ page }) {
                 }
             </div>
         </main>
-    )
+    );
 }
 
 export default Regulations;

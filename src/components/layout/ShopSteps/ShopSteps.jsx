@@ -25,7 +25,7 @@ function ShopSteps() {
                 </li>
             </ul>
         </div>
-    )
+    );
 }
 
 export default ShopSteps;

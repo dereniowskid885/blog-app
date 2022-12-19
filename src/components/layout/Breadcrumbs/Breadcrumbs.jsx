@@ -23,7 +23,7 @@ function Breadcrumbs({ title }) {
                 );
             })}
         </MUIBreadcrumbs>
-    )
+    );
 }
 
 export default Breadcrumbs;

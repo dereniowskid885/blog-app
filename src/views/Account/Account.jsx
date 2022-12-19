@@ -46,7 +46,7 @@ function Account() {
                 </div>
             </div>
         </main>
-    )
+    );
 }
 
 export default Account;

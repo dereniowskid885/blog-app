@@ -42,7 +42,7 @@ function Cart() {
                 }
             </div>
         </main>
-    )
+    );
 }
 
 export default Cart;

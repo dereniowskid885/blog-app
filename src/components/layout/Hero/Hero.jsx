@@ -27,7 +27,7 @@ function Hero({ data }) {
                 </div>
             }
         </div>
-    )
+    );
 }
 
 export default Hero;

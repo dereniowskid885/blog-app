@@ -19,7 +19,7 @@ function ExperienceBlock({ data }) {
                 })}
             </ul>
         </div>
-    )
+    );
 }
 
 export default ExperienceBlock;

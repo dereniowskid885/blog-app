@@ -7,16 +7,11 @@
     }
 
     &__image {
-        height: max-content;
         margin: auto 2em auto 0;
-        // margin-right: 2em;
-        // width: 40%;
-        @include max-width($bp-laptop) {
-            width: 70%;
-        }
+        max-width: 40%;
         @include max-width($bp-tablet) {
             margin: 0;
-            width: 100%;
+            max-width: 100%;
         }
 
         &--reverse {
@@ -33,10 +28,12 @@
         flex-direction: column;
         justify-content: center;
         padding: 2em 0;
-        max-width: 50%;
         @include max-width($bp-tablet) {
             padding: 2em 0 0;
-            max-width: 100%;
+
+            a {
+                text-align: center;
+            }
         }
     }
 

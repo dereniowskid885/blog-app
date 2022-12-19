@@ -1,12 +1,11 @@
 import React from 'react';
 import './About.scss';
-import '/src/components/layout/ContentBlock/ContentBlock.scss';
-import ContactBlock from '../../components/layout/ContactBlock/ContactBlock';
-import ContentBlock from '../../components/layout/ContentBlock/ContentBlock';
-import ExperienceBlock from '../../components/layout/ExperienceBlock/ExperienceBlock';
+import ContactBlock from '/src/components/layout/ContactBlock/ContactBlock';
+import ContentBlock from '/src/components/layout/ContentBlock/ContentBlock';
+import ExperienceBlock from '/src/components/layout/ExperienceBlock/ExperienceBlock';
 import data from '/src/data/About';
 import contactData from '/src/data/ContactBlock.js';
-import Hero from '../../components/layout/Hero/Hero';
+import Hero from '/src/components/layout/Hero/Hero';
 
 function About() {
     return (
@@ -17,7 +16,7 @@ function About() {
             <ContentBlock data={data.secondSection} />
             <ContactBlock data={contactData} />
         </main>
-    )
+    );
 }
 
 export default About;

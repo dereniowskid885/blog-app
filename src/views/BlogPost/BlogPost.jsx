@@ -7,11 +7,13 @@ import contactData from '/src/data/ContactBlock.js';
 import Carousel from '/src/components/layout/Carousel/Carousel';
 import Item from '/src/components/layout/Carousel/Item/Item';
 import ContactBlock from '/src/components/layout/ContactBlock/ContactBlock';
+import { useBlog } from '/src/contexts/BlogContext';
 
 function BlogPost() {
     const { id } = useParams();
-    const blogPosts = blogData.posts;
-    const post = blogPosts && blogPosts.items.find(post => post.id == id);
+    const { posts } = useBlog();
+    const anyPosts = posts.length > 0;
+    const post = anyPosts && posts.find(post => post.id == id);
 
     return (
         <main className='blog-post'>
@@ -27,7 +29,7 @@ function BlogPost() {
                         <div className='blog-post__info'>{`Kolarstwo od kuchni  |  ${post.date}`}</div>
                     }
                     { post.img &&
-                        <img className='blog-post__img' src={post.img} alt='blog post' />
+                        <img className='blog-post__image' src={post.img} alt='blog post' />
                     }
                     <div className='blog-post__wrapper'>
                         { post.content_1 &&
@@ -42,12 +44,17 @@ function BlogPost() {
                     </div>
                 </div>
             }
-            { blogPosts &&
-                <Carousel data={blogPosts} Block={Item} />
+            { anyPosts &&
+                <Carousel 
+                    data={posts}
+                    page={blogData.page}
+                    title={blogData.carouselTitle}
+                    Block={Item} 
+                />
             }
             <ContactBlock data={contactData} />
         </main>
-    )
+    );
 }
 
 export default BlogPost;

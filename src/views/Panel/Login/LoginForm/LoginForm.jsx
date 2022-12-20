@@ -5,10 +5,7 @@ import { useForm } from 'react-hook-form';
 import { useDialog } from '/src/contexts/DialogContext';
 
 function LoginForm({ title }) {
-    const { 
-        setError,
-        toggleDialog
-    } = useDialog();
+    const { setError } = useDialog();
     const { register, handleSubmit } = useForm();
 
     const authenticateUser = data => {
@@ -27,7 +24,7 @@ function LoginForm({ title }) {
         .then(data => {
             if (data) {
                 localStorage.setItem('authToken', data.token);
-                toggleDialog();
+                window.location.href= '/panel-klienta';
             }
         })
         .catch(error => {

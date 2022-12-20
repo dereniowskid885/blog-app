@@ -7,13 +7,13 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { AiOutlineClose } from 'react-icons/ai';
-import { CartState } from '/src/contexts/CartContext';
+import { useCart } from '/src/contexts/CartContext';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import Button from '@mui/material/Button';
 
 function ProductTable({ products }) {
     // const [ orderSum, setOrderSum ] = useState(0);
-    const { state: { cart }, setCart, ACTIONS } = CartState();
+    const { state: { cart }, setCart, ACTIONS } = useCart();
 
     // useEffect(() => {
     //     setOrderSum(cart)

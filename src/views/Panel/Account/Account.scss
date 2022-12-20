@@ -1,11 +1,7 @@
 @use '/src/scss/index' as *;
 
 .account {
-    @extend .gray-block;
-
-    &__container {
-        @extend .gray-block__container;
-    }
+    @extend .gray-block__container;
 
     &__content {
         @extend .gray-block__content;

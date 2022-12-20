@@ -59,6 +59,7 @@
 
             img {
                 transition: .5s;
+                object-fit: cover;
             }
 
             &:hover img {
@@ -88,6 +89,7 @@
 
     &__post-image {
         flex-grow: 1;
+        max-height: 300px;
     }
 
     &__button {

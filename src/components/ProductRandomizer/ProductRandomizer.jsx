@@ -1,9 +1,9 @@
-import { CartState } from "/src/contexts/CartContext";
+import { useCart } from "/src/contexts/CartContext";
 
-const getRandomProducts = (amount, excludedProductID) => {
-    const { state: { productsData } } = CartState();
+const getRandomProducts = (excludedProductID, amount) => {
+    const { products } = useCart();
 
-    const shuffled = [...productsData.items].sort(() => 0.5 - Math.random());
+    const shuffled = [...products].sort(() => 0.5 - Math.random());
     let randomProducts = shuffled.slice(0, amount);
     randomProducts = randomProducts.filter(product => product.id !== excludedProductID);
 

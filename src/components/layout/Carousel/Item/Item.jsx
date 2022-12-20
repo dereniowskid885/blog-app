@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { CartState } from '/src/contexts/CartContext';
+import { useCart } from '/src/contexts/CartContext';
 import './Item.scss';
 
 function Item({ data, page }) {
-    const { setCart, ACTIONS } = CartState();
+    const { setCart, ACTIONS } = useCart();
 
     const hideDialog = () => {
         setCart({ type: ACTIONS.HIDE_DIALOG });
@@ -23,8 +23,8 @@ function Item({ data, page }) {
                     { data.date && 
                         <div className='item__date'>{data.date}</div> 
                     }
-                    { data.price &&
-                        <div className='item__price'>{data.price}{' zł'}</div>
+                    { data.amount_with_currency &&
+                        <div className='item__price'>{data.amount_with_currency}</div>
                     }
                 </div>
             </div>

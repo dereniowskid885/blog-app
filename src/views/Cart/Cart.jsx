@@ -3,12 +3,12 @@ import './Cart.scss';
 import { Link } from 'react-router-dom';
 import Breadcrumbs from '/src/components/layout/Breadcrumbs/Breadcrumbs';
 import data from '/src/data/Cart.js';
-import { CartState } from '/src/contexts/CartContext';
+import { useCart } from '/src/contexts/CartContext';
 import ShopSteps from '/src/components/layout/ShopSteps/ShopSteps';
 import ProductTable from '/src/components/layout/ProductTable/ProductTable';
 
 function Cart() {
-    const { state: { cart } } = CartState();
+    const { state: { cart } } = useCart();
     const isCartFilled = cart.length > 0;
 
     return (

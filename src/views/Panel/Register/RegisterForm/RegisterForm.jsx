@@ -1,6 +1,7 @@
 import React from 'react';
 import './RegisterForm.scss';
 import { useForm } from 'react-hook-form';
+import { useDialog } from '/src/contexts/DialogContext';
 
 function RegisterForm({ hideRegister }) {
     const { 

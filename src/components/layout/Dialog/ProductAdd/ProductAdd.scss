@@ -7,6 +7,7 @@
     }
 
     &__image {
+        max-height: 200px;
         width: 30%;
         margin-right: 2em;
         @include max-width($bp-mobile) {

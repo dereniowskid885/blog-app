@@ -4,24 +4,28 @@ import { useParams } from 'react-router-dom';
 import Breadcrumbs from '/src/components/layout/Breadcrumbs/Breadcrumbs';
 import Carousel from '/src/components/layout/Carousel/Carousel';
 import Item from '/src/components/layout/Carousel/Item/Item';
-import { CartState } from '/src/contexts/CartContext';
+import { useCart } from '/src/contexts/CartContext';
+import { useDialog } from '/src/contexts/DialogContext';
 import Dialog from '/src/components/layout/Dialog/Dialog';
 import getRandomProducts from '/src/components/ProductRandomizer/ProductRandomizer';
+import ProductAdd from '/src/components/layout/Dialog/ProductAdd/ProductAdd';
 
 function Product() {
-    const {
-        state: {
-            productsData,
-            showDialog,
-            cart
-        },
+    const { 
+        state: { cart },
         setCart,
-        ACTIONS 
-    } = CartState();
+        ACTIONS,
+        products
+    } = useCart();
+
+    const {
+        showDialog,
+        toggleDialog
+    } = useDialog();
 
     const { id } = useParams();
-    const product = productsData.items.find(product => product.id == id);
-    const randomProducts = getRandomProducts(6, product.id);
+    const product = products.find(product => product.id == id);
+    const randomProducts = getRandomProducts(product.id, 6);
     const addedProduct = cart[cart.length - 1];
 
     return (
@@ -42,11 +46,11 @@ function Product() {
                                 { product.title && 
                                     <h1>{product.title}</h1> 
                                 }
-                                { product.price && 
-                                    <h2>{product.price}{' zł'}</h2> 
+                                { product.amount_with_currency && 
+                                    <h2>{product.amount_with_currency}</h2> 
                                 }
-                                { product.info && 
-                                    <p>{product.info}</p> 
+                                { product.short_description && 
+                                    <p>{product.short_description}</p> 
                                 }
                             </div>
                             <button className='btn btn--transparent'
@@ -57,27 +61,37 @@ function Product() {
                                                 id: product.id,
                                                 img: product.img,
                                                 title: product.title,
-                                                price: product.price
+                                                price: product.amount_with_currency
                                             }
                                         });
+
+                                        toggleDialog();
                                     }}>
                                 {'Dodaj do koszyka'}
                             </button>
                         </div>
                     </div>
-                    { product.description &&
+                    { product.full_description &&
                         <div className='product__description'>
                             <h2>{'Opis'}</h2>
-                            <p>{product.description}</p>
+                            <p>{product.full_description}</p>
                         </div>
                     }
-                    { productsData &&
-                        <Carousel randomProducts={randomProducts} data={productsData} Block={Item} />
+                    { products &&
+                        <Carousel 
+                            randomProducts={randomProducts}
+                            data={products}
+                            Block={Item}
+                            title={'Podobne produkty'}
+                            page={'oferta'}
+                        />
                     }
                 </div>
             }
             { showDialog &&
-                <Dialog product={addedProduct} />
+                <Dialog>
+                    <ProductAdd product={addedProduct} /> 
+                </Dialog>  
             }
         </main>
     );

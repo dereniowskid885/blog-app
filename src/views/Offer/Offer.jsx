@@ -7,35 +7,37 @@ import Item from '/src/components/layout/Carousel/Item/Item';
 import Dialog from '/src/components/layout/Dialog/Dialog';
 import CartIcon from '/src/assets/cart.svg';
 import blogData from '/src/data/Blog.js';
-import { CartState } from '/src/contexts/CartContext';
+import { useCart } from '/src/contexts/CartContext';
 import { useDialog } from '/src/contexts/DialogContext';
+import { useBlog } from '/src/contexts/BlogContext';
 import ProductAdd from '/src/components/layout/Dialog/ProductAdd/ProductAdd';
 
 function Offer() {
     const { 
-        state: {
-            cart,
-            productsData
-        },
+        state: { cart },
         setCart,
-        ACTIONS 
-    } = CartState();
+        ACTIONS,
+        products
+    } = useCart();
 
     const {
-        isDialog,
+        showDialog,
         toggleDialog
     } = useDialog();
 
-    const blogPosts = blogData.posts;
+    const { posts } = useBlog();
+
+    const anyProducts = products.length > 0;
+    const anyBlogPosts = posts.length > 0;
     const addedProduct = cart[cart.length - 1];
 
     return (
         <main className='offer'>
             <Breadcrumbs />
-            { productsData &&
+            { anyProducts &&
                 <div className='offer__container'>
                     <ul>
-                        {productsData.items.map(product => {
+                        {products.map(product => {
                             return (
                                 <li key={product.id}>
                                     { product.img &&
@@ -48,7 +50,7 @@ function Offer() {
                                                             id: product.id,
                                                             img: product.img,
                                                             title: product.title,
-                                                            price: product.price
+                                                            price: product.amount_with_currency
                                                         }
                                                     });
                                             
@@ -62,8 +64,8 @@ function Offer() {
                                         { product.title && 
                                             <h3>{product.title}</h3> 
                                         }
-                                        { product.price && 
-                                            <h4>{product.price}{' zł'}</h4>
+                                        { product.amount_with_currency && 
+                                            <h4>{product.amount_with_currency}{' zł'}</h4>
                                         }
                                         <Link to={`/oferta/${product.id}`}>
                                             <button className='btn'>{'Dowiedz się więcej'}</button> 
@@ -75,10 +77,15 @@ function Offer() {
                     </ul>
                 </div>
             }
-            { blogPosts &&
-                <Carousel data={blogPosts} Block={Item} />
+            { anyBlogPosts &&
+                <Carousel 
+                    data={posts} 
+                    Block={Item}
+                    page={blogData.page}
+                    title={blogData.carouselTitle}
+                />
             }
-            { isDialog &&
+            { showDialog &&
                 <Dialog>
                     <ProductAdd product={addedProduct} />
                 </Dialog>   

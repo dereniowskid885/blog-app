@@ -18,7 +18,6 @@ const Error = lazy(() => import('/src/views/Error/Error'));
 const Product = lazy(() => import('/src/views/Product/Product'));
 const Contact = lazy(() => import('/src/views/Contact/Contact'));
 const Regulations = lazy(() => import('/src/views/Regulations/Regulations'));
-const Account = lazy(() => import('/src/views/Account/Account'));
 
 function App() {
     return (
@@ -31,11 +30,19 @@ function App() {
                     <Route path='/oferta'
                         element={
                             <DialogContext>
-                                <Offer />
+                                <BlogContext>
+                                    <Offer />
+                                </BlogContext>
                             </DialogContext>
                         } 
                     />
-                    <Route path='/oferta/:id' element={<Product />} />
+                    <Route path='/oferta/:id' 
+                        element={
+                            <DialogContext>
+                                <Product />
+                            </DialogContext>
+                        }
+                    />
                     <Route path='/blog' 
                         element={
                             <BlogContext>
@@ -63,7 +70,6 @@ function App() {
                     <Route path='/sposoby-platnosci' element={<Regulations page={'payment-methods'} />} />
                     <Route path='/polityka-prywatnosci' element={<Regulations page={'privacy-policy'} />} />
                     <Route path='/polityka-cookies' element={<Regulations page={'cookies-policy'} />} />
-                    <Route path='/konto' element={<Account />} />
                     <Route path='*' element={<Error />} />
                 </Routes>
             </Suspense>

@@ -4,13 +4,13 @@ import './ProductAdd.scss';
 import Carousel from '/src/components/layout/Carousel/Carousel';
 import Item from '/src/components/layout/Carousel/Item/Item';
 import getRandomProducts from '/src/components/ProductRandomizer/ProductRandomizer';
-import { CartState } from '/src/contexts/CartContext';
+import { useCart } from '/src/contexts/CartContext';
 import { useDialog } from '/src/contexts/DialogContext';
 
 function ProductAdd({ product }) {
-    const { state: { productsData } } = CartState();
+    const { products } = useCart();
     const { toggleDialog } = useDialog();
-    const randomProducts = getRandomProducts(4, product.id);
+    const randomProducts = getRandomProducts(product.id, 4);
 
     return (
         <div className='product-add'>
@@ -21,11 +21,16 @@ function ProductAdd({ product }) {
                 </div>
                 <div className='product-add__wrapper'>
                     <h3>{product.title}</h3>
-                    <h4>{product.price}{' zł'}</h4>
+                    <h4>{product.price}</h4>
                 </div>
             </div>
             <div className='product-add__recommendations'>
-                <Carousel randomProducts={randomProducts} data={productsData} Block={Item} title={'Sprawdź również'} />
+                <Carousel 
+                    randomProducts={randomProducts} 
+                    data={products} 
+                    Block={Item} 
+                    title={'Sprawdź również'}
+                />
             </div>
             <div className='product-add__buttons'>
                 <button className='btn' onClick={toggleDialog}>

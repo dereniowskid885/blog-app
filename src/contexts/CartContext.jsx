@@ -1,5 +1,4 @@
-import { useContext, createContext, useReducer } from 'react';
-import data from '/src/data/Offer';
+import { useContext, createContext, useReducer, useState, useEffect } from 'react';
 
 const Cart = createContext();
 
@@ -10,6 +9,27 @@ const ACTIONS = {
 }
 
 function CartContext({ children }) {
+    const [ products, setProducts ] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:8000/api/offer/', {
+            method: 'GET'
+        })
+        .then(response => {
+            if(response.ok) {
+                return response.json();
+            }
+        })
+        .then(data => {
+            if(data) {
+                setProducts(data);
+            }
+        })
+        .catch(error => {
+            console.log('Error: ', error);
+        });
+    }, []);
+
     const reducer = (state, action) => {
         switch (action.type) {
             case ACTIONS.ADD_TO_CART:
@@ -21,8 +41,7 @@ function CartContext({ children }) {
                             ...action.payload,
                             quantity: 1
                         }
-                    ],
-                    showDialog: true
+                    ]
                 };
             case ACTIONS.REMOVE_FROM_CART:
                 return {
@@ -47,14 +66,13 @@ function CartContext({ children }) {
     }
 
     const initState = {
-        productsData: data,
         cart: []
     }
 
     const [ state, setCart ] = useReducer(reducer, initState);
 
     return (
-        <Cart.Provider value={{ state, setCart, ACTIONS }}>
+        <Cart.Provider value={{ state, setCart, ACTIONS, products }}>
             {children}
         </Cart.Provider>
     );
@@ -62,6 +80,6 @@ function CartContext({ children }) {
 
 export default CartContext;
 
-export const CartState = () => {
+export const useCart = () => {
     return useContext(Cart);
 }

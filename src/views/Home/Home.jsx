@@ -57,7 +57,11 @@ function Home() {
                 <ContentBlock data={contentBlocks} />
             }
             { anyOpinions &&
-                <Carousel data={opinions} Block={OpinionItem} title={data.carouselTitle} />
+                <Carousel 
+                    data={opinions} 
+                    Block={OpinionItem} 
+                    title={data.carouselTitle}
+                />
             }
             <ContactBlock data={contactData} />
         </main>

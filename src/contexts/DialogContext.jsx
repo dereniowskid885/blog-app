@@ -1,7 +1,7 @@
 import { useContext, createContext, useState } from 'react';
 import Overlay from '/src/components/layout/Overlay/Overlay';
 import DialogContainer from '/src/components/layout/Dialog/Dialog';
-import Error from '/src/components/layout/Dialog/PanelMessage/Error/Error';
+import Error from '/src/components/layout/Dialog/Message/Error/Error';
 
 const Dialog = createContext();
 

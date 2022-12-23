@@ -1,17 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useCart } from '/src/contexts/CartContext';
+import { useDialog } from '/src/contexts/DialogContext';
 import './Item.scss';
 
 function Item({ data, page }) {
-    const { setCart, ACTIONS } = useCart();
-
-    const hideDialog = () => {
-        setCart({ type: ACTIONS.HIDE_DIALOG });
-    };
+    const { toggleDialog } = useDialog();
 
     return (
-        <Link className='item' to={`/${page}/${data.id}`} onClick={hideDialog}>
+        <Link className='item' to={`/${page}/${data.id}`} onClick={toggleDialog}>
             <div className='item__container'>
                 { data.img &&
                     <img src={data.img} alt='blog carousel item' /> 

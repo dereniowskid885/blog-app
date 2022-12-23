@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Account.scss';
+import PanelCarousel from '/src/components/layout/PanelCarousel/PanelCarousel';
 
 function Account() {
     const token = localStorage.getItem('authToken');
@@ -40,7 +41,10 @@ function Account() {
     return (
         <div className='account'>
             <h1>{`Witaj ${user.first_name}!`}</h1>
-            <button className='btn' onClick={logOut}>
+            <div className='account__content'>
+                <PanelCarousel />
+            </div>
+            <button className='account__btn btn' onClick={logOut}>
                 {'Wyloguj'}
             </button>
         </div>

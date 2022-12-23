@@ -4,18 +4,27 @@ import './Error.scss';
 import data from '/src/data/Error.js';
 import Breadcrumbs from '/src/components/layout/Breadcrumbs/Breadcrumbs';
 
-function Error() {
+function Error({ isAPI }) {
+    const page = isAPI ? data.wrongPage : data.noAPI ;
+
     return (
         <main className='error'>
-            <Breadcrumbs title={data.breadcrumbsTitle} />
+            { isAPI &&
+                <Breadcrumbs title={page.title} />
+            }
             <div className='error__content'>
                 <div className='error__container'>
-                    <h2>{data.title}</h2>
-                    <Link to={'/'}>
-                        <button className='btn'>
-                            {data.buttonText}
-                        </button>
-                    </Link>
+                    <h1>{page.title}</h1>
+                    { page.buttonText &&
+                        <Link to={'/'}>
+                            <button className='btn'>
+                                {page.buttonText}
+                            </button>
+                        </Link>
+                    }
+                    { page.info &&
+                        <h2>{page.info}</h2>
+                    }
                 </div>
             </div>
         </main>

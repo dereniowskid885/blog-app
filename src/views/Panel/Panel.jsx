@@ -4,7 +4,7 @@ import Breadcrumbs from '/src/components/layout/Breadcrumbs/Breadcrumbs';
 import data from '/src/data/Panel.js';
 import Dialog from '/src/components/layout/Dialog/Dialog';
 import { useDialog } from '/src/contexts/DialogContext';
-import PanelMessage from '/src/components/layout/Dialog/PanelMessage/PanelMessage';
+import PanelMessage from '/src/components/layout/Dialog/Message/PanelMessage/PanelMessage';
 import Account from '/src/views/Panel/Account/Account';
 import Login from '/src/views/Panel/Login/Login';
 import Register from '/src/views/Panel/Register/Register';

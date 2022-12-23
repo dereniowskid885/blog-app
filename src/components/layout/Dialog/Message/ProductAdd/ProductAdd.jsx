@@ -30,6 +30,7 @@ function ProductAdd({ product }) {
                     data={products} 
                     Block={Item} 
                     title={'Sprawdź również'}
+                    page={'oferta'}
                 />
             </div>
             <div className='product-add__buttons'>

@@ -1,13 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './PanelMessage.scss';
 import { useDialog } from '/src/contexts/DialogContext';
 
 function PanelMessage({ isRegister, hideRegister }) {
     const { toggleDialog } = useDialog();
 
     return (
-        <div className='panel-message'>
+        <div className='message'>
             { isRegister ?
                 <>
                     <h2>{'Rejestracja pomyślna !'}</h2>

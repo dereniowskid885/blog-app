@@ -55,7 +55,7 @@ function Product() {
                             </div>
                             <button className='btn btn--transparent'
                                 onClick={() => {
-                                    const priceValue = (product.amount_with_currency.split(' ')[0]);
+                                    const priceValue = parseInt(product.amount_with_currency.split(' ')[0]);
 
                                     setCart({
                                         type: ACTIONS.ADD_TO_CART,

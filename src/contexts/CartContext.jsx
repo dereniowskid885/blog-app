@@ -31,47 +31,52 @@ function CartContext({ children }) {
     }, []);
 
     const reducer = (state, action) => {
+        const { payload, operation } = action;
+
         switch (action.type) {
             case ACTIONS.ADD_TO_CART:
-                const itemAlreadyAdded = state.cart.find(item => item.id === action.payload.id);
+                const itemAlreadyAdded = state.cart.find(item => item.id === payload.id);
 
                 if (itemAlreadyAdded) {
                     return {
-                        ...state,
-                        cart: state.cart.map(item => item.id === action.payload.id ?
+                        cart: state.cart.map(item => item.id === payload.id ?
                             {
                                 ...item,
                                 quantity: item.quantity + 1
                             }
                         :
                             item
-                        )
+                        ),
+                        orderSum: state.orderSum + payload.priceValue
                     }
                 }
 
                 return {
-                    ...state,
                     cart: [
                         ...state.cart,
                         {
-                            ...action.payload,
+                            ...payload,
                             quantity: 1
                         }
-                    ]
+                    ],
+                    orderSum: state.orderSum + payload.priceValue
                 };
             case ACTIONS.REMOVE_FROM_CART:
                 return {
-                    ...state,
-                    cart: state.cart.filter(item => item.id !== action.payload.id)
+                    cart: state.cart.filter(item => item.id !== payload.id),
+                    orderSum: state.orderSum - payload.priceSum
                 };
             case ACTIONS.CHANGE_ITEM_QTY:
                 return {
-                    ...state,
-                    cart: state.cart.filter(item => item.id === action.payload.id ?
-                        item.quantity = action.payload.quantity
+                    cart: state.cart.filter(item => item.id === payload.id ?
+                        item.quantity = payload.quantity
                     :
                         item.quantity
-                    )
+                    ),
+                    orderSum: operation === '+' ?
+                        state.orderSum + payload.priceValue
+                    :
+                        state.orderSum - payload.priceValue
                 };
             default:
                 return state;
@@ -79,7 +84,8 @@ function CartContext({ children }) {
     }
 
     const initState = {
-        cart: []
+        cart: [],
+        orderSum: 0
     }
 
     const [ state, setCart ] = useReducer(reducer, initState);

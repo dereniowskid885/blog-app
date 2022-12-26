@@ -44,7 +44,7 @@ function Offer() {
                                         <div className='offer__image'>
                                             <img className='offer__icon' src={CartIcon} alt='cart'
                                                 onClick={() => {
-                                                    const priceValue = (product.amount_with_currency.split(' ')[0]);
+                                                    const priceValue = parseInt(product.amount_with_currency.split(' ')[0]);
 
                                                     setCart({
                                                         type: ACTIONS.ADD_TO_CART,
@@ -68,7 +68,7 @@ function Offer() {
                                             <h3>{product.title}</h3> 
                                         }
                                         { product.amount_with_currency && 
-                                            <h4>{product.amount_with_currency}{' zł'}</h4>
+                                            <h4>{product.amount_with_currency}</h4>
                                         }
                                         <Link to={`/oferta/${product.id}`}>
                                             <button className='btn'>{'Dowiedz się więcej'}</button> 

@@ -12,14 +12,14 @@ import ButtonGroup from '@mui/material/ButtonGroup';
 import Button from '@mui/material/Button';
 
 function ProductTable({ products }) {
-    const [ orderSum, setOrderSum ] = useState(0);
-    const { state: { cart }, setCart, ACTIONS } = useCart();
+    // const [ orderSum, setOrderSum ] = useState(0);
+    const { state: { cart, orderSum }, setCart, ACTIONS } = useCart();
 
-    useEffect(() => {
-        const cartSum = cart.reduce((sum, product) => sum + product.priceValue * product.quantity, 0);
+    // useEffect(() => {
+    //     const cartSum = cart.reduce((sum, product) => sum + product.priceValue * product.quantity, 0);
 
-        setOrderSum(cartSum);
-    }, [cart]);
+    //     setOrderSum(cartSum);
+    // }, [cart]);
 
     return (
         <TableContainer className='product-table'>
@@ -35,6 +35,8 @@ function ProductTable({ products }) {
                 </TableHead>
                 <TableBody>
                     {products.map(item => {
+                        const priceSum = item.priceValue * item.quantity;
+
                         return (
                             <TableRow key={item.id}>
                                 <TableCell>
@@ -49,12 +51,16 @@ function ProductTable({ products }) {
                                 <TableCell align='center'>
                                     <ButtonGroup color='info'>
                                         <Button onClick={() => {
+                                            const quantity = item.quantity + 1;
+
                                             setCart({
                                                 type: ACTIONS.CHANGE_ITEM_QTY,
                                                 payload: {
                                                     id: item.id,
-                                                    quantity: item.quantity + 1   
-                                                }
+                                                    quantity: quantity,
+                                                    priceValue: item.priceValue
+                                                },
+                                                operation: '+'
                                             });
                                         }}>{'+'}</Button>
                                         <Button color='success' disabled>{item.quantity}</Button>
@@ -65,19 +71,24 @@ function ProductTable({ products }) {
                                                 type: ACTIONS.CHANGE_ITEM_QTY,
                                                 payload: {
                                                     id: item.id,
-                                                    quantity: quantity   
-                                                }
+                                                    quantity: quantity,
+                                                    priceValue: item.priceValue
+                                                },
+                                                operation: '-'
                                             });
                                         }}>{'-'}</Button>
                                     </ButtonGroup>
                                 </TableCell>
-                                <TableCell align='center'>{item.priceValue * item.quantity}{' PLN'}</TableCell>
+                                <TableCell align='center'>{priceSum}{' PLN'}</TableCell>
                                 <TableCell align='center'>
                                     <AiOutlineClose 
                                         onClick={() => {
                                             setCart({
                                                 type: ACTIONS.REMOVE_FROM_CART,
-                                                payload: { id: item.id }
+                                                payload: { 
+                                                    id: item.id,
+                                                    priceSum: priceSum
+                                                }
                                             })
                                         }} 
                                     />

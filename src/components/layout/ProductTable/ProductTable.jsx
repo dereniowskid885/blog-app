@@ -12,12 +12,16 @@ import ButtonGroup from '@mui/material/ButtonGroup';
 import Button from '@mui/material/Button';
 
 function ProductTable({ products }) {
-    // const [ orderSum, setOrderSum ] = useState(0);
+    const [ orderSum, setOrderSum ] = useState(0);
     const { state: { cart }, setCart, ACTIONS } = useCart();
 
-    // useEffect(() => {
-    //     setOrderSum(cart)
-    // }, [cart]);
+    useEffect(() => {
+        const cartSum = cart.reduce((sum, product) => sum + product.priceValue * product.quantity, 0);
+
+        setOrderSum(cartSum);
+    }, [cart]);
+
+    console.log(orderSum);
 
     return (
         <TableContainer className='product-table'>
@@ -43,7 +47,7 @@ function ProductTable({ products }) {
                                         </div>
                                     </div>
                                 </TableCell>
-                                <TableCell align='center'>{item.price}{' zł'}</TableCell>
+                                <TableCell align='center'>{item.price}</TableCell>
                                 <TableCell align='center'>
                                     <ButtonGroup>
                                         <Button onClick={() => {
@@ -53,7 +57,7 @@ function ProductTable({ products }) {
                                                     id: item.id,
                                                     quantity: item.quantity + 1   
                                                 }
-                                            })
+                                            });
                                         }}>{'+'}</Button>
                                         <Button color='success' disabled>{item.quantity}</Button>
                                         <Button onClick={() => {
@@ -65,11 +69,11 @@ function ProductTable({ products }) {
                                                     id: item.id,
                                                     quantity: quantity   
                                                 }
-                                            })
+                                            });
                                         }}>{'-'}</Button>
                                     </ButtonGroup>
                                 </TableCell>
-                                <TableCell align='center'>{item.price * item.quantity}{' zł'}</TableCell>
+                                <TableCell align='center'>{item.priceValue * item.quantity}{' PLN'}</TableCell>
                                 <TableCell align='center'>
                                     <AiOutlineClose 
                                         onClick={() => {
@@ -88,8 +92,8 @@ function ProductTable({ products }) {
                         <TableCell />
                         <TableCell />
                         <TableCell align='center'>
-                            <b>{'Suma zamówienia: '}</b>
-                            {'2 zlote'}
+                            <b>{'Całość: '}</b>
+                            {orderSum}{' PLN'}
                         </TableCell>
                         <TableCell />
                     </TableRow>

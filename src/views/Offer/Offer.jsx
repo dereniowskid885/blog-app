@@ -10,7 +10,7 @@ import blogData from '/src/data/Blog.js';
 import { useCart } from '/src/contexts/CartContext';
 import { useDialog } from '/src/contexts/DialogContext';
 import { useBlog } from '/src/contexts/BlogContext';
-import ProductAdd from '/src/components/layout/Dialog/ProductAdd/ProductAdd';
+import ProductAdd from '/src/components/layout/Dialog/Message/ProductAdd/ProductAdd';
 
 function Offer() {
     const { 
@@ -44,13 +44,16 @@ function Offer() {
                                         <div className='offer__image'>
                                             <img className='offer__icon' src={CartIcon} alt='cart'
                                                 onClick={() => {
+                                                    const priceValue = (product.amount_with_currency.split(' ')[0]);
+
                                                     setCart({
                                                         type: ACTIONS.ADD_TO_CART,
                                                         payload: {
                                                             id: product.id,
                                                             img: product.img,
                                                             title: product.title,
-                                                            price: product.amount_with_currency
+                                                            price: product.amount_with_currency,
+                                                            priceValue: priceValue
                                                         }
                                                     });
                                             

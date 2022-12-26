@@ -8,7 +8,7 @@ import { useCart } from '/src/contexts/CartContext';
 import { useDialog } from '/src/contexts/DialogContext';
 import Dialog from '/src/components/layout/Dialog/Dialog';
 import getRandomProducts from '/src/components/ProductRandomizer/ProductRandomizer';
-import ProductAdd from '/src/components/layout/Dialog/ProductAdd/ProductAdd';
+import ProductAdd from '/src/components/layout/Dialog/Message/ProductAdd/ProductAdd';
 
 function Product() {
     const { 
@@ -54,19 +54,23 @@ function Product() {
                                 }
                             </div>
                             <button className='btn btn--transparent'
-                                    onClick={() => {
-                                        setCart({
-                                            type: ACTIONS.ADD_TO_CART,
-                                            payload: {
-                                                id: product.id,
-                                                img: product.img,
-                                                title: product.title,
-                                                price: product.amount_with_currency
-                                            }
-                                        });
+                                onClick={() => {
+                                    const priceValue = (product.amount_with_currency.split(' ')[0]);
 
-                                        toggleDialog();
-                                    }}>
+                                    setCart({
+                                        type: ACTIONS.ADD_TO_CART,
+                                        payload: {
+                                            id: product.id,
+                                            img: product.img,
+                                            title: product.title,
+                                            price: product.amount_with_currency,
+                                            priceValue: priceValue
+                                        }
+                                    });
+
+                                    toggleDialog();
+                                }}
+                            >
                                 {'Dodaj do koszyka'}
                             </button>
                         </div>

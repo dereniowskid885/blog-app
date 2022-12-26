@@ -21,8 +21,6 @@ function ProductTable({ products }) {
         setOrderSum(cartSum);
     }, [cart]);
 
-    console.log(orderSum);
-
     return (
         <TableContainer className='product-table'>
             <Table sx={{ minWidth: 650 }} aria-label="products table">
@@ -49,7 +47,7 @@ function ProductTable({ products }) {
                                 </TableCell>
                                 <TableCell align='center'>{item.price}</TableCell>
                                 <TableCell align='center'>
-                                    <ButtonGroup>
+                                    <ButtonGroup color='info'>
                                         <Button onClick={() => {
                                             setCart({
                                                 type: ACTIONS.CHANGE_ITEM_QTY,

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './ProductTable.scss';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -11,15 +11,15 @@ import { useCart } from '/src/contexts/CartContext';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import Button from '@mui/material/Button';
 
-function ProductTable({ products }) {
-    // const [ orderSum, setOrderSum ] = useState(0);
-    const { state: { cart, orderSum }, setCart, ACTIONS } = useCart();
-
-    // useEffect(() => {
-    //     const cartSum = cart.reduce((sum, product) => sum + product.priceValue * product.quantity, 0);
-
-    //     setOrderSum(cartSum);
-    // }, [cart]);
+function ProductTable() {
+    const {
+        state: {
+            cart,
+            orderSum
+        },
+        setCart,
+        ACTIONS
+    } = useCart();
 
     return (
         <TableContainer className='product-table'>
@@ -34,7 +34,7 @@ function ProductTable({ products }) {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {products.map(item => {
+                    {cart.map(item => {
                         const priceSum = item.priceValue * item.quantity;
 
                         return (

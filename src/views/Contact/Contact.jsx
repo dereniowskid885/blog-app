@@ -16,8 +16,10 @@ function Contact() {
     return (
         <main className='contact'>
             <Breadcrumbs />
-            <h1 className='contact__title'>{data.title}</h1>
-            <ContactBlock data={data.contactBlock} />
+            <h1 className='contact__title'>
+                {'Kontakt'}
+            </h1>
+            <ContactBlock data={data} />
             { showDialog &&
                 <Dialog>
                     <Mail closeDialog={toggleDialog} />

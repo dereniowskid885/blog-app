@@ -1,8 +1,8 @@
 import React from 'react';
-import CartForm from '../CartForm/CartForm';
+import OrderForm from './OrderForm/OrderForm';
 import { useForm } from 'react-hook-form';
 
-function SecondStep({ next, back, setOrder }) {
+function Order({ next, back, setOrder }) {
     const { handleSubmit, register } = useForm();
 
     const prepareOrder = data => {
@@ -11,9 +11,9 @@ function SecondStep({ next, back, setOrder }) {
     };
 
     return (
-        <form className='cart-form' onSubmit={handleSubmit(data => prepareOrder(data))}>
-            <CartForm register={register} />
-            <div className='cart-form__buttons'>
+        <form className='order-form' onSubmit={handleSubmit(data => prepareOrder(data))}>
+            <OrderForm register={register} />
+            <div className='order-form__buttons'>
                 <button className='btn' onClick={back}>
                     {'< Koszyk'}
                 </button>
@@ -25,4 +25,4 @@ function SecondStep({ next, back, setOrder }) {
     );
 }
 
-export default SecondStep;
+export default Order;

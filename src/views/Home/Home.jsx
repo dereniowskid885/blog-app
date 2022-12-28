@@ -4,7 +4,6 @@ import ContactBlock from '/src/components/layout/ContactBlock/ContactBlock';
 import Hero from '/src/components/layout/Hero/Hero';
 import Carousel from '/src/components/layout/Carousel/Carousel';
 import data from '/src/data/Home';
-import contactData from '/src/data/ContactBlock.js';
 import ContentBlock from '/src/components/layout/ContentBlock/ContentBlock';
 import OpinionItem from '/src/components/layout/Carousel/OpinionItem/OpinionItem';
 
@@ -60,10 +59,10 @@ function Home() {
                 <Carousel 
                     data={opinions} 
                     Block={OpinionItem} 
-                    title={data.carouselTitle}
+                    title={'Opinie moich podopiecznych'}
                 />
             }
-            <ContactBlock data={contactData} />
+            <ContactBlock data={data.contactBlock} />
         </main>
     );
 }

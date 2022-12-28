@@ -1,34 +1,29 @@
 import React from 'react';
 import LoginForm from '/src/views/Panel/Login/LoginForm/LoginForm';
-import data from '/src/data/Panel.js';
-import CheckIcon from '/src/assets/check-circle.svg';
 
 function Login({ showRegister }) {
+    const checkIcon = <img src='/src/assets/check-circle.svg' alt='check' />;
+
     return (
         <>
             <div className='panel__block'>
-                <LoginForm title={data.loginTitle} />
+                <LoginForm />
             </div>
             <div className='panel__block'>
                 <div className='panel__wrapper'>
-                    <h2>{data.register.title}</h2>
+                    <h2>{'Nowy klient'}</h2>
                     <div className='panel__subtitle'>
-                        {data.register.subtitle}
+                        {'Załóż konto i zyskaj dostęp do:'}
                     </div>
                     <ul>
-                        {data.register.list.map((item, index) => {
-                            return (
-                                <li key={index}>
-                                    <img src={CheckIcon} alt='check' />
-                                    {item}
-                                </li>
-                            );
-                        })}
+                        <li>{checkIcon}{'Szybkiego zakupu jadłospisu'}</li>
+                        <li>{checkIcon}{'Szybkiego umówienia się na konsultację'}</li>
+                        <li>{checkIcon}{'Pełnej historii dietoterapii'}</li>
                     </ul>
                 </div>
                 <div className='panel__button'>
                     <button className='btn' onClick={showRegister}>
-                        {data.register.buttonText}
+                        {'Zarejestruj się'}
                     </button>
                 </div>
             </div>

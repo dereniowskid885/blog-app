@@ -1,11 +1,14 @@
 @use '/src/scss/index' as *;
-@use '/src/views/Cart/Cart.scss' as *;
 
-.cart-form {
+.order-form {
     &__container {
         display: flex;
         flex-direction: row;
-        gap: 15em;
+        justify-content: space-between;
+        @include max-width($bp-tablet) {
+            flex-direction: column;
+            gap: 2em;
+        }
     }
 
     &__first,
@@ -15,12 +18,18 @@
     }
 
     &__first {
-        width: 50%;
+        width: 40%;
+        @include max-width($bp-tablet) {
+            width: 100%;
+        }
     }
 
     &__second {
         justify-content: space-between;
-        flex-grow: 1;
+        width: 35%;
+        @include max-width($bp-tablet) {
+            width: 100%;
+        }
 
         h2 {
             text-align: left;
@@ -56,14 +65,18 @@
     &__block {
         display: flex;
         flex-direction: column;
+        margin-bottom: 1em;
     }
 
     textarea {
         resize: none;
         height: 150px;
+        margin: 0;
     }
 
     &__buttons {
-        @extend .cart__buttons;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 5em;
     }
 }

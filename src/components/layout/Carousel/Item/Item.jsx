@@ -4,10 +4,18 @@ import { useDialog } from '/src/contexts/DialogContext';
 import './Item.scss';
 
 function Item({ data, page }) {
-    const { toggleDialog } = useDialog();
+    const {
+        showDialog,
+        toggleDialog
+    } = useDialog();
+
+    const hideDialog = () => {
+        if (showDialog)
+            toggleDialog();
+    };
 
     return (
-        <Link className='item' to={`/${page}/${data.id}`} onClick={toggleDialog}>
+        <Link className='item' to={`/${page}/${data.id}`} onClick={hideDialog}>
             <div className='item__container'>
                 { data.img &&
                     <img src={data.img} alt='blog carousel item' /> 

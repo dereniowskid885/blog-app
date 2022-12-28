@@ -5,8 +5,9 @@ const Cart = createContext();
 const ACTIONS = {
     ADD_TO_CART: 'add-to-cart',
     REMOVE_FROM_CART: 'remove-from-cart',
-    CHANGE_ITEM_QTY: 'change-item-qty'
-}
+    CHANGE_ITEM_QTY: 'change-item-qty',
+    CLEAR_CART: 'clear-cart'
+};
 
 function CartContext({ children }) {
     const [ products, setProducts ] = useState([]);
@@ -77,6 +78,11 @@ function CartContext({ children }) {
                         state.orderSum + payload.priceValue
                     :
                         state.orderSum - payload.priceValue
+                };
+            case ACTIONS.CLEAR_CART:
+                return {
+                    cart: [],
+                    orderSum: 0
                 };
             default:
                 return state;

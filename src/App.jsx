@@ -79,8 +79,8 @@ function App() {
                         <Route path='*' element={<Error isAPI={isAPI} />} />
                     }
                 </Routes>
+                <Footer />
             </Suspense>
-            <Footer />
             <ScrollToTop />
         </BrowserRouter>
     );

@@ -1,11 +1,11 @@
 import React from 'react';
-import './CartForm.scss';
+import './OrderForm.scss';
 
-function CartForm({ register }) {
+function OrderForm({ register }) {
     return (
         <>
-            <div className='cart-form__container'>
-                <div className="cart-form__first">
+            <div className='order-form__container'>
+                <div className="order-form__first">
                     <label htmlFor='first_and_last_name'>
                         {'Imię i Nazwisko *'}
                     </label>
@@ -31,36 +31,36 @@ function CartForm({ register }) {
                     </label>
                     <input {...register('phone')} type='text' name='phone' required />
                 </div>
-                <div className="cart-form__second">
-                    <div className='cart-form__block'>
+                <div className="order-form__second">
+                    <div className='order-form__block'>
                         <h2>{'Wybierz sposób płatności'}</h2>
-                        <div className='cart-form__wrapper'>
+                        <div className='order-form__wrapper'>
                             <label htmlFor='payment_method'>
                                 {'Przelew tradycyjny'}
                             </label>
-                            <input {...register('payment_method')} type='checkbox' name='payment_method' required defaultChecked/>
+                            <input {...register('payment_method')} type='checkbox' name='payment_method' value='Przelew tradycyjny' required defaultChecked/>
                         </div>
                     </div>
-                    <div className='cart-form__block'>
+                    <div className='order-form__block'>
                         <h2>{'Informacje dodatkowe'}</h2>
                         <textarea {...register('info')} />
                     </div>
                 </div>
             </div>
-            <div className='cart-form__check'>
+            <div className='order-form__check'>
                 <p>{'Twoje dane osobowe będą użyte do przetworzenia zamówienia, ułatwienia korzystania ze strony internetowej oraz innych celów opisanych w polityka prywatności.'}</p>
-                <div className="cart-form__wrapper">
+                <div className="order-form__wrapper">
                     <label htmlFor='are_service_terms_approved'>
                         {'Przeczytałem/am i akceptuję regulamin *'}
                     </label>
                     <input {...register('are_service_terms_approved')} type='checkbox' name='are_service_terms_approved' required />
                 </div>
             </div>
-            <div className='cart-form__info'>
+            <div className='order-form__info'>
                 {'* pola wymagane'}
             </div>
         </>
     );
 }
 
-export default CartForm;
+export default OrderForm;

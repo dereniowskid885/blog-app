@@ -1,0 +1,44 @@
+@use '/src/scss/index' as *;
+
+.summary {
+    &__product-img {
+        max-height: 150px;
+        max-width: 150px;
+        margin-right: 2em;
+    }
+    
+    &__info {
+        display: grid;
+        gap: 5vw;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        @include max-width($bp-laptop) {
+            grid-template-columns: 1fr 1fr;
+        }
+        @include max-width($bp-mobile) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    &__order,
+    &__products {
+        margin-bottom: 2em;
+    }
+
+    &__column {
+        max-width: 400px;
+    }
+
+    li {
+        display: flex;
+
+        &:not(:last-of-type) {
+            margin-bottom: 1em;
+        }
+    }
+
+    h2 {
+        font-weight: 600;
+        text-align: left;
+        margin-bottom: 1.5em;
+    }
+}

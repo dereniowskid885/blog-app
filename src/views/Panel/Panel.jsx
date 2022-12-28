@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './Panel.scss';
 import Breadcrumbs from '/src/components/layout/Breadcrumbs/Breadcrumbs';
-import data from '/src/data/Panel.js';
 import Dialog from '/src/components/layout/Dialog/Dialog';
 import { useDialog } from '/src/contexts/DialogContext';
 import PanelMessage from '/src/components/layout/Dialog/Message/PanelMessage/PanelMessage';
@@ -20,7 +19,7 @@ function Panel() {
 
     return (
         <main className='panel'>
-            <Breadcrumbs title={data.title} />
+            <Breadcrumbs title={'Panel klienta'} />
             { token ?
                 <Account />
             :

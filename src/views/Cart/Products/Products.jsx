@@ -2,7 +2,7 @@ import React from 'react';
 import ProductTable from '/src/components/layout/ProductTable/ProductTable';
 import { Link } from 'react-router-dom';
 
-function FirstStep({ next, back }) {
+function Products({ next, back }) {
     return (
         <>
             <ProductTable />
@@ -20,4 +20,4 @@ function FirstStep({ next, back }) {
     )
 }
 
-export default FirstStep;
+export default Products;

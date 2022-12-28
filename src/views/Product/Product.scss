@@ -3,6 +3,10 @@
 .product {
     &__container {
         padding: 2em;
+
+        .carousel {
+            padding: 0;
+        }
     }
 
     &__info {

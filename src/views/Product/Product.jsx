@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Product.scss';
 import { useParams } from 'react-router-dom';
 import Breadcrumbs from '/src/components/layout/Breadcrumbs/Breadcrumbs';
@@ -24,73 +24,82 @@ function Product() {
     } = useDialog();
 
     const { id } = useParams();
-    const product = products.find(product => product.id == id);
+    const [ product, setProduct ] = useState({});
     const randomProducts = getRandomProducts(product.id, 6);
     const addedProduct = cart[cart.length - 1];
 
+    useEffect(() => {
+        fetch(`http://localhost:8000/api/offer/${id}/`, {
+            method: 'GET'
+        })
+        .then(response => {
+            if(response.ok) {
+                return response.json();
+            }
+        })
+        .then(data => {
+            if(data) {
+                setProduct(data);
+            }
+        })
+        .catch(error => {
+            console.log('Error: ', error);
+        });
+    }, [id]);
+
     return (
         <main className='product'>
-            { product.title &&
-                <Breadcrumbs title={product.title} />
-            }
             { product &&
-                <div className='product__container'>
-                    <div className='product__info'>
-                        { product.img &&
+                <>
+                    <Breadcrumbs title={product.title} />
+                    <div className='product__container'>
+                        <div className='product__info'>
                             <div className='product__image'>
                                 <img src={product.img} alt='offer' />
                             </div>
-                        }
-                        <div className='product__content'>
-                            <div className='product__wrapper'>
-                                { product.title && 
-                                    <h1>{product.title}</h1> 
-                                }
-                                { product.amount_with_currency && 
+                            <div className='product__content'>
+                                <div className='product__wrapper'>
+                                    <h1>{product.title}</h1>  
                                     <h2>{product.amount_with_currency}</h2> 
-                                }
-                                { product.short_description && 
                                     <p>{product.short_description}</p> 
-                                }
+                                </div>
+                                <button className='btn btn--transparent'
+                                    onClick={() => {
+                                        const priceValue = parseInt(product.amount_with_currency.split(' ')[0]);
+
+                                        setCart({
+                                            type: ACTIONS.ADD_TO_CART,
+                                            payload: {
+                                                id: product.id,
+                                                img: product.img,
+                                                title: product.title,
+                                                price: product.amount_with_currency,
+                                                priceValue: priceValue
+                                            }
+                                        });
+
+                                        toggleDialog();
+                                    }}
+                                >
+                                    {'Dodaj do koszyka'}
+                                </button>
                             </div>
-                            <button className='btn btn--transparent'
-                                onClick={() => {
-                                    const priceValue = parseInt(product.amount_with_currency.split(' ')[0]);
-
-                                    setCart({
-                                        type: ACTIONS.ADD_TO_CART,
-                                        payload: {
-                                            id: product.id,
-                                            img: product.img,
-                                            title: product.title,
-                                            price: product.amount_with_currency,
-                                            priceValue: priceValue
-                                        }
-                                    });
-
-                                    toggleDialog();
-                                }}
-                            >
-                                {'Dodaj do koszyka'}
-                            </button>
                         </div>
-                    </div>
-                    { product.full_description &&
                         <div className='product__description'>
                             <h2>{'Opis'}</h2>
                             <p>{product.full_description}</p>
                         </div>
-                    }
-                    { products &&
-                        <Carousel 
-                            randomProducts={randomProducts}
-                            data={products}
-                            Block={Item}
-                            title={'Podobne produkty'}
-                            page={'oferta'}
-                        />
-                    }
-                </div>
+                        { products &&
+                            <Carousel 
+                                randomProducts={randomProducts}
+                                data={products}
+                                Block={Item}
+                                title={'Podobne produkty'}
+                                page={'oferta'}
+                            />
+                        }
+                    </div>
+                </>
             }
             { showDialog &&
                 <Dialog>

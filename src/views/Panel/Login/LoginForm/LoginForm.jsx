@@ -4,7 +4,7 @@ import './LoginForm.scss';
 import { useForm } from 'react-hook-form';
 import { useDialog } from '/src/contexts/DialogContext';
 
-function LoginForm({ title }) {
+function LoginForm() {
     const { setError } = useDialog();
     const { register, handleSubmit } = useForm();
 
@@ -31,12 +31,12 @@ function LoginForm({ title }) {
             console.log('Error: ', error);
             setError('Nieudane połączenie z serwerem');
         });
-    }
+    };
 
     return (
         <form className='login-form' onSubmit={handleSubmit(data => authenticateUser(data))}>
             <div className='login-form__wrapper'>
-                <h2>{title}</h2>
+                <h2>{'Logowanie'}</h2>
                 <label htmlFor='username'>
                     {'Email'}
                 </label>
@@ -45,7 +45,7 @@ function LoginForm({ title }) {
                     {'Hasło'}
                 </label>
                 <input {...register('password')} type='password' name='password' required />
-                <Link to={'XD'}>
+                <Link to={'#'}>
                     {'Przypomnij hasło'}
                 </Link>
             </div>

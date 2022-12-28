@@ -89,7 +89,7 @@ function ProductTable() {
                                                     id: item.id,
                                                     priceSum: priceSum
                                                 }
-                                            })
+                                            });
                                         }} 
                                     />
                                 </TableCell>

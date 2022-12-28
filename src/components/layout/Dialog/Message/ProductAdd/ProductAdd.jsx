@@ -38,7 +38,9 @@ function ProductAdd({ product }) {
                     {'< Kontynuuj zakupy'}
                 </button>
                 <Link to={'/koszyk'} onClick={toggleDialog}>
-                    <button className='btn'>{'Przejdź do koszyka >'}</button>
+                    <button className='btn'>
+                        {'Przejdź do koszyka >'}
+                    </button>
                 </Link>
             </div>
         </div>

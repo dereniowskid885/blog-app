@@ -1,7 +1,5 @@
 import React from 'react';
 import './ContactBlock.scss';
-import Phone from '/src/assets/phone.svg';
-import Email from '/src/assets/email.svg';
 import { FaRegCopy } from 'react-icons/fa';
 import ContactForm from '/src/views/Contact/ContactForm/ContactForm';
 
@@ -22,29 +20,21 @@ const copyToClipboard = e => {
 function ContactBlock({ data }) {
     return (
         <div className='contact-block'>
-            <div className='contact-block__content'>
-                { data.title && 
-                    <h2>{data.title}</h2> 
-                } 
-                { data.subtitle && 
-                    <h3>{data.subtitle}</h3> 
-                }
+            <div className='contact-block__content'> 
+                <h2>{data.title}</h2> 
+                <h3>{data.subtitle}</h3>
                 <div className='contact-block__info'>
                     <ul>
-                        { data.email &&
-                            <li>
-                                <img className='contact-block__icon' src={Email} alt='Email' />
-                                {data.email}
-                                <FaRegCopy onClick={copyToClipboard} />
-                            </li>
-                        }
-                        { data.phone &&
-                            <li>
-                                <img className='contact-block__icon' src={Phone} alt='Phone' />
-                                {data.phone}
-                                <FaRegCopy onClick={copyToClipboard} />
-                            </li>
-                        }
+                        <li>
+                            <img className='contact-block__icon' src='/src/assets/email.svg' alt='Email' />
+                            {'kolarstwoodkuchni@gmail.com'}
+                            <FaRegCopy onClick={copyToClipboard} />
+                        </li>
+                        <li>
+                            <img className='contact-block__icon' src='/src/assets/phone.svg' alt='Phone' />
+                            {'+48 515035890'}
+                            <FaRegCopy onClick={copyToClipboard} />
+                        </li>
                     </ul>
                 </div>
             </div>

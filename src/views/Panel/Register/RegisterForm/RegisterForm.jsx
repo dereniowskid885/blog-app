@@ -4,11 +4,12 @@ import { useForm } from 'react-hook-form';
 import { useDialog } from '/src/contexts/DialogContext';
 
 function RegisterForm({ hideRegister }) {
+    const { register, handleSubmit } = useForm();
+
     const { 
         setError,
         toggleDialog
     } = useDialog();
-    const { register, handleSubmit } = useForm();
 
     const registerUser = data => {
         fetch('http://localhost:8000/api/user/registration', {
@@ -27,7 +28,7 @@ function RegisterForm({ hideRegister }) {
             console.log('Error: ', error);
             setError('Nieudane połączenie z serwerem');
         });
-    }
+    };
 
     return (
         <form className='register-form' onSubmit={handleSubmit(data => registerUser(data))}>

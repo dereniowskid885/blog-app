@@ -2,6 +2,7 @@ import React from 'react';
 import './ContactForm.scss';
 import { useForm } from 'react-hook-form';
 import { useDialog } from '/src/contexts/DialogContext';
+import FormInput from '/src/components/other/FormInput/FormInput';
 
 function ContactForm() {
     const { 
@@ -31,21 +32,10 @@ function ContactForm() {
 
     return (
         <form className='contact-form' onSubmit={handleSubmit(data => sendMail(data))}>
-            <label htmlFor='first_and_last_name'>
-                {'Imię i Nazwisko *'}
-            </label>
-            <input {...register('first_and_last_name')} type='text' name='first_and_last_name' required />
-            <label htmlFor='email'>
-                {'Twój Email *'}
-            </label>
-            <input {...register('email')} type='text' name='email' required />
-            <label htmlFor='phone'>
-                {'Numer telefonu *'}
-            </label>
-            <input {...register('phone')} type='text' name='phone' required />
-            <label htmlFor='message'>
-                {'Wiadomość *'}
-            </label>
+            <FormInput id={'first_and_last_name'} label={'Imię i Nazwisko *'} type={'text'} register={{...register('first_and_last_name')}} />
+            <FormInput id={'email'} label={'Twój Email *'} type={'text'} register={{...register('email')}} />
+            <FormInput id={'phone'} label={'Numer telefonu *'} type={'text'} register={{...register('phone')}} />
+            <label htmlFor='message'>{'Wiadomość *'}</label>
             <textarea {...register('message')} name='message' maxLength={300} placeholder={'Treść wiadomości...'} required />
             <button className='btn' type='submit'>
                 {'Wyślij'}

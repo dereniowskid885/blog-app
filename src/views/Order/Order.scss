@@ -1,0 +1,33 @@
+@use '/src/scss/index' as *;
+@use '/src/views/Cart/Summary/Summary.scss';
+
+.order {
+    @extend .gray-block;
+
+    h1 {
+        text-align: center;
+    }
+
+    &__error {
+        @extend .gray-block__container;
+        flex-grow: 1;
+    }
+
+    &__content {
+        @extend .summary;
+        padding: 2em;
+    }
+
+    &__product-img {
+        @extend .summary__product-img;
+    }
+
+    &__order,
+    &__products {
+        margin-bottom: 2em;
+    }
+
+    &__buttons {
+        text-align: center;
+    }
+}

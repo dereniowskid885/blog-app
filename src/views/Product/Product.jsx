@@ -7,7 +7,7 @@ import Item from '/src/components/layout/Carousel/Item/Item';
 import { useCart } from '/src/contexts/CartContext';
 import { useDialog } from '/src/contexts/DialogContext';
 import Dialog from '/src/components/layout/Dialog/Dialog';
-import getRandomProducts from '/src/components/ProductRandomizer/ProductRandomizer';
+import getRandomProducts from '/src/components/other/ProductRandomizer/ProductRandomizer';
 import ProductAdd from '/src/components/layout/Dialog/Message/ProductAdd/ProductAdd';
 
 function Product() {

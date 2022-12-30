@@ -2,7 +2,7 @@ import React from 'react';
 import { useCart } from '/src/contexts/CartContext';
 import './Summary.scss';
 
-function Summary({ next, back, order }) {
+function Summary({ next, back, orderForm }) {
     const { 
         state: {
             cart,
@@ -13,14 +13,29 @@ function Summary({ next, back, order }) {
     } = useCart();
 
     const finishOrder = () => {
-        setCart({ type: ACTIONS.CLEAR_CART });
+        const cartProducts = [];
+
+        cart.forEach(product => {
+            const { id, quantity } = product;
+
+            cartProducts.push({ id, quantity });
+        });
+
+        const order = {
+            form: orderForm,
+            order: {
+                products: cartProducts,
+                sum: orderSum
+            }
+        };
+        
+        console.log(order);
+
         // todo api call
 
-
+        setCart({ type: ACTIONS.CLEAR_CART });
         next();
     };
-
-    console.log(cart, order);
 
     return (
         <>
@@ -48,19 +63,19 @@ function Summary({ next, back, order }) {
                     <div className='summary__info'>
                         <div className='summary__column'>
                             <h4>{'Dane'}</h4>
-                            <p>{order.first_and_last_name}</p>
-                            <p>{order.street}</p>
-                            <p>{order.postal_code}{' '}{order.city}</p>
-                            <p>{order.email}</p>
-                            <p>{order.phone}</p>
+                            <p>{orderForm.first_name}{' '}{orderForm.last_name}</p>
+                            <p>{orderForm.street}{' '}{orderForm.house_number}</p>
+                            <p>{orderForm.post_code}{' '}{orderForm.city}</p>
+                            <p>{orderForm.email}</p>
+                            <p>{orderForm.phone}</p>
                         </div>
                         <div className='summary__column'>
                             <h4>{'Informacje dodatkowe'}</h4>
-                            <p>{order.info}</p>
+                            <p>{orderForm.info}</p>
                         </div>
                         <div className='summary__column'>
                             <h4>{'Sposób płatności'}</h4>
-                            <p>{order.payment_method}</p>
+                            <p>{orderForm.payment_method}</p>
                         </div>
                         <div className='summary__column'>
                             <h4>{'Suma'}</h4>

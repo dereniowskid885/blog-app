@@ -15,8 +15,15 @@
         justify-content: center;
         padding: 5em 2em;
         @include max-width($bp-tablet) {
-            padding: 4em 2em;
+            padding: 2em;
             align-items: center;
+        }
+    }
+
+    &__image {
+        max-width: 60%;
+        @include max-width($bp-tablet) {
+            max-width: 100%;
         }
     }
 }

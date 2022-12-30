@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './Header.scss';
 import { Link } from 'react-router-dom';
 import Logo from '/src/assets/logo.jpg';
-import Links from '../../Links/Links';
+import Links from '/src/components/other/Links/Links';
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
 import Overlay from '../Overlay/Overlay';
 

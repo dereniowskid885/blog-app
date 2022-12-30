@@ -85,6 +85,14 @@ form {
             font-size: 1rem;
         }
     }
+
+    input {
+        padding: 1em;
+    }
+
+    a {
+        width: fit-content;
+    }
 }
 
 .btn {
@@ -127,4 +135,28 @@ form {
 
 .message {
     text-align: center;
+}
+
+.form-input {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    display: grid;
+    column-gap: 1em;
+    grid-template-columns: 1fr 1fr;
+    min-width: 100%;
+}
+
+.form-element {
+    display: flex;
+    flex-direction: column;
+    min-width: 100%;
+}
+
+.form-info {
+    font-size: 0.9rem;
+    text-align: center;
+    margin-bottom: 1em;
 }

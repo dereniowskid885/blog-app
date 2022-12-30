@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './BlogPost.scss';
 import { useParams } from 'react-router-dom';
 import Breadcrumbs from '/src/components/layout/Breadcrumbs/Breadcrumbs';
-import homeData from '/src/data/Home.js';
+import contactData from '/src/data/ContactBlock.js';
 import Carousel from '/src/components/layout/Carousel/Carousel';
 import Item from '/src/components/layout/Carousel/Item/Item';
 import ContactBlock from '/src/components/layout/ContactBlock/ContactBlock';
@@ -66,7 +66,7 @@ function BlogPost() {
                     Block={Item} 
                 />
             }
-            <ContactBlock data={homeData.contactBlock} />
+            <ContactBlock data={contactData} />
         </main>
     );
 }

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './ProductAdd.scss';
 import Carousel from '/src/components/layout/Carousel/Carousel';
 import Item from '/src/components/layout/Carousel/Item/Item';
-import getRandomProducts from '/src/components/ProductRandomizer/ProductRandomizer';
+import getRandomProducts from '/src/components/other/ProductRandomizer/ProductRandomizer';
 import { useCart } from '/src/contexts/CartContext';
 import { useDialog } from '/src/contexts/DialogContext';
 

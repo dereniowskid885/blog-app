@@ -1,21 +1,10 @@
 @use '/src/scss/index' as *;
 
 .login-form {
-    height: 100%;
-    justify-content: space-between;
-
     &__wrapper {
         display: flex;
         flex-direction: column;
         margin-bottom: 2em;
-    }
-
-    input {
-        padding: 1em;
-    }
-
-    a {
-        width: fit-content;
     }
 
     &__button {

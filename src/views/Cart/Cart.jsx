@@ -3,14 +3,14 @@ import './Cart.scss';
 import { Link } from 'react-router-dom';
 import Breadcrumbs from '/src/components/layout/Breadcrumbs/Breadcrumbs';
 import { useCart } from '/src/contexts/CartContext';
-import ShopSteps from '/src/components/layout/ShopSteps/ShopSteps';
-import Products from './Products/Products';
-import Order from './Order/Order';
+import ShopSteps from './ShopSteps/ShopSteps';
+import CartProducts from './CartProducts/CartProducts';
+import OrderForm from './OrderForm/OrderForm';
 import Summary from './Summary/Summary';
 import Confirm from './Confirm/Confirm';
 
 function Cart() {
-    const [ order, setOrder ] = useState({});
+    const [ orderForm, setOrderForm ] = useState({});
     const [ cartStep, setCartStep ] = useState(1);
     const { state: { cart } } = useCart();
     const isCartFilled = cart.length > 0;
@@ -34,23 +34,23 @@ function Cart() {
                             <ShopSteps cartStep={cartStep} />
                         }
                         { cartStep === 1 &&
-                            <Products
+                            <CartProducts
                                 next={nextStep}
                                 back={backStep}
                             />
                         }
                         { cartStep === 2 &&
-                            <Order
+                            <OrderForm
                                 next={nextStep}
                                 back={backStep}
-                                setOrder={setOrder}
+                                setOrderForm={setOrderForm}
                             />
                         }
                         { cartStep === 3 &&
                             <Summary
                                 next={nextStep}
                                 back={backStep}
-                                order={order}
+                                orderForm={orderForm}
                             />
                         }
                     </div>
@@ -62,7 +62,7 @@ function Cart() {
                     <div className='cart__empty'>
                         <h2>{'Twój koszyk jest aktualnie pusty'}</h2>
                         <Link to={'/oferta'}>
-                            <button className='btn'>
+                            <button className='btn btn--transparent'>
                                 {'Wróć do zakupów'}
                             </button>
                         </Link>

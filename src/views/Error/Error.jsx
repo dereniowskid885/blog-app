@@ -17,7 +17,7 @@ function Error({ isAPI }) {
                     <h1>{page.title}</h1>
                     { page.buttonText &&
                         <Link to={'/'}>
-                            <button className='btn'>
+                            <button className='btn btn--transparent'>
                                 {page.buttonText}
                             </button>
                         </Link>

@@ -8,7 +8,7 @@
     background-color: #e7e7e7;
     font-size: 1.1rem;
     @include max-width($bp-desktop) {
-        font-size: 1rem;
+        font-size: 0.9rem;
     }
     @include max-width($bp-tablet) {
         flex-direction: column-reverse;
@@ -29,9 +29,9 @@
     }
 
     &__image {
-        width: 50%;
+        max-width: 60%;
         @include max-width($bp-tablet) {
-            width: 100%;
+            max-width: 100%;
         }
     }
 

@@ -2,6 +2,9 @@ import React from 'react';
 import './RegisterForm.scss';
 import { useForm } from 'react-hook-form';
 import { useDialog } from '/src/contexts/DialogContext';
+import FormInput from '/src/components/other/FormInput/FormInput';
+
+const termsLabel = '* Oświadczam, że zapoznałem(-am) się i akceptuję treść regulaminu.';
 
 function RegisterForm({ hideRegister }) {
     const { register, handleSubmit } = useForm();
@@ -34,35 +37,34 @@ function RegisterForm({ hideRegister }) {
         <form className='register-form' onSubmit={handleSubmit(data => registerUser(data))}>
             <div className='register-form__wrapper'>
                 <h2>{'Załóż konto'}</h2>
-                <label htmlFor='first_name'>
-                    {'Imię'}
-                </label>
-                <input {...register('first_name')} type='text' name='first_name' required />
-                <label htmlFor='last_name'>
-                    {'Nazwisko'}
-                </label>
-                <input {...register('last_name')} type='text' name='last_name' required />
-                <label htmlFor='email'>
-                    {'Email'}
-                </label>
-                <input {...register('email')} type='text' name='email' required />
-                <div className='register-form__info'>
+                <FormInput id={'first_name'} label={'Imię *'} type={'text'} register={{...register('first_name')}} />
+                <FormInput id={'last_name'} label={'Nazwisko *'} type={'text'} register={{...register('last_name')}} />
+                <div className='form-group'>
+                    <div className='form-element'>
+                        <FormInput id={'street'} label={'Ulica *'} type={'text'} register={{...register('street')}} />
+                    </div>
+                    <div className='form-element'>
+                        <FormInput id={'house_number'} label={'Numer budynku *'} type={'text'} register={{...register('house_number')}} />
+                    </div>
+                </div>
+                <div className='form-group'>
+                    <div className='form-element'>
+                        <FormInput id={'post_code'} label={'Kod pocztowy *'} type={'text'} register={{...register('post_code')}} />
+                    </div>
+                    <div className='form-element'>
+                        <FormInput id={'city'} label={'Miasto *'} type={'text'} register={{...register('city')}} />
+                    </div>
+                </div>
+                <FormInput id={'email'} label={'Email *'} type={'text'} register={{...register('email')}} />
+                <FormInput id={'phone'} label={'Numer telefonu *'} type={'text'} register={{...register('phone')}} />
+                <div className='form-info'>
                     <h3>{'Hasło musi zawierać:'}</h3>
                     {'• min. 8 znaków • mała litera • wielka litera • cyfra •'}
                 </div>
-                <label htmlFor='password'>
-                    {'Hasło'}
-                </label>
-                <input {...register('password')} type='password' name='password' required />
-                <label htmlFor='password_repeat'>
-                    {'Powtórz hasło'}
-                </label>
-                <input {...register('password_repeat')} type='password' name='password_repeat' required />
+                <FormInput id={'password'} label={'Hasło *'} type={'text'} register={{...register('password')}} />
+                <FormInput id={'password_repeat'} label={'Powtórz hasło *'} type={'text'} register={{...register('password_repeat')}} />
                 <div className='register-form__check'>
-                    <label htmlFor='are_service_terms_approved'>
-                        {'* Oświadczam, że zapoznałem(-am) się i akceptuję treść regulaminu.'}
-                    </label>
-                    <input {...register('are_service_terms_approved')} type='checkbox' name='are_service_terms_approved' required />
+                    <FormInput id={'are_service_terms_approved'} label={termsLabel} type={'checkbox'} register={{...register('are_service_terms_approved')}} />
                 </div>
             </div>
             <div className='register-form__button'>

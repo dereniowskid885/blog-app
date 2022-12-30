@@ -4,8 +4,9 @@ import ContactBlock from '/src/components/layout/ContactBlock/ContactBlock';
 import Hero from '/src/components/layout/Hero/Hero';
 import Carousel from '/src/components/layout/Carousel/Carousel';
 import data from '/src/data/Home';
-import ContentBlock from '/src/components/layout/ContentBlock/ContentBlock';
+import contactData from '/src/data/ContactBlock';
 import OpinionItem from '/src/components/layout/Carousel/OpinionItem/OpinionItem';
+import ContentBlock from '/src/components/layout/ContentBlock/ContentBlock';
 
 function Home() {
     const [ contentBlocks, setContentBlocks ] = useState([]);
@@ -62,7 +63,7 @@ function Home() {
                     title={'Opinie moich podopiecznych'}
                 />
             }
-            <ContactBlock data={data.contactBlock} />
+            <ContactBlock data={contactData} />
         </main>
     );
 }

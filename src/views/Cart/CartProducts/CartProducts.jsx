@@ -1,8 +1,8 @@
 import React from 'react';
-import ProductTable from '/src/components/layout/ProductTable/ProductTable';
+import ProductTable from './ProductTable/ProductTable';
 import { Link } from 'react-router-dom';
 
-function Products({ next, back }) {
+function CartProducts({ next, back }) {
     return (
         <>
             <ProductTable />
@@ -20,4 +20,4 @@ function Products({ next, back }) {
     )
 }
 
-export default Products;
+export default CartProducts;

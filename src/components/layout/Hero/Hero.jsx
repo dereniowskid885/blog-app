@@ -6,12 +6,16 @@ function Hero({ data }) {
     return (
         <div className='hero'>
             <div className='hero__content'>
-                <h1 className='hero__title'>
-                    {data.title}
-                </h1>
-                <h2 className='hero__sub-title'>
-                    {data.subtitle}
-                </h2>
+                { data.title &&
+                    <h1 className='hero__title'>
+                        {data.title}
+                    </h1>
+                }
+                { data.subtitle &&
+                    <h2 className='hero__sub-title'>
+                        {data.subtitle}
+                    </h2>
+                }
                 { data.logo && 
                     <img className='hero__logo' src={data.logo} alt='Logo' />
                 }

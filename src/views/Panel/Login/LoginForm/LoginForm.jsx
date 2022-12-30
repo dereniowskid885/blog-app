@@ -1,8 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Form, Link } from 'react-router-dom';
 import './LoginForm.scss';
 import { useForm } from 'react-hook-form';
 import { useDialog } from '/src/contexts/DialogContext';
+import FormInput from '/src/components/other/FormInput/FormInput';
 
 function LoginForm() {
     const { setError } = useDialog();
@@ -37,14 +38,8 @@ function LoginForm() {
         <form className='login-form' onSubmit={handleSubmit(data => authenticateUser(data))}>
             <div className='login-form__wrapper'>
                 <h2>{'Logowanie'}</h2>
-                <label htmlFor='username'>
-                    {'Email'}
-                </label>
-                <input {...register('username')} type='text' name='username' required />
-                <label htmlFor='password'>
-                    {'Hasło'}
-                </label>
-                <input {...register('password')} type='password' name='password' required />
+                <FormInput id={'username'} label={'Email'} type={'text'} register={{...register('username')}} />
+                <FormInput id={'password'} label={'Hasło'} type={'password'} register={{...register('password')}} />
                 <Link to={'#'}>
                     {'Przypomnij hasło'}
                 </Link>

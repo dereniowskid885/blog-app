@@ -43,7 +43,6 @@
             grid-template-columns: repeat(3, 1fr);
             column-gap: 1em;
             row-gap: 3em;
-            justify-items: center;
             @include max-width($bp-laptop) {
                 grid-template-columns: repeat(2, 1fr);
             }

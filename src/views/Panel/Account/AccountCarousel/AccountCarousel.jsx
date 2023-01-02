@@ -8,12 +8,12 @@ const breakPoints = [
     { width: 1, itemsToShow: 1, itemstoScroll: 1}
 ]
 
-function AccountCarousel({ user }) {
+function AccountCarousel() {
     return (
         <div className='panel-carousel'>
             <ElasticCarousel itemPadding={[0, 10]} breakPoints={breakPoints}>
                 <AccountOrders />
-                <AccountSettings user={user} />
+                <AccountSettings />
             </ElasticCarousel>
         </div>
     );

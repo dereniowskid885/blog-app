@@ -1,8 +1,10 @@
 import React from 'react';
 import './Account.scss';
 import AccountCarousel from './AccountCarousel/AccountCarousel';
+import { useUser } from '/src/contexts/UserContext';
 
-function Account({ user }) {
+function Account() {
+    const { user } = useUser();
     const token = localStorage.getItem('authToken');
 
     const logOut = () => {
@@ -20,15 +22,19 @@ function Account({ user }) {
     };
 
     return (
-        <div className='account'>
-            <h1>{`Witaj ${user.first_name}!`}</h1>
-            <div className='account__content'>
-                <AccountCarousel user={user} />
-            </div>
-            <button className='btn' onClick={logOut}>
-                {'Wyloguj'}
-            </button>
-        </div>
+        <>
+            { user.first_name &&
+                <div className='account'>
+                    <h1>{`Witaj ${user.first_name}!`}</h1>
+                    <div className='account__content'>
+                        <AccountCarousel />
+                    </div>
+                    <button className='btn' onClick={logOut}>
+                        {'Wyloguj'}
+                    </button>
+                </div>
+            }
+        </>
     );
 }
 

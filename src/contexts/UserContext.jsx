@@ -11,8 +11,6 @@ function UserContext({ children }) {
             return;
         }
 
-        console.log('XD');
-
         fetch('http://localhost:8000/api/user/', {
             method: 'GET',
             headers: { 'Authorization': `Token ${token}` }
@@ -20,6 +18,8 @@ function UserContext({ children }) {
         .then(response => {
             if (response.ok) {
                 return response.json();
+            } else {
+                localStorage.removeItem('authToken');
             }
         })
         .then(data => {

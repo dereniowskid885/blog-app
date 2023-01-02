@@ -8,7 +8,7 @@ import Account from '/src/views/Panel/Account/Account';
 import Login from '/src/views/Panel/Login/Login';
 import Register from '/src/views/Panel/Register/Register';
 
-function Panel({ user }) {
+function Panel() {
     const [ isRegister, setRegister ] = useState(false);
     const { showDialog } = useDialog();
     const token = localStorage.getItem('authToken');
@@ -21,7 +21,7 @@ function Panel({ user }) {
         <main className='panel'>
             <Breadcrumbs title={'Panel klienta'} />
             { token ?
-                <Account user={user} />
+                <Account />
             :
                 <div className='panel__container'>
                     { isRegister ?

@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 import { useCart } from '/src/contexts/CartContext';
+import { useDialog } from '/src/contexts/DialogContext';
+import Loading from '/src/components/other/Loading/Loading';
+import ScrollToTop from '/src/components/other/ScrollToTop/ScrollToTop';
 import './Summary.scss';
 
-function Summary({ next, back, orderForm }) {
+function Summary({ next, back, orderForm, setErrors, goToForm }) {
+    const [ isLoading, setLoading ] = useState(false);
+    const additional_info = orderForm.info.length > 0 ? orderForm.info : 'Brak';
+    const navigate = useNavigate();
+
     const { 
         state: {
             cart,
@@ -12,47 +20,84 @@ function Summary({ next, back, orderForm }) {
         ACTIONS
     } = useCart();
 
+    const { setError } = useDialog();
+
     const finishOrder = () => {
-        const cartProducts = [];
+        const products = [];
+
+        setLoading(true);
 
         cart.forEach(product => {
             const { id, quantity } = product;
 
-            cartProducts.push({ id, quantity });
+            products.push({ id, quantity });
         });
 
-        const order = {
-            form: orderForm,
-            order: {
-                products: cartProducts,
-                sum: orderSum
-            }
+        const data = {
+            first_name: orderForm.first_name,
+            last_name: orderForm.last_name,
+            street: orderForm.street,
+            house_number: orderForm.house_number,
+            post_code: orderForm.post_code,
+            city: orderForm.city,
+            email: orderForm.email,
+            phone: orderForm.phone,
+            are_service_terms_accepted: orderForm.are_service_terms_approved,
+            payment_method: orderForm.payment_method,
+            additional_info: additional_info,
+            products: products,
+            sum: orderSum
         };
         
-        console.log(order);
-
-        // todo api call
-
-        setCart({ type: ACTIONS.CLEAR_CART });
-        next();
+        fetch('http://localhost:8000/api/order/make-order', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        })
+        .then(response => {
+            if (response.ok) {
+                setCart({ type: ACTIONS.CLEAR_CART });
+                setLoading(false);
+                next();
+            } else {
+                return response.json();
+            }
+        })
+        .then(data => {
+            console.log(data);
+            if (data) {
+                setLoading(false);
+                setErrors(data.invalid_fields);
+                goToForm();
+            }
+        })
+        .catch(error => {
+            setCart({ type: ACTIONS.CLEAR_CART });
+            console.log('Error: ', error);
+            setError('Nieudane połączenie z serwerem');
+            navigate('/oferta');
+        });
     };
 
     return (
         <>
             <div className='summary'>
                 <div className='summary__products'>
-                    <h2>{'Twoje zamówienie'}</h2>
+                    <h2>{'Produkty'}</h2>
                     <ul>
                         {cart.map(product => {
                             return (
                                 <li key={product.id}>
-                                    <div className='summary__product-img'>
-                                        <img src={product.img} alt='product' />
-                                    </div>
-                                    <div className='summary__product-info'>
-                                        <h4>{product.title}</h4>
-                                        <h4>{product.price}</h4>
-                                    </div>
+                                    <Link to={`/oferta/${product.id}`}>
+                                        <div className='summary__product-img'>
+                                            <img src={product.img} alt='product' />
+                                        </div>
+                                        <div className='summary__product-info'>
+                                            <h4>{product.title}</h4>
+                                            <h4>{product.price}</h4>
+                                            <h4>{'Ilość: '}{product.quantity}</h4>
+                                        </div>
+                                    </Link>
                                 </li>
                             );
                         })}
@@ -71,7 +116,7 @@ function Summary({ next, back, orderForm }) {
                         </div>
                         <div className='summary__column'>
                             <h4>{'Informacje dodatkowe'}</h4>
-                            <p>{orderForm.info}</p>
+                            <p>{additional_info}</p>
                         </div>
                         <div className='summary__column'>
                             <h4>{'Sposób płatności'}</h4>
@@ -92,6 +137,12 @@ function Summary({ next, back, orderForm }) {
                     {'Zatwierdź >'}
                 </button>
             </div>
+            { isLoading &&
+                <>
+                    <ScrollToTop />
+                    <Loading />
+                </>
+            }
         </>
     );
 }

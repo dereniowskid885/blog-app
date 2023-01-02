@@ -37,21 +37,23 @@ function Blog() {
                         {posts.map(item => {
                             return (
                                 <li key={item.id}>
-                                    <Link to={`/blog/${item.id}`}>
-                                        <div className='blog__post-container'>
-                                            <div className='blog__post-image'>
-                                                <img src={item.img} alt='post' />
+                                    { item.img &&
+                                        <Link to={`/blog/${item.id}`}>
+                                            <div className='blog__post-container'>
+                                                <div className='blog__post-image'>
+                                                    <img src={item.img} alt='post' />
+                                                </div>
+                                                <div className='blog__post-content'>
+                                                    <div className='blog__post-title'>
+                                                        {item.title}
+                                                    </div> 
+                                                    <div className='blog__post-date'>
+                                                        {item.date}
+                                                    </div> 
+                                                </div>
                                             </div>
-                                            <div className='blog__post-content'>
-                                                <div className='blog__post-title'>
-                                                    {item.title}
-                                                </div> 
-                                                <div className='blog__post-date'>
-                                                    {item.date}
-                                                </div> 
-                                            </div>
-                                        </div>
-                                    </Link>
+                                        </Link>
+                                    }
                                 </li>
                             );
                         })}

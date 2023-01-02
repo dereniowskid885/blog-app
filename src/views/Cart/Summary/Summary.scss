@@ -2,9 +2,11 @@
 
 .summary {
     &__product-img {
-        max-height: 150px;
-        max-width: 150px;
+        max-width: 200px;
         margin-right: 2em;
+        @include max-width($bp-mobile) {
+            display: none;
+        }
     }
     
     &__info {
@@ -29,10 +31,18 @@
     }
 
     li {
-        display: flex;
-
         &:not(:last-of-type) {
             margin-bottom: 1em;
+        }
+
+        a {
+            display: flex;
+            opacity: 0.8;
+            transition: .5s;
+
+            &:hover {
+                opacity: 1;
+            }
         }
     }
 

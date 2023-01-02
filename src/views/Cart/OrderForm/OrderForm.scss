@@ -44,6 +44,16 @@
         p {
             margin-bottom: 1em;
         }
+
+        .form-input {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: flex-end;
+    
+            input {
+                margin-right: 10px;
+            }
+        }
     }
 
     &__wrapper {
@@ -78,5 +88,9 @@
         display: flex;
         justify-content: space-between;
         margin-bottom: 5em;
+    }
+
+    .form-info {
+        justify-content: flex-start;
     }
 }

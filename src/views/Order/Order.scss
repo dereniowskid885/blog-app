@@ -6,6 +6,7 @@
 
     h1 {
         text-align: center;
+        margin-bottom: 1.5em;
     }
 
     &__error {
@@ -22,9 +23,13 @@
         @extend .summary__product-img;
     }
 
-    &__order,
+    &__info,
     &__products {
         margin-bottom: 2em;
+    }
+
+    &__wrapper {
+        @extend .summary__info;
     }
 
     &__buttons {

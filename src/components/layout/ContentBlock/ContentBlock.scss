@@ -28,12 +28,19 @@
         flex-direction: column;
         justify-content: center;
         padding: 2em 0;
+        max-width: 50%;
+        margin-left: auto;
         @include max-width($bp-tablet) {
             padding: 2em 0 0;
+            max-width: 100%;
 
             a {
                 text-align: center;
             }
+        }
+
+        &--reverse {
+            margin-left: initial;
         }
     }
 

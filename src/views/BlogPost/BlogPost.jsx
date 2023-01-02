@@ -35,7 +35,7 @@ function BlogPost() {
 
     return (
         <main className='blog-post'>
-            { post &&
+            { post.title &&
                 <>  
                     <Breadcrumbs title={post.title} />
                     <div className='blog-post__container'>

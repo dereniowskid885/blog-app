@@ -41,7 +41,9 @@ function ProductTable() {
                             <TableRow key={item.id}>
                                 <TableCell>
                                     <div className='product-table__item'>
-                                        <img src={item.img} alt='product' />
+                                        <div className='product-table__img'>
+                                            <img src={item.img} alt='product' />
+                                        </div>
                                         <div className='product-table__title'>
                                             {item.title}
                                         </div>

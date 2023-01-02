@@ -27,11 +27,14 @@
     &__item {
         display: flex;
         align-items: center;
+    }
+
+    &__img {
+        width: 350px;
+        height: 150px;
+        margin-right: 1em;
 
         img {
-            width: 200px;
-            height: 150px;
-            margin-right: 1em;
             object-fit: contain;
         }
     }

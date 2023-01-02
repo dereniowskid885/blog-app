@@ -32,9 +32,9 @@ function ContactForm() {
 
     return (
         <form className='contact-form' onSubmit={handleSubmit(data => sendMail(data))}>
-            <FormInput id={'first_and_last_name'} label={'Imię i Nazwisko *'} type={'text'} register={{...register('first_and_last_name')}} />
-            <FormInput id={'email'} label={'Twój Email *'} type={'text'} register={{...register('email')}} />
-            <FormInput id={'phone'} label={'Numer telefonu *'} type={'text'} register={{...register('phone')}} />
+            <FormInput id={'first_and_last_name'} label={'Imię i Nazwisko *'} type={'text'} maxLength={100} register={{...register('first_and_last_name')}} />
+            <FormInput id={'email'} label={'Twój Email *'} type={'text'} maxLength={100} register={{...register('email')}} />
+            <FormInput id={'phone'} label={'Numer telefonu *'} type={'text'} maxLength={9} register={{...register('phone')}} />
             <label htmlFor='message'>{'Wiadomość *'}</label>
             <textarea {...register('message')} name='message' maxLength={300} placeholder={'Treść wiadomości...'} required />
             <button className='btn' type='submit'>

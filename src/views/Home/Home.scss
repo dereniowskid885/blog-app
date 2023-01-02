@@ -1,7 +1,7 @@
 @use '/src/scss/index' as *;
 
-.home .hero {
-    &__logo {
+.home {
+    .hero__logo {
         width: 410px;
         height: 98px;
         margin-bottom: 2em;

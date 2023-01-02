@@ -29,7 +29,7 @@
     }
 
     &__image {
-        max-width: 60%;
+        max-width: 55%;
         @include max-width($bp-tablet) {
             max-width: 100%;
         }

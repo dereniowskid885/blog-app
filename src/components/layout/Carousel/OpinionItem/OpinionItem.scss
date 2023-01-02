@@ -1,7 +1,12 @@
+@use '/src/scss/index' as *;
+
 .opinion-item {
     padding: 2em;
-    width: 100%;
+    max-width: 50%;
     border: 2px solid lightgray;
+    @include max-width($bp-mobile) {
+        max-width: 100%;
+    }
 
     &__header {
         display: flex;

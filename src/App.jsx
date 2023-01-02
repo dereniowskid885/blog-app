@@ -5,6 +5,7 @@ import Footer from '/src/components/layout/Footer/Footer';
 import Loading from '/src/components/other/Loading/Loading';
 import ScrollToTop from '/src/components/other/ScrollToTop/ScrollToTop';
 import BlogContext from '/src/contexts/BlogContext';
+import UserContext from '/src/contexts/UserContext';
 
 const Home = lazy(() => import('/src/views/Home/Home'));
 const About = lazy(() => import('/src/views/About/About'));
@@ -20,9 +21,7 @@ const Regulations = lazy(() => import('/src/views/Regulations/Regulations'));
 const Order = lazy(() => import('/src/views/Order/Order'));
 
 function App() {
-    const [ user, setUser ] = useState({});
     const [ isAPI, setAPI ] = useState(false);
-    const token = localStorage.getItem('authToken');
 
     useEffect(() => {
         fetch('http://localhost:8000/api/offer/', {
@@ -36,26 +35,6 @@ function App() {
         .catch(error => {
             console.log('Error: ', error);
         });
-
-        if (!token) {
-            return;
-        }
-
-        fetch('http://localhost:8000/api/user/', {
-            method: 'GET',
-            headers: { 'Authorization': `Token ${token}` }
-        })
-        .then(response => {
-            if (response.ok) {
-                return response.json();
-            }
-        })
-        .then(data => {
-            if (data) {
-                setUser(data[0]);
-            }
-        })
-        .catch(error => console.log('Error: ', error));
     }, []);
 
     return (
@@ -90,8 +69,20 @@ function App() {
                                     </BlogContext>
                                 }
                             />
-                            <Route path='/panel-klienta' element={<Panel user={user} />} />
-                            <Route path='/koszyk' element={<Cart />} />
+                            <Route path='/panel-klienta' 
+                                element={
+                                    <UserContext>
+                                        <Panel />
+                                    </UserContext>
+                                }
+                            />
+                            <Route path='/koszyk'
+                                element={
+                                    <UserContext>
+                                        <Cart />
+                                    </UserContext>
+                                }
+                            />
                             <Route path='/kontakt' element={<Contact />} />
                             <Route path='/regulamin' element={<Regulations page={'regulations'} />} />
                             <Route path='/sposoby-platnosci' element={<Regulations page={'payment-methods'} />} />

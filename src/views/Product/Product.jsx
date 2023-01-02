@@ -49,7 +49,7 @@ function Product() {
 
     return (
         <main className='product'>
-            { product &&
+            { product.img &&
                 <>
                     <Breadcrumbs title={product.title} />
                     <div className='product__container'>

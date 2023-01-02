@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './LoginForm.scss';
 import { useForm } from 'react-hook-form';
 import { useDialog } from '/src/contexts/DialogContext';
@@ -16,16 +16,14 @@ function LoginForm() {
             body: JSON.stringify(data)
         })
         .then(response => {
-            if(!response.ok) {
-                setError('Logowanie nieudane, spróbuj ponownie');
-            } else {
-                return response.json();
-            }
+            return response.json();
         })
         .then(data => {
-            if (data) {
+            if (data.invalid_fields) {
+                setError(data.invalid_fields.non_field_errors);
+            } else {
                 localStorage.setItem('authToken', data.token);
-                window.location.href= '/panel-klienta';
+                window.location.href = '/panel-klienta';
             }
         })
         .catch(error => {
@@ -38,8 +36,8 @@ function LoginForm() {
         <form className='login-form' onSubmit={handleSubmit(data => authenticateUser(data))}>
             <div className='login-form__wrapper'>
                 <h2>{'Logowanie'}</h2>
-                <FormInput id={'username'} label={'Email'} type={'text'} register={{...register('username')}} />
-                <FormInput id={'password'} label={'Hasło'} type={'password'} register={{...register('password')}} />
+                <FormInput id={'username'} label={'Email'} type={'text'} maxLength={100} register={{...register('username')}} />
+                <FormInput id={'password'} label={'Hasło'} type={'password'} minLength={8} maxLength={50} register={{...register('password')}} />
                 <Link to={'#'}>
                     {'Przypomnij hasło'}
                 </Link>

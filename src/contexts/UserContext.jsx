@@ -11,7 +11,7 @@ function UserContext({ children }) {
             return;
         }
 
-        fetch('http://localhost:8000/api/user/', {
+        fetch(`${import.meta.env.VITE_API_URL}/api/user/`, {
             method: 'GET',
             headers: { 'Authorization': `Token ${token}` }
         })
@@ -20,6 +20,7 @@ function UserContext({ children }) {
                 return response.json();
             } else {
                 localStorage.removeItem('authToken');
+                window.location.reload();
             }
         })
         .then(data => {

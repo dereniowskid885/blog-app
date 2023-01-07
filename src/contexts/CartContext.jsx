@@ -13,7 +13,7 @@ function CartContext({ children }) {
     const [ products, setProducts ] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:8000/api/offer/', {
+        fetch(`${import.meta.env.VITE_API_URL}/api/offer/`, {
             method: 'GET'
         })
         .then(response => {

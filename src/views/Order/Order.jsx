@@ -9,7 +9,7 @@ function Order() {
     const token = localStorage.getItem('authToken');
 
     useEffect(() => {
-        fetch(`http://localhost:8000/api/order/${id}/`, {
+        fetch(`${import.meta.env.VITE_API_URL}/api/order/${id}/`, {
             method: 'GET',
             headers: { 'Authorization': `Token ${token}` }
         })

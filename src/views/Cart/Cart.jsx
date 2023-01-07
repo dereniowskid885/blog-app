@@ -11,7 +11,7 @@ import Confirm from './Confirm/Confirm';
 import ScrollToTop from '/src/components/other/ScrollToTop/ScrollToTop';
 
 function Cart() {
-    const [ errors, setErrors ] = useState();
+    const [ errors, setErrors ] = useState({});
     const [ orderForm, setOrderForm ] = useState({});
     const [ cartStep, setCartStep ] = useState(1);
     const { state: { cart } } = useCart();
@@ -19,7 +19,7 @@ function Cart() {
     const isOrderFinished = cartStep === 4;
 
     const nextStep = () => {
-        setCartStep(cartStep + 1)
+        setCartStep(cartStep + 1);
     };
 
     const backStep = () => {
@@ -63,7 +63,6 @@ function Cart() {
                                     back={backStep}
                                     orderForm={orderForm}
                                     setErrors={setErrors}
-                                    goToForm={backStep}
                                 />
                                 <ScrollToTop />
                             </>

@@ -6,7 +6,7 @@ function BlogContext({ children }) {
     const [ posts, setPosts ] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:8000/api/blog/post/', {
+        fetch(`${import.meta.env.VITE_API_URL}/api/blog/post/`, {
             method: 'GET'
         })
         .then(response => {

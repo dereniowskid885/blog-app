@@ -8,7 +8,7 @@ function Account() {
     const token = localStorage.getItem('authToken');
 
     const logOut = () => {
-        fetch('http://localhost:8000/auth/remove-token', {
+        fetch(`${import.meta.env.VITE_API_URL}/auth/remove-token`, {
             method: 'POST',
             headers: { 'Authorization': `Token ${token}` }
         })
@@ -22,9 +22,9 @@ function Account() {
     };
 
     return (
-        <>
+        <div className='account'>
             { user.first_name &&
-                <div className='account'>
+                <>
                     <h1>{`Witaj ${user.first_name}!`}</h1>
                     <div className='account__content'>
                         <AccountCarousel />
@@ -32,9 +32,9 @@ function Account() {
                     <button className='btn' onClick={logOut}>
                         {'Wyloguj'}
                     </button>
-                </div>
+                </>
             }
-        </>
+        </div>
     );
 }
 

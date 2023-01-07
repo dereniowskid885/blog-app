@@ -41,7 +41,7 @@ function AccountSettings() {
                                 </div>
                             </div>
                             <FormInput id={'email'} label={'Email *'} type={'text'} maxLength={100} register={{...register('email')}} defaultValue={user.email} />
-                            <FormInput id={'phone'} label={'Numer telefonu *'} type={'text'} maxLength={9} register={{...register('phone')}} defaultValue={user.phone} />
+                            <FormInput id={'phone'} label={'Numer telefonu *'} type={'text'} minLength={9} maxLength={9} register={{...register('phone')}} defaultValue={user.phone} />
                             <div className='form-info'>
                                 <h3>{'Hasło musi zawierać:'}</h3>
                                 {'• min. 8 znaków • mała litera • wielka litera • cyfra •'}

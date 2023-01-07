@@ -13,6 +13,11 @@ function Contact() {
         toggleDialog
     } = useDialog();
 
+    const closeDialog = () => {
+        toggleDialog();
+        window.location.reload();
+    };
+
     return (
         <main className='contact'>
             <Breadcrumbs />
@@ -22,7 +27,7 @@ function Contact() {
             <ContactBlock data={data} />
             { showDialog &&
                 <Dialog>
-                    <Mail closeDialog={toggleDialog} />
+                    <Mail closeDialog={closeDialog} />
                 </Dialog>
             }
         </main>

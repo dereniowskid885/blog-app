@@ -15,7 +15,7 @@ function BlogPost() {
     const anyPosts = posts.length > 0;
 
     useEffect(() => {
-        fetch(`http://localhost:8000/api/blog/post/${id}/`, {
+        fetch(`${import.meta.env.VITE_API_URL}/api/blog/post/${id}/`, {
             method: 'GET'
         })
         .then(response => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { ThreeDots } from 'react-loader-spinner';
 
-function Loading() {
+function Loader() {
     return (
         <div className='loader'>
             <ThreeDots 
@@ -12,7 +12,7 @@ function Loading() {
                 ariaLabel="three-dots-loading"
                 wrapperStyle={
                     {
-                        'position': 'absolute',
+                        'position': 'fixed',
                         'top': '50%',
                         'left': '50%',
                         'transform': 'translate(-50%, -50%)'
@@ -24,4 +24,4 @@ function Loading() {
     );
 }
 
-export default Loading;
+export default Loader;

@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
+import './Summary.scss';
 import { useNavigate, Link } from 'react-router-dom';
 import { useCart } from '/src/contexts/CartContext';
 import { useDialog } from '/src/contexts/DialogContext';
-import Loading from '/src/components/other/Loading/Loading';
-import ScrollToTop from '/src/components/other/ScrollToTop/ScrollToTop';
-import './Summary.scss';
+import { useLoading } from '/src/contexts/LoadingContext';
 
-function Summary({ next, back, orderForm, setErrors, goToForm }) {
-    const [ isLoading, setLoading ] = useState(false);
+function Summary({ next, back, orderForm, setErrors }) {
     const additional_info = orderForm.info.length > 0 ? orderForm.info : 'Brak';
+
     const navigate = useNavigate();
+    const { setError } = useDialog();
+    const { setLoading } = useLoading();
 
     const { 
         state: {
@@ -20,12 +21,10 @@ function Summary({ next, back, orderForm, setErrors, goToForm }) {
         ACTIONS
     } = useCart();
 
-    const { setError } = useDialog();
-
     const finishOrder = () => {
-        const products = [];
-
         setLoading(true);
+
+        const products = [];
 
         cart.forEach(product => {
             const { id, quantity } = product;
@@ -49,26 +48,25 @@ function Summary({ next, back, orderForm, setErrors, goToForm }) {
             sum: orderSum
         };
         
-        fetch('http://localhost:8000/api/order/make-order', {
+        fetch(`${import.meta.env.VITE_API_URL}/api/order/make-order`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
         })
         .then(response => {
             if (response.ok) {
-                setCart({ type: ACTIONS.CLEAR_CART });
                 setLoading(false);
+                setCart({ type: ACTIONS.CLEAR_CART });
                 next();
             } else {
                 return response.json();
             }
         })
         .then(data => {
-            console.log(data);
             if (data) {
                 setLoading(false);
                 setErrors(data.invalid_fields);
-                goToForm();
+                back();
             }
         })
         .catch(error => {
@@ -137,12 +135,6 @@ function Summary({ next, back, orderForm, setErrors, goToForm }) {
                     {'Zatwierdź >'}
                 </button>
             </div>
-            { isLoading &&
-                <>
-                    <ScrollToTop />
-                    <Loading />
-                </>
-            }
         </>
     );
 }

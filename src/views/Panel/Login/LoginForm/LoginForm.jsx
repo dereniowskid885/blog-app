@@ -3,14 +3,18 @@ import { Link } from 'react-router-dom';
 import './LoginForm.scss';
 import { useForm } from 'react-hook-form';
 import { useDialog } from '/src/contexts/DialogContext';
+import { useLoading } from '/src/contexts/LoadingContext';
 import FormInput from '/src/components/other/FormInput/FormInput';
 
 function LoginForm() {
     const { setError } = useDialog();
+    const { setLoading } = useLoading();
     const { register, handleSubmit } = useForm();
 
     const authenticateUser = data => {
-        fetch('http://localhost:8000/auth/obtain-token', {
+        setLoading(true);
+
+        fetch(`${import.meta.env.VITE_API_URL}/auth/obtain-token`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
@@ -20,8 +24,9 @@ function LoginForm() {
         })
         .then(data => {
             if (data.invalid_fields) {
-                setError(data.invalid_fields.non_field_errors);
-            } else {
+                setLoading(false);
+                setError('Niepoprawny email lub hasło');
+            } else if (data.token) {
                 localStorage.setItem('authToken', data.token);
                 window.location.href = '/panel-klienta';
             }

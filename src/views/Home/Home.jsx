@@ -15,7 +15,7 @@ function Home() {
     const anyOpinions = opinions.length > 0;
 
     useEffect(() => {
-        fetch('http://localhost:8000/api/content-blocks/home/', {
+        fetch(`${import.meta.env.VITE_API_URL}/api/content-blocks/home/`, {
             method: 'GET',
         })
         .then(response => {
@@ -32,7 +32,7 @@ function Home() {
             console.log('Error: ', error);
         });
 
-        fetch('http://localhost:8000/api/opinions/', {
+        fetch(`${import.meta.env.VITE_API_URL}/api/opinions/`, {
             method: 'GET',
         })
         .then(response => {

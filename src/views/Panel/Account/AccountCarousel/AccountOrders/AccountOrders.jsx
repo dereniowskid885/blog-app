@@ -7,7 +7,7 @@ function AccountOrders() {
     const token = localStorage.getItem('authToken');
 
     useEffect(() => {
-        fetch('http://localhost:8000/api/order/', {
+        fetch(`${import.meta.env.VITE_API_URL}/api/order/`, {
             method: 'GET',
             headers: { 'Authorization': `Token ${token}` }
         })

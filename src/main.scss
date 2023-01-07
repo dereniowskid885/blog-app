@@ -125,12 +125,12 @@ form {
     }
 }
 
-.loader {
-    height: 100vh;
-}
-
 .message {
     text-align: center;
+}
+
+.loader {
+    z-index: 1;
 }
 
 .form-input {

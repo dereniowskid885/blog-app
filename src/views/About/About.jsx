@@ -14,7 +14,7 @@ function About() {
     const isSecondSection = secondSection.length > 0;
 
     useEffect(() => {
-        fetch('http://localhost:8000/api/content-blocks/about/', {
+        fetch(`${import.meta.env.VITE_API_URL}/api/content-blocks/about/`, {
             method: 'GET',
         })
         .then(response => {

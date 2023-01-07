@@ -26,6 +26,8 @@ function OrderForm({ next, back, orderForm, setOrderForm, errors }) {
         next();
     };
 
+    console.log(errors);
+
     return (
         <form className='order-form' onSubmit={handleSubmit(data => prepareOrder(data))}>
             <div className='order-form__container'>
@@ -49,7 +51,7 @@ function OrderForm({ next, back, orderForm, setOrderForm, errors }) {
                         </div>
                     </div>
                     <FormInput id={'email'} label={'Email *'} type={'text'} maxLength={100} register={{...register('email')}} errorMessage={errors?.email} defaultValue={formValues.email} />
-                    <FormInput id={'phone'} label={'Numer telefonu *'} type={'text'} maxLength={9} register={{...register('phone')}} errorMessage={errors?.phone} defaultValue={formValues.phone} />
+                    <FormInput id={'phone'} label={'Numer telefonu *'} type={'text'} minLength={9} maxLength={9} register={{...register('phone')}} errorMessage={errors?.phone} defaultValue={formValues.phone} />
                 </div>
                 <div className="order-form__second">
                     <div className='order-form__block'>

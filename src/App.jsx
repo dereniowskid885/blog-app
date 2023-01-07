@@ -2,7 +2,7 @@ import React, { Suspense, lazy, useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from '/src/components/layout/Header/Header';
 import Footer from '/src/components/layout/Footer/Footer';
-import Loading from '/src/components/other/Loading/Loading';
+import Loader from '/src/components/other/Loader/Loader';
 import ScrollToTop from '/src/components/other/ScrollToTop/ScrollToTop';
 import BlogContext from '/src/contexts/BlogContext';
 import UserContext from '/src/contexts/UserContext';
@@ -24,7 +24,7 @@ function App() {
     const [ isAPI, setAPI ] = useState(false);
 
     useEffect(() => {
-        fetch('http://localhost:8000/api/offer/', {
+        fetch(`${import.meta.env.VITE_API_URL}/api/offer/`, {
             method: 'GET'
         })
         .then(response => {
@@ -40,7 +40,7 @@ function App() {
     return (
         <BrowserRouter>
             <Header />
-            <Suspense fallback={<Loading />}>
+            <Suspense fallback={<Loader />}>
                 <Routes>
                     { isAPI ?
                         <>

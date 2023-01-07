@@ -29,7 +29,7 @@ function Product() {
     const addedProduct = cart[cart.length - 1];
 
     useEffect(() => {
-        fetch(`http://localhost:8000/api/offer/${id}/`, {
+        fetch(`${import.meta.env.VITE_API_URL}/api/offer/${id}/`, {
             method: 'GET'
         })
         .then(response => {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Cart.scss';
 import { Link } from 'react-router-dom';
 import Breadcrumbs from '/src/components/layout/Breadcrumbs/Breadcrumbs';
@@ -8,7 +8,6 @@ import CartProducts from './CartProducts/CartProducts';
 import OrderForm from './OrderForm/OrderForm';
 import Summary from './Summary/Summary';
 import Confirm from './Confirm/Confirm';
-import ScrollToTop from '/src/components/other/ScrollToTop/ScrollToTop';
 
 function Cart() {
     const [ errors, setErrors ] = useState({});
@@ -26,6 +25,10 @@ function Cart() {
         if (cartStep !== 1) setCartStep(cartStep - 1);
     };
 
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, [cartStep, isOrderFinished]);
+
     return (
         <main className='cart'>
             <Breadcrumbs />
@@ -36,44 +39,32 @@ function Cart() {
                             <ShopSteps cartStep={cartStep} />
                         }
                         { cartStep === 1 &&
-                            <>
-                                <CartProducts
-                                    next={nextStep}
-                                    back={backStep}
-                                />
-                                <ScrollToTop />
-                            </>
+                            <CartProducts
+                                next={nextStep}
+                                back={backStep}
+                            />
                         }
                         { cartStep === 2 &&
-                            <>
-                                <OrderForm
-                                    next={nextStep}
-                                    back={backStep}
-                                    orderForm={orderForm}
-                                    setOrderForm={setOrderForm}
-                                    errors={errors}
-                                />
-                                <ScrollToTop />
-                            </>
+                            <OrderForm
+                                next={nextStep}
+                                back={backStep}
+                                orderForm={orderForm}
+                                setOrderForm={setOrderForm}
+                                errors={errors}
+                            />
                         }
                         { cartStep === 3 &&
-                            <>
-                                <Summary
-                                    next={nextStep}
-                                    back={backStep}
-                                    orderForm={orderForm}
-                                    setErrors={setErrors}
-                                />
-                                <ScrollToTop />
-                            </>
+                            <Summary
+                                next={nextStep}
+                                back={backStep}
+                                orderForm={orderForm}
+                                setErrors={setErrors}
+                            />
                         }
                     </div>
                 }
                 { isOrderFinished &&
-                    <>
-                        <Confirm />
-                        <ScrollToTop />
-                    </>
+                    <Confirm />
                 }
                 { (!isCartFilled && !isOrderFinished) &&
                     <div className='cart__empty'>

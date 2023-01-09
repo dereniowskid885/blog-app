@@ -1,6 +1,5 @@
-import { useContext, createContext, useState } from 'react';
+import { useContext, createContext, useState, useEffect } from 'react';
 import Loader from '/src/components/other/Loader/Loader';
-import ScrollToTop from '/src/components/other/ScrollToTop/ScrollToTop';
 import Overlay from '/src/components/layout/Overlay/Overlay';
 
 const Loading = createContext();
@@ -8,13 +7,16 @@ const Loading = createContext();
 function LoadingContext({ children }) {
     const [ isLoading, setLoading ] = useState(false);
 
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, [isLoading]);
+
     return (
         <Loading.Provider value={{ isLoading, setLoading }}>
             {children}
             { isLoading &&
                 <>
                     <Loader />
-                    <ScrollToTop />
                     <Overlay />
                 </>
             }

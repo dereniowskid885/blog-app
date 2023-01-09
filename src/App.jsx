@@ -46,43 +46,13 @@ function App() {
                         <>
                             <Route path='/' element={<Home />} />
                             <Route path='/o-mnie' element={<About />} />
-                            <Route path='/oferta'
-                                element={
-                                    <BlogContext>
-                                        <Offer />
-                                    </BlogContext>
-                                } 
-                            />
+                            <Route path='/oferta' element={<BlogContext><Offer /></BlogContext>} />
                             <Route path='/oferta/:id' element={<Product />} />
                             <Route path='/zamowienie/:id' element={<Order />} />
-                            <Route path='/blog' 
-                                element={
-                                    <BlogContext>
-                                        <Blog />
-                                    </BlogContext>
-                                }
-                            />
-                            <Route path='/blog/:id'
-                                element={
-                                    <BlogContext>
-                                        <BlogPost />
-                                    </BlogContext>
-                                }
-                            />
-                            <Route path='/panel-klienta' 
-                                element={
-                                    <UserContext>
-                                        <Panel />
-                                    </UserContext>
-                                }
-                            />
-                            <Route path='/koszyk'
-                                element={
-                                    <UserContext>
-                                        <Cart />
-                                    </UserContext>
-                                }
-                            />
+                            <Route path='/blog' element={<BlogContext><Blog /></BlogContext>} />
+                            <Route path='/blog/:id' element={<BlogContext><BlogPost /></BlogContext>} />
+                            <Route path='/panel-klienta' element={<UserContext><Panel /></UserContext>} />
+                            <Route path='/koszyk' element={<UserContext><Cart /></UserContext>} />
                             <Route path='/kontakt' element={<Contact />} />
                             <Route path='/regulamin' element={<Regulations page={'regulations'} />} />
                             <Route path='/sposoby-platnosci' element={<Regulations page={'payment-methods'} />} />

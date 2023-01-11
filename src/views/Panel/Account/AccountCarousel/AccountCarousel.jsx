@@ -6,7 +6,7 @@ import AccountSettings from './AccountSettings/AccountSettings';
 
 const breakPoints = [
     { width: 1, itemsToShow: 1, itemstoScroll: 1}
-]
+];
 
 function AccountCarousel() {
     return (

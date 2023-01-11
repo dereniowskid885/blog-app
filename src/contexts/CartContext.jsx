@@ -92,7 +92,7 @@ function CartContext({ children }) {
     const initState = {
         cart: [],
         orderSum: 0
-    }
+    };
 
     const [ state, setCart ] = useReducer(reducer, initState);
 

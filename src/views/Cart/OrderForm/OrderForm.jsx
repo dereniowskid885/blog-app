@@ -26,8 +26,6 @@ function OrderForm({ next, back, orderForm, setOrderForm, errors }) {
         next();
     };
 
-    console.log(errors);
-
     return (
         <form className='order-form' onSubmit={handleSubmit(data => prepareOrder(data))}>
             <div className='order-form__container'>

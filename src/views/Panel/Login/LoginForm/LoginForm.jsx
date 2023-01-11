@@ -32,6 +32,7 @@ function LoginForm() {
             }
         })
         .catch(error => {
+            setLoading(false);
             console.log('Error: ', error);
             setError('Nieudane połączenie z serwerem');
         });

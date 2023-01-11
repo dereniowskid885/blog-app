@@ -10,4 +10,8 @@
     &__container {
         @extend .gray-block__container;
     }
+
+    h1 {
+        text-align: center;
+    }
 }

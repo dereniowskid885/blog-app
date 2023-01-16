@@ -13,7 +13,8 @@ function AccountCarousel() {
         <div className='panel-carousel'>
             <ElasticCarousel itemPadding={[0, 10]} breakPoints={breakPoints}>
                 <AccountOrders />
-                <AccountSettings />
+                {/* TODO */}
+                {/* <AccountSettings /> */}
             </ElasticCarousel>
         </div>
     );
